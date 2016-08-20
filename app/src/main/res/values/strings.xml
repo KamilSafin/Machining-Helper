@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Machining Helper</string>
+    <string name="calculator_menu">Parameter calculator</string>
 </resources>
