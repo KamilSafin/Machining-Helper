@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/g_code_text"
+        style="?android:listSeparatorTextViewStyle"/>
+
+    <TextView
+        android:id="@+id/g_code_detail_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/GCodeDetailStyle"
+        tools:text="G0"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/g_code_function"
+        style="?android:listSeparatorTextViewStyle"/>
+
+    <TextView
+        android:id="@+id/g_code_detail_function"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/GCodeDetailStyle"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/g_code_parameters"
+        style="?android:listSeparatorTextViewStyle"/>
+
+    <TextView
+        android:id="@+id/g_code_detail_parameters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/GCodeDetailStyle"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/g_code_similar"
+        style="?android:listSeparatorTextViewStyle"/>
+
+    <ListView
+        android:id="@+id/g_code_detail_similar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/GCodeDetailStyle"/>
+
+</LinearLayout>

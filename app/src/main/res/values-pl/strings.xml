@@ -1,4 +1,51 @@
 <resources>
     <string name="app_name">Pomocnik Operatora</string>
     <string name="calculator_menu">Kalkulator parametrów</string>
+    <string name="g_code_text">Kod</string>
+    <string name="g_code_function">Funkcja</string>
+    <string name="g_code_parameters">Parametry</string>
+    <string name="g_code_similar">Podobne</string>
+    <array name="g_codes">
+        <item>ruch szybki(ustawczy)</item>
+        <item>ruch roboczy(liniowy)</item>
+        <item>ruch kołowy (CW)</item>
+        <item>ruch kołowy (CCW)</item>
+        <item>koliste frezowanie gniazda (CW)</item>
+        <item>koliste frezowanie gniazda (CCW)</item>
+        <item>wybor płaszczyzny</item>
+        <item>system calowy</item>
+        <item>system mm</item>
+        <item>wyłączenie korekcji narzędzia</item>
+        <item>korekcja freza na lewo od konturu</item>
+        <item>korekcja freza na prawo od konturu</item>
+        <item>korekcja długości narzędzia</item>
+        <item>baza przedmiotowa</item>
+        <item>rozmieszczenie otworów po okręgu</item>
+        <item>rozmieszczenie otworów po łuku</item>
+        <item>rozmieszczenie otworów po linii</item>
+        <item>standardowe wiercenie</item>
+        <item>standardowe nakiełkowanie</item>
+        <item>standardowe wiercenie precyzyjne</item>
+        <item>standardowe gwintowanie</item>
+        <item>programowanie absolutne</item>
+        <item>programowanie przyrostowe</item>
+        <item>powrót do poł. początkowego</item>
+        <item>powrót do płaszczyzny R</item>
+        <item>frezowanie gniazda</item>
+        <item>stop programu</item>
+        <item>obroty wrzeciona CW</item>
+        <item>obroty wrzeciona CCW</item>
+        <item>zatrzymanie wrzeciona</item>
+        <item>zmiana narzędzia</item>
+        <item>włączenie chłodziwa</item>
+        <item>wyłączenie chłodziwa</item>
+        <item>włączenie chłodzenia wewn.</item>
+        <item>wyłączenie chłodzenia wewn.</item>
+        <item>koniec programu</item>
+        <item>włącznie podajnika wiórów</item>
+        <item>wyłącznie podajnika wiórów</item>
+        <item>lokalny podprogram</item>
+        <item>wywołanie podprogramu</item>
+        <item>koniec podprogramu</item>
+    </array>
 </resources>

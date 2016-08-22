@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.example.kamil.machininghelper.Activities.CalculatorActivity;
+import com.example.kamil.machininghelper.Activities.DimensionsAndToleranceActivity;
 import com.example.kamil.machininghelper.Activities.GCodeBaseActivity;
+import com.example.kamil.machininghelper.Activities.ParametersCreatorActivity;
 import com.example.kamil.machininghelper.R;
 
 /**
@@ -36,7 +38,7 @@ public class MainFragment extends Fragment {
 
         mParametersCreatorButton = (RelativeLayout) view.findViewById(R.id.parameters_creator_button);
         mParametersCreatorButton.setOnClickListener(l -> {
-            Intent intent = GCodeBaseActivity.newIntent(getContext());
+            Intent intent = ParametersCreatorActivity.newIntent(getContext());
             startActivity(intent);
         });
 
@@ -54,7 +56,7 @@ public class MainFragment extends Fragment {
 
         mDimensionsAndToleranceButton = (RelativeLayout) view.findViewById(R.id.dimensions_and_tolerance_button);
         mDimensionsAndToleranceButton.setOnClickListener(l -> {
-            Intent intent = GCodeBaseActivity.newIntent(getContext());
+            Intent intent = DimensionsAndToleranceActivity.newIntent(getContext());
             startActivity(intent);
         });
 

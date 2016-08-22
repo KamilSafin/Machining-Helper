@@ -3,6 +3,7 @@ package com.example.kamil.machininghelper.Activities;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.kamil.machininghelper.R;
@@ -24,7 +25,8 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
 
         if (fragment == null){
             fragment = createFragment();
-            fragmentManager.beginTransaction().add(R.id.fragment_container, fragment).commit();
+            FragmentTransaction transaction = fragmentManager.beginTransaction().add(R.id.fragment_container, fragment);
+            transaction.commit();
         }
     }
 }
