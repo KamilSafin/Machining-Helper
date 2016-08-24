@@ -17,6 +17,9 @@ import com.example.kamil.machininghelper.R;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by Kamil Safin on 8/22/2016.
  */
@@ -24,10 +27,17 @@ public class GCodeDetailFragment extends Fragment {
 
     private static final String ARGS_G_CODE_INDEX = GCodeDetailFragment.class.getName() + "g_code_index";
 
-    private TextView mGCodeTitle;
-    private TextView mGCodeFunction;
-    private TextView mGCodeParameters;
-    private ListView mGCodeSimilar;
+    @BindView(R.id.g_code_detail_text)
+    TextView mGCodeTitle;
+
+    @BindView(R.id.g_code_detail_function)
+    TextView mGCodeFunction;
+
+    @BindView(R.id.g_code_detail_parameters)
+    TextView mGCodeParameters;
+
+    @BindView(R.id.g_code_detail_similar)
+    ListView mGCodeSimilar;
 
     private GCodeFragmentCallback mFragmentCallback;
     private List<GCode> mGCodes;
@@ -49,7 +59,11 @@ public class GCodeDetailFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mFragmentCallback = (GCodeFragmentCallback) context;
+        try {
+            mFragmentCallback = (GCodeFragmentCallback) context;
+        } catch (RuntimeException ex){
+            throw new RuntimeException(getActivity().getLocalClassName() + " must implement " + GCodeFragmentCallback.class.getSimpleName());
+        }
     }
 
     @Override
@@ -66,10 +80,7 @@ public class GCodeDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_g_code_detail, container, false);
 
-        mGCodeTitle = (TextView) view.findViewById(R.id.g_code_detail_text);
-        mGCodeFunction = (TextView) view.findViewById(R.id.g_code_detail_function);
-        mGCodeParameters = (TextView) view.findViewById(R.id.g_code_detail_parameters);
-        mGCodeSimilar = (ListView) view.findViewById(R.id.g_code_detail_similar);
+        ButterKnife.bind(this, view);
 
         mGCodeTitle.setText(mGCode.getG());
         mGCodeFunction.setText(mGCode.getFunction());
@@ -83,9 +94,7 @@ public class GCodeDetailFragment extends Fragment {
                     index = j;
                 }
             }
-            if (mFragmentCallback != null)
                 mFragmentCallback.onSimilarCodeClicked(index);
-            else throw new RuntimeException(getActivity().getLocalClassName() + "must implement " + GCodeFragmentCallback.class.getName());
         });
 
         return view;

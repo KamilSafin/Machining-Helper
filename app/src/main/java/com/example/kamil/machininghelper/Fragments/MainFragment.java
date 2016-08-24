@@ -15,15 +15,25 @@ import com.example.kamil.machininghelper.Activities.GCodeBaseActivity;
 import com.example.kamil.machininghelper.Activities.ParametersCreatorActivity;
 import com.example.kamil.machininghelper.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by Kamil Safin on 8/20/2016.
  */
 public class MainFragment extends Fragment {
 
-    private RelativeLayout mCalculatorButton;
-    private RelativeLayout mGCodeBaseButton;
-    private RelativeLayout mParametersCreatorButton;
-    private RelativeLayout mDimensionsAndToleranceButton;
+    @BindView(R.id.calculator_button)
+    RelativeLayout mCalculatorButton;
+
+    @BindView(R.id.g_code_base_button)
+    RelativeLayout mGCodeBaseButton;
+
+    @BindView(R.id.parameters_creator_button)
+    RelativeLayout mParametersCreatorButton;
+
+    @BindView(R.id.dimensions_and_tolerance_button)
+    RelativeLayout mDimensionsAndToleranceButton;
 
     public static MainFragment initFragment(){
         MainFragment fragment = new MainFragment();
@@ -36,25 +46,23 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        mParametersCreatorButton = (RelativeLayout) view.findViewById(R.id.parameters_creator_button);
+        ButterKnife.bind(this, view);
+
         mParametersCreatorButton.setOnClickListener(l -> {
             Intent intent = ParametersCreatorActivity.newIntent(getContext());
             startActivity(intent);
         });
 
-        mCalculatorButton = (RelativeLayout) view.findViewById(R.id.calculator_button);
         mCalculatorButton.setOnClickListener(l -> {
             Intent intent = CalculatorActivity.newIntent(getContext());
             startActivity(intent);
         });
 
-        mGCodeBaseButton = (RelativeLayout) view.findViewById(R.id.g_code_base_button);
         mGCodeBaseButton.setOnClickListener(l -> {
             Intent intent = GCodeBaseActivity.newIntent(getContext());
             startActivity(intent);
         });
 
-        mDimensionsAndToleranceButton = (RelativeLayout) view.findViewById(R.id.dimensions_and_tolerance_button);
         mDimensionsAndToleranceButton.setOnClickListener(l -> {
             Intent intent = DimensionsAndToleranceActivity.newIntent(getContext());
             startActivity(intent);
