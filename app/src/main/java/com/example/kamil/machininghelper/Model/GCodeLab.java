@@ -21,7 +21,7 @@ public class GCodeLab {
         mContext = context;
         String[] functions = mContext.getResources().getStringArray(R.array.g_codes);
 
-        new Thread(() -> {
+        Thread thread = new Thread(() -> {
             mGCodes = new ArrayList<>();
             mGCodes.add(new GCode("G0", functions[0], "X,Y,Z", "G1"));
             mGCodes.add(new GCode("G1", functions[1], "X,Y,Z,R,C", "G0"));
@@ -65,6 +65,8 @@ public class GCodeLab {
             mGCodes.add(new GCode("M98", functions[39], "brak", "M97,M99"));
             mGCodes.add(new GCode("M99", functions[40], "brak", "M97,M98"));
         });
+
+        thread.run();
     }
 
     public static GCodeLab getGCodeLab(Context context) {

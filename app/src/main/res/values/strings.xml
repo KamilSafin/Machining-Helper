@@ -6,6 +6,8 @@
     <string name="g_code_parameters">Parameters</string>
     <string name="g_code_similar">Similar</string>
     <string name="hole_diameter">Diameter</string>
+    <string name="dimension_text">Dimension (mm)</string>
+    <string name="accuracy_grade_text">Accuracy grade</string>
     <string name="threads">Threads</string>
     <string name="thread_size">Choose thread size</string>
     <string name="holes_for_drill">Otwory pod gwint metryczny</string>

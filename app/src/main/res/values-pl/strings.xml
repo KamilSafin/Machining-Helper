@@ -6,6 +6,8 @@
     <string name="g_code_parameters">Parametry</string>
     <string name="g_code_similar">Podobne</string>
     <string name="hole_diameter">Średnica</string>
+    <string name="dimension_text">Wymiar (mm)</string>
+    <string name="accuracy_grade_text">Klasa dokadności</string>
     <string name="threads">Gwinty</string>
     <string name="thread_size">Wybierz średnicę gwintu</string>
     <string name="holes_for_drill">Otwory pod gwint metryczny</string>
