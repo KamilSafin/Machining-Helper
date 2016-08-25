@@ -2,17 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical"
               android:padding="@dimen/button_space">
 
     <TextView
-        android:id="@+id/g_code_detail_text"
+        android:id="@+id/tolerance_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        style="@style/GCodeDetailStyle"
-        tools:text="4 μm"/>
+        android:padding="@dimen/button_space"
+        android:textSize="20sp"
+        android:text="@string/chooose_dimension_and_accuracy_text"/>
 
     <LinearLayout
         android:layout_width="match_parent"

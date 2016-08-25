@@ -8,9 +8,13 @@
     <string name="hole_diameter">Diameter</string>
     <string name="dimension_text">Dimension (mm)</string>
     <string name="accuracy_grade_text">Accuracy grade</string>
+    <string name="chooose_dimension_and_accuracy_text">Choose dimension and accuracy grade</string>
+    <string name="chooose_dimension_text">Choose dimension</string>
+    <string name="chooose_accuracy_text">Choose accuracy grade</string>
     <string name="threads">Threads</string>
     <string name="thread_size">Choose thread size</string>
     <string name="holes_for_drill">Otwory pod gwint metryczny</string>
+    <string name="micrometer">μm</string>
 
     <array name="g_codes">
         <item>ruch szybki(ustawczy)</item>

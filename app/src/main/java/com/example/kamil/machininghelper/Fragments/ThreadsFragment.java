@@ -30,7 +30,7 @@ public class ThreadsFragment extends Fragment {
     @BindView(R.id.thread_recyler_view)
     RecyclerView mThreadRecyclerView;
 
-    private static TextView mThreadHoleText;
+    private static TextView sThreadHoleText;
 
     private ThreadsAdapter mThreadsAdapter;
     private ThreadLab mThreadLab;
@@ -57,12 +57,12 @@ public class ThreadsFragment extends Fragment {
 
         ButterKnife.bind(this, view);
 
-        mThreadHoleText = (TextView) view.findViewById(R.id.thread_hole_text);
+        sThreadHoleText = (TextView) view.findViewById(R.id.thread_hole_text);
 
         if (savedInstanceState != null){
-            mThreadHoleText.setText(savedInstanceState.getString(ARGS_HOLE_DIAMETER));
+            sThreadHoleText.setText(savedInstanceState.getString(ARGS_HOLE_DIAMETER));
         } else {
-            mThreadHoleText.setText(R.string.thread_size);
+            sThreadHoleText.setText(R.string.thread_size);
         }
 
         mThreadsAdapter = new ThreadsAdapter(getContext(), mThreads);
@@ -74,12 +74,12 @@ public class ThreadsFragment extends Fragment {
     }
 
     public static void setHoleDiameter(Threads thread){
-        mThreadHoleText.setText(Double.toString(thread.getThreadDiameter()) + " mm");
+        sThreadHoleText.setText(Double.toString(thread.getThreadDiameter()) + " mm");
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(ARGS_HOLE_DIAMETER, mThreadHoleText.getText().toString());
+        outState.putString(ARGS_HOLE_DIAMETER, sThreadHoleText.getText().toString());
     }
 }

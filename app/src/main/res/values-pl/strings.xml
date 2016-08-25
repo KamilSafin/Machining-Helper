@@ -8,9 +8,13 @@
     <string name="hole_diameter">Średnica</string>
     <string name="dimension_text">Wymiar (mm)</string>
     <string name="accuracy_grade_text">Klasa dokadności</string>
+    <string name="chooose_dimension_and_accuracy_text">Wybierz wymiar i klasę dokadności</string>
+    <string name="chooose_dimension_text">Wybierz wymiar</string>
+    <string name="chooose_accuracy_text">Wybierz klasę dokadności</string>
     <string name="threads">Gwinty</string>
     <string name="thread_size">Wybierz średnicę gwintu</string>
     <string name="holes_for_drill">Otwory pod gwint metryczny</string>
+    <string name="micrometer">μm</string>
 
     <array name="g_codes">
         <item>ruch szybki(ustawczy)</item>

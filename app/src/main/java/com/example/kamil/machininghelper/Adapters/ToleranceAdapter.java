@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.kamil.machininghelper.Fragments.ToleranceFragment;
 import com.example.kamil.machininghelper.Model.Tolerance;
 import com.example.kamil.machininghelper.R;
 
@@ -21,11 +23,12 @@ public class ToleranceAdapter extends RecyclerView.Adapter<ToleranceAdapter.Tole
     private Context mContext;
     private List<Tolerance> mTolerances;
     private List<ToleranceHolder> mToleranceHolders = new ArrayList<>();
-    private Integer checkedItem = null;
+    private static Integer sCheckedItem = null;
 
-    public ToleranceAdapter(Context context, List<Tolerance> tolerances) {
+    public ToleranceAdapter(Context context, List<Tolerance> tolerances, Integer checkedItem) {
         mContext = context;
         mTolerances = tolerances;
+        sCheckedItem = checkedItem;
     }
 
     @Override
@@ -42,7 +45,7 @@ public class ToleranceAdapter extends RecyclerView.Adapter<ToleranceAdapter.Tole
     public void onBindViewHolder(ToleranceHolder holder, int position) {
         holder.bindView(mTolerances.get(position));
 
-        if (checkedItem != null && checkedItem == position)
+        if (sCheckedItem != null && sCheckedItem == position)
             holder.setChecked();
         else
             holder.setUnchecked();
@@ -61,14 +64,15 @@ public class ToleranceAdapter extends RecyclerView.Adapter<ToleranceAdapter.Tole
         public ToleranceHolder(View itemView) {
             super(itemView);
 
-            mToleranceText = (TextView) itemView.findViewById(R.id.tolerance_text);
+            mToleranceText = (TextView) itemView.findViewById(R.id.row_tolerance_text);
 
             itemView.setOnClickListener(l -> {
                 for (ToleranceHolder toleranceHolder : mToleranceHolders){
                     toleranceHolder.setUnchecked();
                 }
                 this.setChecked();
-                checkedItem = getLayoutPosition();
+                sCheckedItem = getLayoutPosition();
+                ToleranceFragment.setDimension(sCheckedItem);
             });
         }
 

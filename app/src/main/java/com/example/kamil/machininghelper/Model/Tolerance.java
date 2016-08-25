@@ -10,17 +10,15 @@ import java.util.List;
 public class Tolerance {
 
     private String mDimension;
-    private List<HashMap> mTolerances;
+    private HashMap mTolerances;
 
     public Tolerance(String dimension, String... tolerances){
         mDimension = dimension;
         List<String> accuracyGrades = new AccuracyGrades().getAccuracyGrades();
-        mTolerances = new ArrayList<>();
+        mTolerances = new HashMap();
 
         for (int i = 0; i < tolerances.length; i++){
-            HashMap<String, String> tolerance = new HashMap<>();
-            tolerance.put(accuracyGrades.get(i), tolerances[i]);
-            mTolerances.add(tolerance);
+            mTolerances.put(accuracyGrades.get(i), tolerances[i]);
         }
     }
 
@@ -28,7 +26,7 @@ public class Tolerance {
         return mDimension;
     }
 
-    public List<HashMap> getTolerances() {
+    public HashMap getTolerances() {
         return mTolerances;
     }
 }

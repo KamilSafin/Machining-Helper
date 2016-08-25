@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.kamil.machininghelper.Fragments.ToleranceFragment;
 import com.example.kamil.machininghelper.Model.AccuracyGrades;
 import com.example.kamil.machininghelper.R;
 
@@ -22,11 +23,12 @@ public class AccuracyGradeAdapter extends RecyclerView.Adapter<AccuracyGradeAdap
     private Context mContext;
     private List<String> mAccuracyGrades;
     private List<AccuracyGradeHolder> mToleranceHolders = new ArrayList<>();
-    private Integer checkedItem = null;
+    private static Integer sCheckedItem = null;
 
-    public AccuracyGradeAdapter(Context context, AccuracyGrades accuracyGrades) {
+    public AccuracyGradeAdapter(Context context, AccuracyGrades accuracyGrades, Integer checkedItem) {
         mContext = context;
         mAccuracyGrades = accuracyGrades.getAccuracyGrades();
+        sCheckedItem = checkedItem;
     }
 
     @Override
@@ -44,7 +46,7 @@ public class AccuracyGradeAdapter extends RecyclerView.Adapter<AccuracyGradeAdap
     public void onBindViewHolder(AccuracyGradeHolder holder, int position) {
         holder.bindView(mAccuracyGrades.get(position));
 
-        if (checkedItem != null && checkedItem == position)
+        if (sCheckedItem != null && sCheckedItem == position)
             holder.setChecked();
         else
             holder.setUnchecked();
@@ -63,13 +65,14 @@ public class AccuracyGradeAdapter extends RecyclerView.Adapter<AccuracyGradeAdap
         public AccuracyGradeHolder(View itemView) {
             super(itemView);
 
-            mAccuracyText = (TextView) itemView.findViewById(R.id.tolerance_text);
+            mAccuracyText = (TextView) itemView.findViewById(R.id.row_tolerance_text);
             itemView.setOnClickListener(l -> {
                 for (AccuracyGradeHolder toleranceHolder : mToleranceHolders){
                     toleranceHolder.setUnchecked();
                 }
                 this.setChecked();
-                checkedItem = getLayoutPosition();
+                sCheckedItem = getLayoutPosition();
+                ToleranceFragment.setAccuracy(sCheckedItem);
             });
         }
 
