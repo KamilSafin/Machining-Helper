@@ -34,7 +34,7 @@ public class DimensionsAndToleranceFragment extends Fragment {
     }
 
     public interface DimensionAndToleranceCallback{
-        void startFragment(Fragment fragment);
+        void startFragment(Fragment fragment, String title);
     }
 
     @Override
@@ -54,9 +54,9 @@ public class DimensionsAndToleranceFragment extends Fragment {
 
         ButterKnife.bind(this, view);
 
-        mToleranceButton.setOnClickListener(l -> mDimensionAndToleranceCallback.startFragment(ToleranceFragment.initFragment()));
+        mToleranceButton.setOnClickListener(l -> mDimensionAndToleranceCallback.startFragment(ToleranceFragment.initFragment(), getResources().getString(R.string.tolerance)));
 
-        mThreadButton.setOnClickListener(l -> mDimensionAndToleranceCallback.startFragment(ThreadsFragment.initFragment()));
+        mThreadButton.setOnClickListener(l -> mDimensionAndToleranceCallback.startFragment(ThreadsFragment.initFragment(), getResources().getString(R.string.holes_for_drill)));
 
         return view;
     }

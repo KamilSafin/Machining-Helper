@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Pomocnik Operatora</string>
     <string name="calculator_menu">Kalkulator parametrów</string>
+    <string name="g_code_base">Baza kodów G</string>
+    <string name="dimensions_and_tolerance">Tolerancje i wymiary</string>
     <string name="g_code_text">Kod</string>
     <string name="g_code_function">Funkcja</string>
     <string name="g_code_parameters">Parametry</string>
@@ -16,6 +18,9 @@
     <string name="holes_for_drill">Otwory pod gwint metryczny</string>
     <string name="micrometer">μm</string>
     <string name="tolerance">Tolerancja</string>
+    <string name="turning">Toczenie</string>
+    <string name="milling">Frezowanie</string>
+    <string name="drilling">Wiercenie</string>
 
     <array name="g_codes">
         <item>ruch szybki(ustawczy)</item>

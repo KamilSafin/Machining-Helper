@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Machining Helper</string>
     <string name="calculator_menu">Parameter calculator</string>
+    <string name="g_code_base">G code base</string>
+    <string name="dimensions_and_tolerance">Dimensions and tolerance</string>
     <string name="g_code_text">Code</string>
     <string name="g_code_function">Function</string>
     <string name="g_code_parameters">Parameters</string>
@@ -15,7 +17,10 @@
     <string name="thread_size">Choose thread size</string>
     <string name="holes_for_drill">Otwory pod gwint metryczny</string>
     <string name="micrometer">μm</string>
-    <string name="tolerance">Tolerancja</string>
+    <string name="tolerance">Tolerance</string>
+    <string name="turning">Turning</string>
+    <string name="milling">Milling</string>
+    <string name="drilling">Drilling</string>
 
     <array name="g_codes">
         <item>ruch szybki(ustawczy)</item>

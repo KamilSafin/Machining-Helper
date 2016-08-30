@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.kamil.machininghelper.Activities.DimensionsAndToleranceActivity;
 import com.example.kamil.machininghelper.Adapters.ThreadsAdapter;
 import com.example.kamil.machininghelper.Model.ThreadLab;
 import com.example.kamil.machininghelper.Model.Threads;
@@ -75,6 +76,12 @@ public class ThreadsFragment extends Fragment {
 
     public static void setHoleDiameter(Threads thread){
         sThreadHoleText.setText(Double.toString(thread.getThreadDiameter()) + " mm");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ((DimensionsAndToleranceActivity) getActivity()).resetToolbarTitle();
     }
 
     @Override

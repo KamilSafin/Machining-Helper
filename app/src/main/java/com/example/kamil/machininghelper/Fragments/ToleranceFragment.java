@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.kamil.machininghelper.Activities.DimensionsAndToleranceActivity;
 import com.example.kamil.machininghelper.Adapters.AccuracyGradeAdapter;
 import com.example.kamil.machininghelper.Adapters.ToleranceAdapter;
 import com.example.kamil.machininghelper.Model.AccuracyGrades;
@@ -30,6 +31,7 @@ public class ToleranceFragment extends Fragment {
 
     private static final String ARGS_DIMENSION_ITEM = ToleranceFragment.class.getName() + "_args_dimension_item";
     private static final String ARGS_ACCURACY_ITEM = ToleranceFragment.class.getName() + "_args_accuracy_item";
+    private static final String ARGS_TOLERANCE_TOOLBAR_TITLE = ToleranceFragment.class.getName() + "_args_tolerance_toolbar_title";
 
     private static TextView sToleranceText;
 
@@ -125,5 +127,11 @@ public class ToleranceFragment extends Fragment {
             outState.putInt(ARGS_DIMENSION_ITEM, sDimensionIndex);
         if (sAccuracyIndex != null)
             outState.putInt(ARGS_ACCURACY_ITEM, sAccuracyIndex);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ((DimensionsAndToleranceActivity) getActivity()).resetToolbarTitle();
     }
 }

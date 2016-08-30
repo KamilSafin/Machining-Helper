@@ -6,12 +6,11 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
-import com.example.kamil.machininghelper.Fragments.CalculatorFragment;
 import com.example.kamil.machininghelper.Fragments.CalculatorItemFragment;
 import com.example.kamil.machininghelper.R;
 
@@ -19,6 +18,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CalculatorActivity extends AppCompatActivity {
+
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
     @BindView(R.id.tabs)
     TabLayout mTabLayout;
@@ -39,18 +41,15 @@ public class CalculatorActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);
-//
-//        if (fragment == null){
-//            fragment = CalculatorFragment.initFragment();
-//            FragmentTransaction transaction = fragmentManager.beginTransaction().add(R.id.fragment_container, fragment);
-//            transaction.commit();
-//        }
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setTitle(getResources().getString(R.string.calculator_menu));
 
         TabLayout.Tab turning = mTabLayout.newTab();
+        turning.setText(getResources().getString(R.string.turning));
         TabLayout.Tab milling = mTabLayout.newTab();
+        milling.setText(getResources().getString(R.string.milling));
         TabLayout.Tab drilling = mTabLayout.newTab();
+        drilling.setText(getResources().getString(R.string.drilling));
 
         mTabLayout.addTab(turning);
         mTabLayout.addTab(milling);
@@ -58,7 +57,7 @@ public class CalculatorActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-        mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
+        mViewPager.setAdapter(new FragmentPagerAdapter(fragmentManager) {
             @Override
             public Fragment getItem(int position) {
                 return CalculatorItemFragment.initFragment(position);
@@ -67,6 +66,41 @@ public class CalculatorActivity extends AppCompatActivity {
             @Override
             public int getCount() {
                 return 3;
+            }
+        });
+
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                mViewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
     }
