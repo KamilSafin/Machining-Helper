@@ -15,6 +15,7 @@
     <string name="thread_size">Choose thread size</string>
     <string name="holes_for_drill">Otwory pod gwint metryczny</string>
     <string name="micrometer">μm</string>
+    <string name="tolerance">Tolerancja</string>
 
     <array name="g_codes">
         <item>ruch szybki(ustawczy)</item>

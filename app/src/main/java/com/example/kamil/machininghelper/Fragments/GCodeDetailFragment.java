@@ -39,6 +39,9 @@ public class GCodeDetailFragment extends Fragment {
     @BindView(R.id.g_code_detail_similar)
     ListView mGCodeSimilar;
 
+    @BindView(R.id.g_code_detail_no_similar)
+    TextView mGCodeNoSimilar;
+
     private GCodeFragmentCallback mFragmentCallback;
     private List<GCode> mGCodes;
     private GCode mGCode;
@@ -85,17 +88,23 @@ public class GCodeDetailFragment extends Fragment {
         mGCodeTitle.setText(mGCode.getG());
         mGCodeFunction.setText(mGCode.getFunction());
         mGCodeParameters.setText(mGCode.getParameters());
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.row_g_code_similar, mGCode.getSimilar());
-        mGCodeSimilar.setAdapter(arrayAdapter);
-        mGCodeSimilar.setOnItemClickListener((adapterView, view1, i, l) -> {
-            int index = 0;
-            for (int j =0; j < mGCodes.size(); j++) {
-                if (mGCodes.get(j).getG().equals(mGCode.getSimilar()[i])){
-                    index = j;
+        if (!mGCode.getSimilar()[0].equals("brak")) {
+            ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.row_g_code_similar, mGCode.getSimilar());
+            mGCodeSimilar.setAdapter(arrayAdapter);
+            mGCodeSimilar.setOnItemClickListener((adapterView, view1, i, l) -> {
+                int index = 0;
+                for (int j = 0; j < mGCodes.size(); j++) {
+                    if (mGCodes.get(j).getG().equals(mGCode.getSimilar()[i])) {
+                        index = j;
+                    }
                 }
-            }
                 mFragmentCallback.onSimilarCodeClicked(index);
-        });
+            });
+        } else {
+            mGCodeSimilar.setVisibility(View.GONE);
+            mGCodeNoSimilar.setVisibility(View.VISIBLE);
+            mGCodeNoSimilar.setText(mGCode.getSimilar()[0]);
+        }
 
         return view;
     }

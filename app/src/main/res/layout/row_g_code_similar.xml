@@ -2,8 +2,12 @@
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_margin="10dp"
+    android:layout_marginBottom="20dp"
     android:textSize="20sp"
     android:padding="6dp"
+    android:background="@drawable/item_frame"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 </TextView>

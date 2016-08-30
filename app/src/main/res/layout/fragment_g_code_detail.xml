@@ -56,4 +56,11 @@
         android:layout_height="wrap_content"
         style="@style/GCodeDetailStyle"/>
 
+    <TextView
+        android:id="@+id/g_code_detail_no_similar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        style="@style/GCodeDetailStyle"/>
+
 </LinearLayout>

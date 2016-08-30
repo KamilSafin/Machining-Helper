@@ -43,6 +43,7 @@ public class ToleranceFragment extends Fragment {
     private static AccuracyGrades sAccuracyGrades;
     private static Integer sDimensionIndex;
     private static Integer sAccuracyIndex;
+    private static String mToleranceText;
 
     public static Fragment initFragment(){
         Fragment fragment = new ToleranceFragment();
@@ -59,6 +60,7 @@ public class ToleranceFragment extends Fragment {
         sAccuracyGrades = new AccuracyGrades();
         sDimensionIndex = null;
         sAccuracyIndex = null;
+        mToleranceText = getResources().getString(R.string.tolerance);
     }
 
     @Nullable
@@ -89,7 +91,6 @@ public class ToleranceFragment extends Fragment {
             mDimensionRecylerView.setAdapter(new ToleranceAdapter(getContext(), sTolerances, null));
             mAccuracyGradeRecyclerView.setAdapter(new AccuracyGradeAdapter(getContext(), new AccuracyGrades(), null));
         }
-
         return view;
     }
 
@@ -113,7 +114,7 @@ public class ToleranceFragment extends Fragment {
             List<String> accuracyGrades = sAccuracyGrades.getAccuracyGrades();
             String tolerance = (String) tolerances.get(accuracyGrades.get(sAccuracyIndex));
 
-            sToleranceText.setText(tolerance);
+            sToleranceText.setText( mToleranceText + ": " +tolerance);
         }
     }
 
