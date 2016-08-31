@@ -24,6 +24,9 @@
     <string name="turning_problems">Problemy toczenie</string>
     <string name="milling_problems">Problemy frezowanie</string>
     <string name="drilling_problems">Problemy wiercenie</string>
+    <string name="turning_parameters">Kalkulator parametrów toczenie</string>
+    <string name="milling_parameters">Kalkulator parametrów frezowanie</string>
+    <string name="drilling_parameters">Kalkulator parametrów wiercenie</string>
 
     <array name="turning_problems_name">
         <item>Duże zużycie na powierzchni natarcia i przyłożenia</item>
@@ -89,6 +92,35 @@
         4<item>zmniejszyć posuw</item>
         5<item>zwiększyć intensywność doprowadzania chłodziwa</item>
         6<item>zwiększyć prędkość skrawania</item>
+    </array>
+
+    <array name="turning_calculator_parameters">
+        <item>Prędkość skrawania Vc</item>
+        <item>Prękość obrotowa wrzeciona n</item>
+        <item>Objętościowa wydajność skrawania Q</item>
+        <item>Moc skrawania netto Pc</item>
+        <item>Czas jednego przejścia Tc</item>
+    </array>
+
+    <array name="milling_calculator_parameters">
+        <item>Prędkość skrawania Vc</item>
+        <item>Prędkość obrotowa wrzeciona n</item>
+        <item>Posuw na ostrze</item>
+        <item>Prędkość posuwu vf</item>
+        <item>Objętościowa wydajność skrawania Q</item>
+        <item>Moc skrawania netto Pc</item>
+        <item>Moment obrotowy Mc</item>
+    </array>
+
+    <array name="drilling_calculator_parameters">
+        <item>Prędkość skrawania Vc</item>
+        <item>Prędkość obrotowa wrzeciona n</item>
+        <item>Posuw na obrót fn</item>
+        <item>Prędkość posuwu vf</item>
+        <item>Objętościowa wydajność skrawania Q</item>
+        <item>Czas obróbki Tc</item>
+        <item>Moc skrawania netto Pc</item>
+        <item>Moment obrotowy Mc</item>
     </array>
 
     <array name="g_codes">

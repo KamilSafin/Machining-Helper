@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.example.kamil.machininghelper.Activities.CalculatorParametersActivity;
 import com.example.kamil.machininghelper.Activities.MachiningProblemsActivity;
 import com.example.kamil.machininghelper.R;
 
@@ -70,14 +71,8 @@ public class CalculatorItemFragment extends Fragment {
         }
 
         mCalculatorButton.setOnClickListener(l -> {
-            switch (mIndex){
-                case 0:
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-            }
+            Intent intent = CalculatorParametersActivity.newIntent(getContext(), mIndex);
+            startActivity(intent);
         });
 
         mProblemsButton.setOnClickListener(l -> {

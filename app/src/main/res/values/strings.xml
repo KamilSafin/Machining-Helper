@@ -71,25 +71,70 @@
     </array>
 
     <array name="milling_solution">
-        0<item>zmniejszyć prędkość skrawania Vc</item>
-        1<item>zwiększyć prędkość skrawania Vc</item>
-        2<item>dobrać bardziej odporny na ścieranie gat. węglika spiekanego</item>
-        3<item>zmienić zamocowanie freza</item>
-        4<item>dobrać bardziej odporny na obciążenia dynamiczne gat. płytki</item>
-        5<item>zmniejszyć posuw fz</item>
-        6<item>zwiększyć posuw fz</item>
-        7<item>frezować na sucho</item>
-        8<item>zastosować frez z większą podziałką</item>
+        0
+        <item>zmniejszyć prędkość skrawania Vc</item>
+        1
+        <item>zwiększyć prędkość skrawania Vc</item>
+        2
+        <item>dobrać bardziej odporny na ścieranie gat. węglika spiekanego</item>
+        3
+        <item>zmienić zamocowanie freza</item>
+        4
+        <item>dobrać bardziej odporny na obciążenia dynamiczne gat. płytki</item>
+        5
+        <item>zmniejszyć posuw fz</item>
+        6
+        <item>zwiększyć posuw fz</item>
+        7
+        <item>frezować na sucho</item>
+        8
+        <item>zastosować frez z większą podziałką</item>
     </array>
 
     <array name="drilling_solution">
-        0<item>sprawdzić geometrię części skrawającej</item>
-        1<item>skrócić zamocowanie</item>
-        2<item>sprawdzić warunki skrawania</item>
-        3<item>sprawdzić dobór węglika spiekanego</item>
-        4<item>zmniejszyć posuw</item>
-        5<item>zwiększyć intensywność doprowadzania chłodziwa</item>
-        6<item>zwiększyć prędkość skrawania</item>
+        0
+        <item>sprawdzić geometrię części skrawającej</item>
+        1
+        <item>skrócić zamocowanie</item>
+        2
+        <item>sprawdzić warunki skrawania</item>
+        3
+        <item>sprawdzić dobór węglika spiekanego</item>
+        4
+        <item>zmniejszyć posuw</item>
+        5
+        <item>zwiększyć intensywność doprowadzania chłodziwa</item>
+        6
+        <item>zwiększyć prędkość skrawania</item>
+    </array>
+
+    <array name="turning_calculator_parameters">
+        <item>Prędkość skrawania Vc</item>
+        <item>Prękość obrotowa wrzeciona n</item>
+        <item>Objętościowa wydajność skrawania Q</item>
+        <item>Moc skrawania netto Pc</item>
+        <item>Czas jednego przejścia Tc</item>
+    </array>
+
+    <array name="milling_calculator_parameters">
+        <item>Prędkość skrawania Vc</item>
+        <item>Prędkość obrotowa wrzeciona n</item>
+        <item>Posuw na ostrze</item>
+        <item>Prędkość posuwu vf</item>
+        <item>Objętościowa wydajność skrawania Q</item>
+        <item>Moc skrawania netto Pc</item>
+        <item>Moment obrotowy Mc</item>
+    </array>
+
+    <array name="drilling_calculator_parameters">
+        <item>Prędkość skrawania Vc</item>
+        <item>Prędkość obrotowa wrzeciona n</item>
+        <item>Posuw na obrót fn</item>
+        <item>Prędkość posuwu vf</item>
+        <item>Objętościowa wydajność skrawania Q</item>
+        <item>Czas obróbki Tc</item>
+        <item>Moc skrawania netto Pc</item>
+        <item>Moment obrotowy Mc</item>
     </array>
 
     <array name="g_codes">
