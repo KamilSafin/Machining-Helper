@@ -1,5 +1,7 @@
 package com.example.kamil.machininghelper.Fragments;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.example.kamil.machininghelper.Activities.MachiningProblemsActivity;
 import com.example.kamil.machininghelper.R;
 
 import butterknife.BindView;
@@ -67,6 +70,30 @@ public class CalculatorItemFragment extends Fragment {
                 mItemView.setImageDrawable(getResources().getDrawable(R.drawable.drilling));
                 break;
         }
+
+        mCalculatorButton.setOnClickListener(l -> {
+            switch (mIndex){
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+            }
+        });
+
+        mProblemsButton.setOnClickListener(l -> {
+            switch (mIndex){
+                case 0:
+                    Intent intent = MachiningProblemsActivity.newIntent(getContext(), mIndex);
+                    startActivity(intent);
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+            }
+        });
 
         return view;
     }

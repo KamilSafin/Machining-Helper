@@ -21,6 +21,32 @@
     <string name="turning">Toczenie</string>
     <string name="milling">Frezowanie</string>
     <string name="drilling">Wiercenie</string>
+    <string name="turning_problems">Problemy toczenie</string>
+    <string name="milling_problems">Problemy frezowanie</string>
+    <string name="drilling_problems">Problemy wiercenie</string>
+
+    <array name="turning_problems_name">
+        <item>Duże zużycie na powierzchni natarcia i przyłożenia</item>
+        <item>Deformacja krawędzi skrawającej</item>
+        <item>Tworzenie się narostu</item>
+        <item>Rysy prostopadłe do krawędzi skrawającej</item>
+        <item>Wykruszenia na krawędzi skrawającej</item>
+        <item>Złamanie płytki skrawającej</item>
+        <item>Długie wióry spiralne</item>
+        <item>Drgania</item>
+    </array>
+
+    <array name="turning_solution">
+        <item>zmniejszyć prędkość skrawania Vc</item>
+        <item>zwiększyć prędkość skrawania Vc</item>
+        <item>dobrać bardziej odporny na ścieranie gat. węglika spiekanego</item>
+        <item>stosować dodatnią geometrię ostrza</item>
+        <item>dobrać bardziej odporny na obciążenia dynamiczne gat. płytki</item>
+        <item>zmniejszyć posuw fz</item>
+        <item>zwiększyć posuw fz</item>
+        <item>zmniejszyć głębokość skrawania</item>
+        <item></item>
+    </array>
 
     <array name="g_codes">
         <item>ruch szybki(ustawczy)</item>
