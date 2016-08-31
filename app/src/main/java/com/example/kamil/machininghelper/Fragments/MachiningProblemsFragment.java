@@ -53,8 +53,10 @@ public class MachiningProblemsFragment extends Fragment {
                 mMachiningProblems = mMachningProblemsLab.getTurningProblems();
                 break;
             case 1:
+                mMachiningProblems = mMachningProblemsLab.getMillingProblems();
                 break;
             case 2:
+                mMachiningProblems = mMachningProblemsLab.getDrillingProblems();
                 break;
         }
     }

@@ -36,6 +36,28 @@
         <item>Drgania</item>
     </array>
 
+    <array name="milling_problems_name">
+        <item>Duże zużycie na powierzchni natarcia i przyłożenia</item>
+        <item>Deformacja krawędzi skrawającej</item>
+        <item>Tworzenie się narostu</item>
+        <item>Rysy prostopadłe do krawędzi skrawającej</item>
+        <item>Wykruszenia na krawędzi skrawającej</item>
+        <item>Złamanie płytki skrawającej</item>
+        <item>Zła jakość powierzchni</item>
+        <item>Drgania</item>
+    </array>
+
+    <array name="drilling_problems_name">
+        <item>Zniszczony wierzchołek wiertła</item>
+        <item>Zużycie na zewn. średnicy wiertła</item>
+        <item>Rozbicie otworu</item>
+        <item>Zaklinowywanie się wiórów</item>
+        <item>Wykruszenia na krawędziach skrawających</item>
+        <item>Nieokrągły otwór</item>
+        <item>Mała trwałość</item>
+        <item>Drgania</item>
+    </array>
+
     <array name="turning_solution">
         <item>zmniejszyć prędkość skrawania Vc</item>
         <item>zwiększyć prędkość skrawania Vc</item>
@@ -45,7 +67,28 @@
         <item>zmniejszyć posuw fz</item>
         <item>zwiększyć posuw fz</item>
         <item>zmniejszyć głębokość skrawania</item>
-        <item></item>
+    </array>
+
+    <array name="milling_solution">
+        0<item>zmniejszyć prędkość skrawania Vc</item>
+        1<item>zwiększyć prędkość skrawania Vc</item>
+        2<item>dobrać bardziej odporny na ścieranie gat. węglika spiekanego</item>
+        3<item>zmienić zamocowanie freza</item>
+        4<item>dobrać bardziej odporny na obciążenia dynamiczne gat. płytki</item>
+        5<item>zmniejszyć posuw fz</item>
+        6<item>zwiększyć posuw fz</item>
+        7<item>frezować na sucho</item>
+        8<item>zastosować frez z większą podziałką</item>
+    </array>
+
+    <array name="drilling_solution">
+        0<item>sprawdzić geometrię części skrawającej</item>
+        1<item>skrócić zamocowanie</item>
+        2<item>sprawdzić warunki skrawania</item>
+        3<item>sprawdzić dobór węglika spiekanego</item>
+        4<item>zmniejszyć posuw</item>
+        5<item>zwiększyć intensywność doprowadzania chłodziwa</item>
+        6<item>zwiększyć prędkość skrawania</item>
     </array>
 
     <array name="g_codes">
