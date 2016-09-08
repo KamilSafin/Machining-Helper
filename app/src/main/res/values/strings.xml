@@ -31,6 +31,11 @@
     <string name="milling_parameters">Milling advices</string>
     <string name="drilling_parameters">Drilling advices</string>
     <string name="machning_problems_solution">Problem solution</string>
+    <string name="mm">mm</string>
+    <string name="rpm">rpm</string>
+    <string name="m_min">m/min</string>
+    <string name="mm_r">mm/r</string>
+    <string name="N_mm2">N/mm2</string>
 
     <array name="turning_problems_name">
         <item>Duże zużycie na powierzchni natarcia i przyłożenia</item>
@@ -126,6 +131,16 @@
         <item>Czas obróbki Tc</item>
         <item>Moc skrawania netto Pc</item>
         <item>Moment obrotowy Mc</item>
+    </array>
+
+    <array name="turning_formulas">
+        <item>Machined diameter (mm)</item>
+        <item>Spindle speed (rpm)</item>
+        <item>Cutting speed (m/min)</item>
+        <item>Cutting depth (mm)</item>
+        <item>Feed per revolution (mm/r)</item>
+        <item>Specific cutting force (N/mm2)</item>
+        <item>Machined length (mm)</item>
     </array>
 
     <array name="g_codes">

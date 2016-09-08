@@ -68,7 +68,7 @@ public class CalculatorFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecyclerView.setAdapter(new CalculatorParametersAdapter(getContext(), mCalculatorParameters));
+        mRecyclerView.setAdapter(new CalculatorParametersAdapter(getContext(), mCalculatorParameters, mIndex));
 
         return view;
     }

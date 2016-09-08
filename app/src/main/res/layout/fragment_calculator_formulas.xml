@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/machined_diameter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/machined_diameter_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/button_space"
+            android:gravity="right"
+            android:textSize="15sp"
+            tools:text="Machined diameter"/>
+
+        <EditText
+            android:id="@+id/machined_diameter_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:inputType="numberDecimal"
+            android:hint="@string/mm"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/spindle_speed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/spindle_speed_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/button_space"
+            android:gravity="right"
+            android:textSize="15sp"
+            tools:text="Spindle speed"/>
+
+        <EditText
+            android:id="@+id/spindle_speed_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:inputType="numberDecimal"
+            android:hint="@string/rpm"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cutting_speed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/cutting_speed_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/button_space"
+            android:gravity="right"
+            android:textSize="15sp"
+            tools:text="Cutting speed"/>
+
+        <EditText
+            android:id="@+id/cutting_speed_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:inputType="numberDecimal"
+            android:hint="@string/m_min"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cutting_depth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/cutting_depth_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/button_space"
+            android:gravity="right"
+            android:textSize="15sp"
+            tools:text="Cutting depth"/>
+
+        <EditText
+            android:id="@+id/cutting_depth_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:inputType="numberDecimal"
+            android:hint="@string/mm"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/feed_per_revolution"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/feed_per_revolution_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/button_space"
+            android:gravity="right"
+            android:textSize="15sp"
+            tools:text="Feed per revolution"/>
+
+        <EditText
+            android:id="@+id/feed_per_revolution_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:inputType="numberDecimal"
+            android:hint="@string/mm_r"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/specific_cutting_force"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/specific_cutting_force_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/button_space"
+            android:gravity="right"
+            android:textSize="15sp"
+            tools:text="Specific cutting force"/>
+
+        <EditText
+            android:id="@+id/specific_cutting_force_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:inputType="numberDecimal"
+            android:hint="@string/N_mm2"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/machined_length"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/machined_length_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/button_space"
+            android:gravity="right"
+            android:textSize="15sp"
+            tools:text="Machined lenght"/>
+
+        <EditText
+            android:id="@+id/machined_length_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:inputType="numberDecimal"
+            android:hint="@string/mm"/>
+
+    </LinearLayout>
+
+</LinearLayout>

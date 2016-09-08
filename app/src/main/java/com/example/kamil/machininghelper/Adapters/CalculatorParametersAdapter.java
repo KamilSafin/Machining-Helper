@@ -1,12 +1,14 @@
 package com.example.kamil.machininghelper.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.kamil.machininghelper.Activities.CalculatorFormulasActivity;
 import com.example.kamil.machininghelper.R;
 
 import java.util.List;
@@ -18,10 +20,12 @@ public class CalculatorParametersAdapter extends RecyclerView.Adapter<Calculator
 
     private Context mContext;
     private List<String> mCalculatorParameters;
+    private int mIndex;
 
-    public CalculatorParametersAdapter(Context context, List<String> calculatorParameters) {
+    public CalculatorParametersAdapter(Context context, List<String> calculatorParameters, int index) {
         mContext = context;
         mCalculatorParameters = calculatorParameters;
+        mIndex = index;
     }
 
     @Override
@@ -50,6 +54,11 @@ public class CalculatorParametersAdapter extends RecyclerView.Adapter<Calculator
             super(itemView);
 
             mCalculatorParameter = (TextView) itemView.findViewById(R.id.row_calculator_parameter_text);
+
+            itemView.setOnClickListener(l -> {
+                Intent intent = CalculatorFormulasActivity.newIntent(mContext, getLayoutPosition(), mIndex);
+                mContext.startActivity(intent);
+            });
         }
 
         public void bind(String parameter){
