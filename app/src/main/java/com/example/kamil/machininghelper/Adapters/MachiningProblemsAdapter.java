@@ -1,12 +1,14 @@
 package com.example.kamil.machininghelper.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.kamil.machininghelper.Activities.MachiningProblemsSolutionActivity;
 import com.example.kamil.machininghelper.Model.MachiningProblem;
 import com.example.kamil.machininghelper.R;
 
@@ -19,10 +21,12 @@ public class MachiningProblemsAdapter extends RecyclerView.Adapter<MachiningProb
 
     private List<MachiningProblem> mMachiningProblems;
     private Context mContext;
+    private int mIndex;
 
-    public MachiningProblemsAdapter(Context context, List<MachiningProblem> machiningProblems) {
+    public MachiningProblemsAdapter(Context context, List<MachiningProblem> machiningProblems, int index) {
         mMachiningProblems = machiningProblems;
         mContext = context;
+        mIndex = index;
     }
 
     @Override
@@ -52,6 +56,11 @@ public class MachiningProblemsAdapter extends RecyclerView.Adapter<MachiningProb
             super(itemView);
 
             mProblemNameTextView = (TextView) itemView.findViewById(R.id.row_machining_problem_name_text);
+
+            itemView.setOnClickListener(l -> {
+                Intent intent = MachiningProblemsSolutionActivity.newIntent(mContext, mIndex, getLayoutPosition());
+                mContext.startActivity(intent);
+            });
         }
 
         public void bind(MachiningProblem machiningProblem){

@@ -27,6 +27,8 @@
         </activity>
         <activity android:name=".Activities.CalculatorParametersActivity">
         </activity>
+        <activity android:name=".Activities.MachiningProblemsSolutionActivity">
+        </activity>
     </application>
 
 </manifest>

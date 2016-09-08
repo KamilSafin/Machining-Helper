@@ -24,9 +24,13 @@
     <string name="turning_problems">Problemy toczenie</string>
     <string name="milling_problems">Problemy frezowanie</string>
     <string name="drilling_problems">Problemy wiercenie</string>
+    <string name="turning_problems_solution">Porady toczenie</string>
+    <string name="milling_problems_solution">Porady frezowanie</string>
+    <string name="drilling_problems_solution">Porady wiercenie</string>
     <string name="turning_parameters">Kalkulator parametrów toczenie</string>
     <string name="milling_parameters">Kalkulator parametrów frezowanie</string>
     <string name="drilling_parameters">Kalkulator parametrów wiercenie</string>
+    <string name="machning_problems_solution">Środki zaradcze</string>
 
     <array name="turning_problems_name">
         <item>Duże zużycie na powierzchni natarcia i przyłożenia</item>
@@ -73,25 +77,25 @@
     </array>
 
     <array name="milling_solution">
-        0<item>zmniejszyć prędkość skrawania Vc</item>
-        1<item>zwiększyć prędkość skrawania Vc</item>
-        2<item>dobrać bardziej odporny na ścieranie gat. węglika spiekanego</item>
-        3<item>zmienić zamocowanie freza</item>
-        4<item>dobrać bardziej odporny na obciążenia dynamiczne gat. płytki</item>
-        5<item>zmniejszyć posuw fz</item>
-        6<item>zwiększyć posuw fz</item>
-        7<item>frezować na sucho</item>
-        8<item>zastosować frez z większą podziałką</item>
+        <item>zmniejszyć prędkość skrawania Vc</item>
+        <item>zwiększyć prędkość skrawania Vc</item>
+        <item>dobrać bardziej odporny na ścieranie gat. węglika spiekanego</item>
+        <item>zmienić zamocowanie freza</item>
+        <item>dobrać bardziej odporny na obciążenia dynamiczne gat. płytki</item>
+        <item>zmniejszyć posuw fz</item>
+        <item>zwiększyć posuw fz</item>
+        <item>frezować na sucho</item>
+        <item>zastosować frez z większą podziałką</item>
     </array>
 
     <array name="drilling_solution">
-        0<item>sprawdzić geometrię części skrawającej</item>
-        1<item>skrócić zamocowanie</item>
-        2<item>sprawdzić warunki skrawania</item>
-        3<item>sprawdzić dobór węglika spiekanego</item>
-        4<item>zmniejszyć posuw</item>
-        5<item>zwiększyć intensywność doprowadzania chłodziwa</item>
-        6<item>zwiększyć prędkość skrawania</item>
+        <item>sprawdzić geometrię części skrawającej</item>
+        <item>skrócić zamocowanie</item>
+        <item>sprawdzić warunki skrawania</item>
+        <item>sprawdzić dobór węglika spiekanego</item>
+        <item>zmniejszyć posuw</item>
+        <item>zwiększyć intensywność doprowadzania chłodziwa</item>
+        <item>zwiększyć prędkość skrawania</item>
     </array>
 
     <array name="turning_calculator_parameters">
