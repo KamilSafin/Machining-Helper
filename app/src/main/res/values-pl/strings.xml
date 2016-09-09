@@ -32,10 +32,13 @@
     <string name="drilling_parameters">Kalkulator parametrów wiercenie</string>
     <string name="machning_problems_solution">Środki zaradcze</string>
     <string name="mm">mm</string>
-    <string name="rpm">obr/min</string>
-    <string name="m_min">m/min</string>
-    <string name="mm_r">mm/obr</string>
+    <string name="rpm">obr./min.</string>
+    <string name="m_min">m/min.</string>
+    <string name="mm_r">mm/obr.</string>
     <string name="N_mm2">N/mm2</string>
+    <string name="mm_min">mm/min.</string>
+    <string name="pcs">szt.</string>
+    <string name="kW">kW</string>
 
     <array name="turning_problems_name">
         <item>Duże zużycie na powierzchni natarcia i przyłożenia</item>
@@ -132,14 +135,21 @@
         <item>Moment obrotowy Mc</item>
     </array>
 
-    <array name="turning_formulas">
+    <array name="machnining_formulas">
         <item>Obrabiana średnica (mm)</item>
-        <item>Prędkość obrotowa wrzeciona (obr/min)</item>
-        <item>Prędkość skrawania (m/min)</item>
+        <item>Prędkość obrotowa wrzeciona (obr./min.)</item>
+        <item>Prędkość skrawania (m/min.)</item>
         <item>Głębokość skrawania (mm)</item>
-        <item>Posuw na obrót (mm/obr)</item>
+        <item>Posuw na obrót (mm/obr.)</item>
         <item>Opór właściwy skrawania (N/mm2)</item>
         <item>Długość drogi skrawania (mm)</item>
+        <item>Średnica skrawania przy rzeczywistej głębokości skrawania (mm)</item>
+        <item>Prędkość posuwu (mm/min.)</item>
+        <item>Liczba efektywnych ostrzy (szt.)</item>
+        <item>Posuw na ostrze (mm)</item>
+        <item>Głębokość skrawania (mm)</item>
+        <item>Szerokość frezowania (mm)</item>
+        <item>Moc skrawania netto (kW)</item>
     </array>
 
     <array name="g_codes">

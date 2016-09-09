@@ -36,6 +36,9 @@
     <string name="m_min">m/min</string>
     <string name="mm_r">mm/r</string>
     <string name="N_mm2">N/mm2</string>
+    <string name="mm_min">mm/min</string>
+    <string name="pcs">pcs</string>
+    <string name="kW">kW</string>
 
     <array name="turning_problems_name">
         <item>Duże zużycie na powierzchni natarcia i przyłożenia</item>
@@ -133,7 +136,7 @@
         <item>Moment obrotowy Mc</item>
     </array>
 
-    <array name="turning_formulas">
+    <array name="machnining_formulas">
         <item>Machined diameter (mm)</item>
         <item>Spindle speed (rpm)</item>
         <item>Cutting speed (m/min)</item>
@@ -141,6 +144,13 @@
         <item>Feed per revolution (mm/r)</item>
         <item>Specific cutting force (N/mm2)</item>
         <item>Machined length (mm)</item>
+        <item>Cutting diameter at actual depth of cut (mm)</item>
+        <item>Table feed (mm/min)</item>
+        <item>Number of effective teeth (pcs)</item>
+        <item>Feed/tooth (mm)</item>
+        <item>Depth of cut (D.O.C.) (mm)</item>
+        <item>Working engagement (mm)</item>
+        <item>Net power requirement (kW)</item>
     </array>
 
     <array name="g_codes">

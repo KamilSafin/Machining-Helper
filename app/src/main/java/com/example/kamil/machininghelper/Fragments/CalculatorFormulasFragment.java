@@ -86,6 +86,69 @@ public class CalculatorFormulasFragment extends Fragment {
     @BindView(R.id.machined_length_edit_text)
     EditText mMachinedLengthEditText;
 
+    @BindView(R.id.cutting_diameter_at_depth)
+    LinearLayout mCuttingDiameterAtDepth;
+
+    @BindView(R.id.cutting_diameter_at_depth_text)
+    TextView mCuttingDiameterAtDepthText;
+
+    @BindView(R.id.cutting_diameter_at_depth_edit_text)
+    EditText mCuttingDiameterAtDepthEditText;
+
+    @BindView(R.id.table_feed)
+    LinearLayout mTableFeed;
+
+    @BindView(R.id.table_feed_text)
+    TextView mTableFeedText;
+
+    @BindView(R.id.table_feed_edit_text)
+    EditText mTableFeedEditText;
+
+    @BindView(R.id.number_of_effective_teeth)
+    LinearLayout mNumberOfEffectiveTeeth;
+
+    @BindView(R.id.number_of_effective_teeth_text)
+    TextView mNumberOfEffectiveTeethText;
+
+    @BindView(R.id.number_of_effective_teeth_edit_text)
+    EditText mNumberOfEffectiveTeethEditText;
+
+    @BindView(R.id.feed_tooth)
+    LinearLayout mFeedTooth;
+
+    @BindView(R.id.feed_tooth_text)
+    TextView mFeedToothText;
+
+    @BindView(R.id.feed_tooth_edit_text)
+    EditText mFeedToothEditText;
+
+    @BindView(R.id.depth_of_cut)
+    LinearLayout mDepthOfCut;
+
+    @BindView(R.id.depth_of_cut_text)
+    TextView mDepthOfCutText;
+
+    @BindView(R.id.depth_of_cut_edit_text)
+    EditText mDepthOfCutEditText;
+
+    @BindView(R.id.working_engagement)
+    LinearLayout mWorkingEngagement;
+
+    @BindView(R.id.working_engagement_text)
+    TextView mWorkingEngagementText;
+
+    @BindView(R.id.working_engagement_edit_text)
+    EditText mWorkingEngagementEditText;
+
+    @BindView(R.id.net_power_requirement)
+    LinearLayout mNetPowerRequirement;
+
+    @BindView(R.id.net_power_requirement_text)
+    TextView mNetPowerRequirementText;
+
+    @BindView(R.id.net_power_requirement_edit_text)
+    EditText mNetPowerRequirementEditText;
+
     private int mItemPos;
     private int mIndex;
 
@@ -120,7 +183,7 @@ public class CalculatorFormulasFragment extends Fragment {
     }
 
     private void initView(int index, int itemPos){
-        String[] parametersNames = getResources().getStringArray(R.array.turning_formulas);
+        String[] parametersNames = getResources().getStringArray(R.array.machnining_formulas);
         mMachinedDiameterText.setText(parametersNames[0]);
         mSpindleSpeedText.setText(parametersNames[1]);
         mCuttingSpeedText.setText(parametersNames[2]);
@@ -128,6 +191,13 @@ public class CalculatorFormulasFragment extends Fragment {
         mFeedPerRevolutionText.setText(parametersNames[4]);
         mSpecificCuttingForceText.setText(parametersNames[5]);
         mMachinedLengthText.setText(parametersNames[6]);
+        mCuttingDiameterAtDepthText.setText(parametersNames[7]);
+        mTableFeedText.setText(parametersNames[8]);
+        mNumberOfEffectiveTeethText.setText(parametersNames[9]);
+        mFeedToothText.setText(parametersNames[10]);
+        mDepthOfCutText.setText(parametersNames[11]);
+        mWorkingEngagementText.setText(parametersNames[12]);
+        mNetPowerRequirementText.setText(parametersNames[13]);
 
         mMachinedDiameter.setVisibility(View.GONE);
         mSpindleSpeed.setVisibility(View.GONE);
@@ -136,6 +206,13 @@ public class CalculatorFormulasFragment extends Fragment {
         mFeedPerRevolution.setVisibility(View.GONE);
         mSpecificCuttingForce.setVisibility(View.GONE);
         mMachinedLength.setVisibility(View.GONE);
+        mCuttingDiameterAtDepth.setVisibility(View.GONE);
+        mTableFeed.setVisibility(View.GONE);
+        mNumberOfEffectiveTeeth.setVisibility(View.GONE);
+        mFeedTooth.setVisibility(View.GONE);
+        mDepthOfCut.setVisibility(View.GONE);
+        mWorkingEngagement.setVisibility(View.GONE);
+        mNetPowerRequirement.setVisibility(View.GONE);
 
         switch (index){
             case 0:
@@ -167,6 +244,41 @@ public class CalculatorFormulasFragment extends Fragment {
                 }
                 break;
             case 1:
+                switch (itemPos){
+                    case 0:
+                        mCuttingDiameterAtDepth.setVisibility(View.VISIBLE);
+                        mSpindleSpeed.setVisibility(View.VISIBLE);
+                        break;
+                    case 1:
+                        mCuttingDiameterAtDepth.setVisibility(View.VISIBLE);
+                        mCuttingSpeed.setVisibility(View.VISIBLE);
+                        break;
+                    case 2:
+                        mTableFeed.setVisibility(View.VISIBLE);
+                        mSpindleSpeed.setVisibility(View.VISIBLE);
+                        mNumberOfEffectiveTeeth.setVisibility(View.VISIBLE);
+                        break;
+                    case 3:
+                        mFeedTooth.setVisibility(View.VISIBLE);
+                        mSpindleSpeed.setVisibility(View.VISIBLE);
+                        mNumberOfEffectiveTeeth.setVisibility(View.VISIBLE);
+                        break;
+                    case 4:
+                        mDepthOfCut.setVisibility(View.VISIBLE);
+                        mWorkingEngagement.setVisibility(View.VISIBLE);
+                        mTableFeed.setVisibility(View.VISIBLE);
+                        break;
+                    case 5:
+                        mDepthOfCut.setVisibility(View.VISIBLE);
+                        mWorkingEngagement.setVisibility(View.VISIBLE);
+                        mTableFeed.setVisibility(View.VISIBLE);
+                        mSpecificCuttingForce.setVisibility(View.VISIBLE);
+                        break;
+                    case 6:
+                        mNetPowerRequirement.setVisibility(View.VISIBLE);
+                        mSpindleSpeed.setVisibility(View.VISIBLE);
+                        break;
+                }
                 break;
             case 2:
                 break;

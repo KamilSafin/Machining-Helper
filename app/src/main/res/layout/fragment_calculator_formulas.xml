@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:visibility="gone">
 
         <TextView
             android:id="@+id/machined_diameter_text"
@@ -38,7 +39,8 @@
         android:layout_height="wrap_content"
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:visibility="gone">
 
         <TextView
             android:id="@+id/spindle_speed_text"
@@ -92,7 +94,8 @@
         android:layout_height="wrap_content"
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:visibility="gone">
 
         <TextView
             android:id="@+id/cutting_depth_text"
@@ -119,7 +122,8 @@
         android:layout_height="wrap_content"
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:visibility="gone">
 
         <TextView
             android:id="@+id/feed_per_revolution_text"
@@ -146,7 +150,8 @@
         android:layout_height="wrap_content"
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:visibility="gone">
 
         <TextView
             android:id="@+id/specific_cutting_force_text"
@@ -173,7 +178,8 @@
         android:layout_height="wrap_content"
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:visibility="gone">
 
         <TextView
             android:id="@+id/machined_length_text"
@@ -191,6 +197,196 @@
             android:gravity="right"
             android:inputType="numberDecimal"
             android:hint="@string/mm"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cutting_diameter_at_depth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:orientation="vertical"
+        tools:visibility="gone">
+
+        <TextView
+            android:id="@+id/cutting_diameter_at_depth_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/button_space"
+            android:gravity="right"
+            android:textSize="15sp"
+            tools:text="Cutting parameter at actual depth of cut"/>
+
+        <EditText
+            android:id="@+id/cutting_diameter_at_depth_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:inputType="numberDecimal"
+            android:hint="@string/mm"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/table_feed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/table_feed_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/button_space"
+            android:gravity="right"
+            android:textSize="15sp"
+            tools:text="Table feed"/>
+
+        <EditText
+            android:id="@+id/table_feed_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:inputType="numberDecimal"
+            android:hint="@string/mm_min"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/number_of_effective_teeth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/number_of_effective_teeth_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/button_space"
+            android:gravity="right"
+            android:textSize="15sp"
+            tools:text="Number of effective teeth"/>
+
+        <EditText
+            android:id="@+id/number_of_effective_teeth_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:inputType="numberDecimal"
+            android:hint="@string/pcs"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/feed_tooth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/feed_tooth_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/button_space"
+            android:gravity="right"
+            android:textSize="15sp"
+            tools:text="Feed/tooth"/>
+
+        <EditText
+            android:id="@+id/feed_tooth_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:inputType="numberDecimal"
+            android:hint="@string/mm"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/depth_of_cut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/depth_of_cut_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/button_space"
+            android:gravity="right"
+            android:textSize="15sp"
+            tools:text="Detph of cut"/>
+
+        <EditText
+            android:id="@+id/depth_of_cut_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:inputType="numberDecimal"
+            android:hint="@string/mm"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/working_engagement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/working_engagement_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/button_space"
+            android:gravity="right"
+            android:textSize="15sp"
+            tools:text="Working engagement"/>
+
+        <EditText
+            android:id="@+id/working_engagement_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:inputType="numberDecimal"
+            android:hint="@string/mm"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/net_power_requirement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/net_power_requirement_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/button_space"
+            android:gravity="right"
+            android:textSize="15sp"
+            tools:text="Net power requirement"/>
+
+        <EditText
+            android:id="@+id/net_power_requirement_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:inputType="numberDecimal"
+            android:hint="@string/kW"/>
 
     </LinearLayout>
 
