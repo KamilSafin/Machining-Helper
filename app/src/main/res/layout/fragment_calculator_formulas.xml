@@ -5,6 +5,15 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/button_space"
+        android:gravity="center_horizontal"
+        android:textSize="18sp"
+        tools:text="Result"/>
+
     <LinearLayout
         android:id="@+id/machined_diameter"
         android:layout_width="match_parent"

@@ -108,11 +108,11 @@
     </array>
 
     <array name="turning_calculator_parameters">
-        <item>Prędkość skrawania Vc</item>
-        <item>Prękość obrotowa wrzeciona n</item>
-        <item>Objętościowa wydajność skrawania Q</item>
-        <item>Moc skrawania netto Pc</item>
-        <item>Czas jednego przejścia Tc</item>
+        <item>Cutting speed Vc</item>
+        <item>Spindle speed n</item>
+        <item>Metal removal rate Q</item>
+        <item>Net power Pc</item>
+        <item>Machining time Tc</item>
     </array>
 
     <array name="milling_calculator_parameters">
