@@ -149,6 +149,24 @@ public class CalculatorFormulasFragment extends Fragment {
     @BindView(R.id.net_power_requirement_edit_text)
     EditText mNetPowerRequirementEditText;
 
+    @BindView(R.id.drill_diameter)
+    LinearLayout mDrillDiameter;
+
+    @BindView(R.id.drill_diameter_text)
+    TextView mDrillDiameterText;
+
+    @BindView(R.id.drill_diameter_edit_text)
+    EditText mDrillDiameterEditText;
+
+    @BindView(R.id.machining_drilling_length)
+    LinearLayout mMachiningDrillingLength;
+
+    @BindView(R.id.machining_drilling_length_text)
+    TextView mMachiningDrillingLengthText;
+
+    @BindView(R.id.machining_drilling_length_edit_text)
+    EditText mMachiningDrillingLengthEditText;
+
     private int mItemPos;
     private int mIndex;
 
@@ -183,7 +201,7 @@ public class CalculatorFormulasFragment extends Fragment {
     }
 
     private void initView(int index, int itemPos){
-        String[] parametersNames = getResources().getStringArray(R.array.machnining_formulas);
+        String[] parametersNames = getResources().getStringArray(R.array.machining_formulas);
         mMachinedDiameterText.setText(parametersNames[0]);
         mSpindleSpeedText.setText(parametersNames[1]);
         mCuttingSpeedText.setText(parametersNames[2]);
@@ -198,6 +216,8 @@ public class CalculatorFormulasFragment extends Fragment {
         mDepthOfCutText.setText(parametersNames[11]);
         mWorkingEngagementText.setText(parametersNames[12]);
         mNetPowerRequirementText.setText(parametersNames[13]);
+        mDrillDiameterText.setText(parametersNames[14]);
+        mMachiningDrillingLengthText.setText(parametersNames[15]);
 
         mMachinedDiameter.setVisibility(View.GONE);
         mSpindleSpeed.setVisibility(View.GONE);
@@ -213,6 +233,8 @@ public class CalculatorFormulasFragment extends Fragment {
         mDepthOfCut.setVisibility(View.GONE);
         mWorkingEngagement.setVisibility(View.GONE);
         mNetPowerRequirement.setVisibility(View.GONE);
+        mDrillDiameter.setVisibility(View.GONE);
+        mMachiningDrillingLength.setVisibility(View.GONE);
 
         switch (index){
             case 0:
@@ -281,6 +303,43 @@ public class CalculatorFormulasFragment extends Fragment {
                 }
                 break;
             case 2:
+                switch (itemPos){
+                    case 0:
+                        mDrillDiameter.setVisibility(View.VISIBLE);
+                        mSpindleSpeed.setVisibility(View.VISIBLE);
+                        break;
+                    case 1:
+                        mDrillDiameter.setVisibility(View.VISIBLE);
+                        mCuttingSpeed.setVisibility(View.VISIBLE);
+                        break;
+                    case 2:
+                        mTableFeed.setVisibility(View.VISIBLE);
+                        mSpindleSpeed.setVisibility(View.VISIBLE);
+                        break;
+                    case 3:
+                        mFeedPerRevolution.setVisibility(View.VISIBLE);
+                        mSpindleSpeed.setVisibility(View.VISIBLE);
+                        break;
+                    case 4:
+                        mDrillDiameter.setVisibility(View.VISIBLE);
+                        mFeedPerRevolution.setVisibility(View.VISIBLE);
+                        mCuttingSpeed.setVisibility(View.VISIBLE);
+                        break;
+                    case 5:
+                        mMachiningDrillingLength.setVisibility(View.VISIBLE);
+                        mTableFeed.setVisibility(View.VISIBLE);
+                        break;
+                    case 6:
+                        mDrillDiameter.setVisibility(View.VISIBLE);
+                        mFeedPerRevolution.setVisibility(View.VISIBLE);
+                        mSpecificCuttingForce.setVisibility(View.VISIBLE);
+                        mCuttingSpeed.setVisibility(View.VISIBLE);
+                        break;
+                    case 7:
+                        mNetPowerRequirement.setVisibility(View.VISIBLE);
+                        mSpindleSpeed.setVisibility(View.VISIBLE);
+                        break;
+                }
                 break;
         }
     }

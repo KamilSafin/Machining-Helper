@@ -342,7 +342,8 @@
         android:layout_height="wrap_content"
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:visibility="gone">
 
         <TextView
             android:id="@+id/working_engagement_text"
@@ -369,7 +370,8 @@
         android:layout_height="wrap_content"
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:visibility="gone">
 
         <TextView
             android:id="@+id/net_power_requirement_text"
@@ -387,6 +389,60 @@
             android:gravity="right"
             android:inputType="numberDecimal"
             android:hint="@string/kW"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/drill_diameter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/drill_diameter_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/button_space"
+            android:gravity="right"
+            android:textSize="15sp"
+            tools:text="Drill diameter"/>
+
+        <EditText
+            android:id="@+id/drill_diameter_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:inputType="numberDecimal"
+            android:hint="@string/mm"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/machining_drilling_length"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/machining_drilling_length_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/button_space"
+            android:gravity="right"
+            android:textSize="15sp"
+            tools:text="Machining drilling length"/>
+
+        <EditText
+            android:id="@+id/machining_drilling_length_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:inputType="numberDecimal"
+            android:hint="@string/mm"/>
 
     </LinearLayout>
 

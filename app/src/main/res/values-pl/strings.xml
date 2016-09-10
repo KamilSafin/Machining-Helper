@@ -135,7 +135,7 @@
         <item>Moment obrotowy Mc</item>
     </array>
 
-    <array name="machnining_formulas">
+    <array name="machining_formulas">
         <item>Obrabiana średnica (mm)</item>
         <item>Prędkość obrotowa wrzeciona (obr./min.)</item>
         <item>Prędkość skrawania (m/min.)</item>
@@ -150,6 +150,8 @@
         <item>Głębokość skrawania (mm)</item>
         <item>Szerokość frezowania (mm)</item>
         <item>Moc skrawania netto (kW)</item>
+        <item>Średnica wierta (mm)</item>
+        <item>Dugość wiercenia (mm)</item>
     </array>
 
     <array name="g_codes">

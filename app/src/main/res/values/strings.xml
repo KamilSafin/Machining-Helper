@@ -136,7 +136,7 @@
         <item>Moment obrotowy Mc</item>
     </array>
 
-    <array name="machnining_formulas">
+    <array name="machining_formulas">
         <item>Machined diameter (mm)</item>
         <item>Spindle speed (rpm)</item>
         <item>Cutting speed (m/min)</item>
@@ -151,6 +151,8 @@
         <item>Depth of cut (D.O.C.) (mm)</item>
         <item>Working engagement (mm)</item>
         <item>Net power requirement (kW)</item>
+        <item>Drill diameter (mm)</item>
+        <item>Machining drilling length (mm)</item>
     </array>
 
     <array name="g_codes">
