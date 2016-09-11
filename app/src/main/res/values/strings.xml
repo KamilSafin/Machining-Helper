@@ -40,6 +40,9 @@
     <string name="mm_min">mm/min</string>
     <string name="pcs">pcs</string>
     <string name="kW">kW</string>
+    <string name="cm3_min">cm3/min</string>
+    <string name="min">min</string>
+    <string name="Nm">Nm</string>
 
     <array name="turning_problems_name">
         <item>Duże zużycie na powierzchni natarcia i przyłożenia</item>
@@ -127,14 +130,14 @@
     </array>
 
     <array name="drilling_calculator_parameters">
-        <item>Prędkość skrawania Vc</item>
-        <item>Prędkość obrotowa wrzeciona n</item>
-        <item>Posuw na obrót fn</item>
-        <item>Prędkość posuwu vf</item>
-        <item>Objętościowa wydajność skrawania Q</item>
-        <item>Czas obróbki Tc</item>
-        <item>Moc skrawania netto Pc</item>
-        <item>Moment obrotowy Mc</item>
+        <item>Cutting speed Vc</item>
+        <item>Spindle speed n</item>
+        <item>Feed per revolution fn</item>
+        <item>Penetration rate vf</item>
+        <item>Metal removal rate Q</item>
+        <item>Machining time Tc</item>
+        <item>Net power requirement Pc</item>
+        <item>Torque Mc</item>
     </array>
 
     <array name="machining_formulas">

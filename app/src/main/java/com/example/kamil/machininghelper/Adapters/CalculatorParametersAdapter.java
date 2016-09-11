@@ -74,35 +74,35 @@ public class CalculatorParametersAdapter extends RecyclerView.Adapter<Calculator
                             CachedValuesLab.getCachedValuesLab(mContext).updateTurningValues(0);
                             if (CachedValuesLab.getCachedValuesLab(mContext).getTurningCuttingSpeed() != null){
                                 mCalculatorResultText.setVisibility(View.VISIBLE);
-                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getTurningCuttingSpeed()));
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getTurningCuttingSpeed()) + " " + mContext.getResources().getString(R.string.m_min));
                             }
                             break;
                         case 1:
                             CachedValuesLab.getCachedValuesLab(mContext).updateTurningValues(1);
                             if (CachedValuesLab.getCachedValuesLab(mContext).getTurningSpindleSpeed() != null){
                                 mCalculatorResultText.setVisibility(View.VISIBLE);
-                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getTurningSpindleSpeed()));
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getTurningSpindleSpeed()) + " " + mContext.getResources().getString(R.string.rpm));
                             }
                             break;
                         case 2:
                             CachedValuesLab.getCachedValuesLab(mContext).updateTurningValues(2);
                             if (CachedValuesLab.getCachedValuesLab(mContext).getTurningMetalRemovalRate() != null){
                                 mCalculatorResultText.setVisibility(View.VISIBLE);
-                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getTurningMetalRemovalRate()));
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getTurningMetalRemovalRate()) + " " + mContext.getResources().getString(R.string.cm3_min));
                             }
                             break;
                         case 3:
                             CachedValuesLab.getCachedValuesLab(mContext).updateTurningValues(3);
                             if (CachedValuesLab.getCachedValuesLab(mContext).getTurningNetPowerRequirement() != null){
                                 mCalculatorResultText.setVisibility(View.VISIBLE);
-                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getTurningNetPowerRequirement()));
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getTurningNetPowerRequirement()) + " " + mContext.getResources().getString(R.string.kW));
                             }
                             break;
                         case 4:
                             CachedValuesLab.getCachedValuesLab(mContext).updateTurningValues(4);
                             if (CachedValuesLab.getCachedValuesLab(mContext).getTurningMachiningTime() != null){
                                 mCalculatorResultText.setVisibility(View.VISIBLE);
-                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getTurningMachiningTime()));
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getTurningMachiningTime()) + " " + mContext.getResources().getString(R.string.min));
                             }
                             break;
                     }
@@ -113,49 +113,49 @@ public class CalculatorParametersAdapter extends RecyclerView.Adapter<Calculator
                             CachedValuesLab.getCachedValuesLab(mContext).updateMillingValues(0);
                             if (CachedValuesLab.getCachedValuesLab(mContext).getMillingCuttingSpeed() != null) {
                                 mCalculatorResultText.setVisibility(View.VISIBLE);
-                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getMillingCuttingSpeed()));
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getMillingCuttingSpeed()) + " " + mContext.getResources().getString(R.string.m_min));
                             }
                             break;
                         case 1:
                             CachedValuesLab.getCachedValuesLab(mContext).updateMillingValues(1);
                             if (CachedValuesLab.getCachedValuesLab(mContext).getMillingSpindleSpeed() != null) {
                                 mCalculatorResultText.setVisibility(View.VISIBLE);
-                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getMillingSpindleSpeed()));
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getMillingSpindleSpeed()) + " " + mContext.getResources().getString(R.string.rpm));
                             }
                             break;
                         case 2:
                             CachedValuesLab.getCachedValuesLab(mContext).updateMillingValues(2);
                             if (CachedValuesLab.getCachedValuesLab(mContext).getMillingFeedTooth() != null) {
                                 mCalculatorResultText.setVisibility(View.VISIBLE);
-                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getMillingFeedTooth()));
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getMillingFeedTooth()) + " " + mContext.getResources().getString(R.string.mm));
                             }
                             break;
                         case 3:
                             CachedValuesLab.getCachedValuesLab(mContext).updateMillingValues(3);
                             if (CachedValuesLab.getCachedValuesLab(mContext).getMillingTableFeed() != null) {
                                 mCalculatorResultText.setVisibility(View.VISIBLE);
-                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getMillingTableFeed()));
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getMillingTableFeed()) + " " + mContext.getResources().getString(R.string.mm_min));
                             }
                             break;
                         case 4:
                             CachedValuesLab.getCachedValuesLab(mContext).updateMillingValues(4);
                             if (CachedValuesLab.getCachedValuesLab(mContext).getMillingMetalRemovalRate() != null) {
                                 mCalculatorResultText.setVisibility(View.VISIBLE);
-                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getMillingMetalRemovalRate()));
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getMillingMetalRemovalRate()) + " " + mContext.getResources().getString(R.string.cm3_min));
                             }
                             break;
                         case 5:
                             CachedValuesLab.getCachedValuesLab(mContext).updateMillingValues(5);
                             if (CachedValuesLab.getCachedValuesLab(mContext).getMillingNetPowerRequirement() != null) {
                                 mCalculatorResultText.setVisibility(View.VISIBLE);
-                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getMillingNetPowerRequirement()));
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getMillingNetPowerRequirement()) + " " + mContext.getResources().getString(R.string.kW));
                             }
                             break;
                         case 6:
                             CachedValuesLab.getCachedValuesLab(mContext).updateMillingValues(6);
                             if (CachedValuesLab.getCachedValuesLab(mContext).getMillingTorque() != null) {
                                 mCalculatorResultText.setVisibility(View.VISIBLE);
-                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getMillingTorque()));
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getMillingTorque()) + " " + mContext.getResources().getString(R.string.Nm));
                             }
                             break;
                     }

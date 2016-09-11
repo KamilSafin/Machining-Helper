@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="70dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/row_calculator_parameter_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:padding="@dimen/font_size_menu"
+            android:padding="5dp"
             android:textSize="18sp"
             tools:text="Parameter 1"/>
 
         <TextView
             android:id="@+id/row_calculator_result_text"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="50dp"
-            android:textSize="18sp"
-            android:background="@drawable/calculator_result_background"
             android:layout_gravity="center_vertical|right"
             android:layout_marginRight="@dimen/button_space"
+            android:background="@drawable/calculator_result_background"
             android:gravity="center"
+            android:textSize="14sp"
+            android:textStyle="bold"
             android:visibility="gone"
             tools:text="1"
             tools:visibility="visible"/>
@@ -39,6 +42,7 @@
         android:layout_height="1px"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
         android:background="@color/colorPrimary"/>
 
 </LinearLayout>

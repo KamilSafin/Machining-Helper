@@ -17,6 +17,8 @@ public class CalculatorFormulasActivity extends SingleFragmentActivity {
 
     private static final String EXTRA_FRAGMENT_ITEM_POS = CalculatorFormulasActivity.class.getName() + "_extra_fragment_item_pos";
     private static final String EXTRA_FRAGMENT_INDEX = CalculatorFormulasActivity.class.getName() + "_extra_fragment_index";
+    private static final String ARGS_FRAGMENT_ITEM_POS = CalculatorFormulasActivity.class.getName() + "_args_fragment_item_pos";
+    private static final String ARGS_FRAGMENT_INDEX = CalculatorFormulasActivity.class.getName() + "_args_fragment_index";
 
     private Toolbar mToolbar;
     private int mItemPos;
@@ -71,6 +73,7 @@ public class CalculatorFormulasActivity extends SingleFragmentActivity {
                         CachedValuesLab.getCachedValuesLab(this).removeMillingValues();
                         break;
                     case 2:
+                        CachedValuesLab.getCachedValuesLab(this).removeDrillingValues();
                         break;
                 }
                 ((CalculatorFormulasFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container)).initView();
@@ -85,5 +88,19 @@ public class CalculatorFormulasActivity extends SingleFragmentActivity {
         mIndex = getIntent().getIntExtra(EXTRA_FRAGMENT_INDEX, 0);
 
         return CalculatorFormulasFragment.initFragment(mItemPos, mIndex);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mIndex = savedInstanceState.getInt(ARGS_FRAGMENT_INDEX);
+        mItemPos = savedInstanceState.getInt(ARGS_FRAGMENT_ITEM_POS);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(ARGS_FRAGMENT_INDEX, mIndex);
+        outState.putInt(ARGS_FRAGMENT_ITEM_POS, mItemPos);
     }
 }

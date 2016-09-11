@@ -42,14 +42,18 @@ public class CachedValuesLab {
     private BigDecimal mMillingSpecificCuttingForce;
 
     //drilling
-    private BigDecimal mDrillingDrillDiameter;
-    private BigDecimal mDrillingSpindleSpeed;
     private BigDecimal mDrillingCuttingSpeed;
-    private BigDecimal mDrillingTableFeed;
+    private BigDecimal mDrillingSpindleSpeed;
     private BigDecimal mDrillingFeedPerRevolution;
+    private BigDecimal mDrillingPenetrationRate;
+    private BigDecimal mDrillingMetalRemovalRate;
+    private BigDecimal mDrillingMachiningTime;
+    private BigDecimal mDrillingNetPowerRequirement;
+    private BigDecimal mDrillingTorque;
+
+    private BigDecimal mDrillingDrillDiameter;
     private BigDecimal mDrillingMachiningDrillingLength;
     private BigDecimal mDrillingSpecificCuttingForce;
-    private BigDecimal mDrillingNetPowerRequirement;
 
     private CachedValuesLab(Context context){
         mContext = context;
@@ -66,32 +70,52 @@ public class CachedValuesLab {
         switch (itemPos){
             case 0:
                 if (mTurningMachinedDiameter != null && mTurningSpindleSpeed != null) {
-                    mTurningCuttingSpeed = (mTurningMachinedDiameter.multiply(mTurningSpindleSpeed).multiply(new BigDecimal(Math.PI))).divide(new BigDecimal(1000), 10, RoundingMode.HALF_UP);
+                    try {
+                        mTurningCuttingSpeed = (mTurningMachinedDiameter.multiply(mTurningSpindleSpeed).multiply(new BigDecimal(Math.PI))).divide(new BigDecimal(1000), 10, RoundingMode.HALF_UP);
+                    } catch (ArithmeticException ex){
+                        mTurningCuttingSpeed = null;
+                    }
                 } else if ((mTurningMachinedDiameter != null && mTurningSpindleSpeed == null) || (mTurningMachinedDiameter == null && mTurningSpindleSpeed != null)){
                     mTurningCuttingSpeed = mTurningCuttingSpeed == null ? null : mTurningCuttingSpeed;
                 }
                 break;
             case 1:
                 if (mTurningMachinedDiameter != null && mTurningCuttingSpeed != null) {
-                    mTurningSpindleSpeed = (mTurningCuttingSpeed.multiply(new BigDecimal(1000))).divide(mTurningMachinedDiameter.multiply(new BigDecimal(Math.PI)), 10, RoundingMode.HALF_UP);
+                    try {
+                        mTurningSpindleSpeed = (mTurningCuttingSpeed.multiply(new BigDecimal(1000))).divide(mTurningMachinedDiameter.multiply(new BigDecimal(Math.PI)), 10, RoundingMode.HALF_UP);
+                    } catch (ArithmeticException ex){
+                        mTurningSpindleSpeed = null;
+                    }
                 } else if ((mTurningMachinedDiameter != null && mTurningCuttingSpeed == null) || (mTurningMachinedDiameter == null && mTurningCuttingSpeed != null)){
                     mTurningSpindleSpeed = mTurningSpindleSpeed == null ? null : mTurningSpindleSpeed;
                 }
                 break;
             case 2:
                 if (mTurningCuttingDepth != null && mTurningCuttingSpeed != null && mTurningFeedPerRevolution != null) {
-                    mTurningMetalRemovalRate = (mTurningCuttingDepth.multiply(mTurningCuttingSpeed).multiply(mTurningFeedPerRevolution));
+                    try {
+                        mTurningMetalRemovalRate = (mTurningCuttingDepth.multiply(mTurningCuttingSpeed).multiply(mTurningFeedPerRevolution));
+                    } catch (ArithmeticException ex){
+                        mTurningMetalRemovalRate = null;
+                    }
                 }
                 break;
             case 3:
                 if (mTurningCuttingDepth != null && mTurningCuttingSpeed != null && mTurningFeedPerRevolution != null && mTurningSpecificCuttingForce != null) {
-                    mTurningNetPowerRequirement = (mTurningCuttingDepth.multiply(mTurningCuttingSpeed).multiply(mTurningFeedPerRevolution).multiply(mTurningSpecificCuttingForce)).divide(new BigDecimal(60 * 1000), 10, RoundingMode.HALF_UP);
+                    try {
+                        mTurningNetPowerRequirement = (mTurningCuttingDepth.multiply(mTurningCuttingSpeed).multiply(mTurningFeedPerRevolution).multiply(mTurningSpecificCuttingForce)).divide(new BigDecimal(60 * 1000), 10, RoundingMode.HALF_UP);
+                    } catch (ArithmeticException ex){
+                        mTurningNetPowerRequirement = null;
+                    }
                 }
 
                 break;
             case 4:
                 if (mTurningMachinedLength != null && mTurningSpindleSpeed != null && mTurningFeedPerRevolution != null) {
-                    mTurningMachiningTime = mTurningMachinedLength.divide(mTurningSpindleSpeed.multiply(mTurningFeedPerRevolution), 10, RoundingMode.HALF_UP);
+                    try {
+                        mTurningMachiningTime = mTurningMachinedLength.divide(mTurningSpindleSpeed.multiply(mTurningFeedPerRevolution), 10, RoundingMode.HALF_UP);
+                    } catch (ArithmeticException ex){
+                        mTurningMachiningTime = null;
+                    }
                 }
                 break;
         }
@@ -101,45 +125,73 @@ public class CachedValuesLab {
         switch (itemPos){
             case 0:
                 if (mMillingCuttingDiameterAtDepth != null && mMillingSpindleSpeed != null) {
-                    mMillingCuttingSpeed = (mMillingCuttingDiameterAtDepth.multiply(new BigDecimal(Math.PI)).multiply(mMillingSpindleSpeed)).divide(new BigDecimal(1000), 10, RoundingMode.HALF_UP);
+                    try {
+                        mMillingCuttingSpeed = (mMillingCuttingDiameterAtDepth.multiply(new BigDecimal(Math.PI)).multiply(mMillingSpindleSpeed)).divide(new BigDecimal(1000), 10, RoundingMode.HALF_UP);
+                    } catch (ArithmeticException ex){
+                        mMillingCuttingSpeed = null;
+                    }
                 } else if ((mMillingCuttingDiameterAtDepth == null && mMillingSpindleSpeed != null) || (mMillingCuttingDiameterAtDepth != null && mMillingSpindleSpeed == null)){
                     mMillingCuttingSpeed = mMillingCuttingSpeed == null ? null : mMillingCuttingSpeed;
                 }
                 break;
             case 1:
                 if (mMillingCuttingDiameterAtDepth != null && mMillingCuttingSpeed != null) {
-                    mMillingSpindleSpeed = (mMillingCuttingSpeed.multiply(new BigDecimal(1000))).divide((new BigDecimal(Math.PI)).multiply(mMillingCuttingDiameterAtDepth), 10, RoundingMode.HALF_UP);
+                    try {
+                        mMillingSpindleSpeed = (mMillingCuttingSpeed.multiply(new BigDecimal(1000))).divide((new BigDecimal(Math.PI)).multiply(mMillingCuttingDiameterAtDepth), 10, RoundingMode.HALF_UP);
+                    } catch (ArithmeticException ex){
+                        mMillingSpindleSpeed = null;
+                    }
                 } else if ((mMillingCuttingDiameterAtDepth == null && mMillingCuttingSpeed != null) || (mMillingCuttingDiameterAtDepth != null && mMillingCuttingSpeed == null)){
                     mMillingSpindleSpeed = mMillingSpindleSpeed == null ? null : mMillingSpindleSpeed;
                 }
                 break;
             case 2:
                 if(mMillingTableFeed != null && mMillingSpindleSpeed != null && mMillingNumberOfEffectiveTeeth != null) {
-                    mMillingFeedTooth = mMillingTableFeed.divide((mMillingSpindleSpeed.multiply(mMillingNumberOfEffectiveTeeth)), 10, RoundingMode.HALF_UP);
+                    try {
+                        mMillingFeedTooth = mMillingTableFeed.divide((mMillingSpindleSpeed.multiply(mMillingNumberOfEffectiveTeeth)), 10, RoundingMode.HALF_UP);
+                    } catch (ArithmeticException ex){
+                        mMillingFeedTooth = null;
+                    }
                 } else if((mMillingTableFeed != null && mMillingSpindleSpeed == null && mMillingNumberOfEffectiveTeeth == null) || (mMillingTableFeed == null && mMillingSpindleSpeed != null && mMillingNumberOfEffectiveTeeth == null) || (mMillingTableFeed == null && mMillingSpindleSpeed == null && mMillingNumberOfEffectiveTeeth != null)){
                     mMillingFeedTooth = mMillingFeedTooth == null ? null : mMillingFeedTooth;
                 }
                 break;
             case 3:
                 if (mMillingFeedTooth != null && mMillingSpindleSpeed != null && mMillingNumberOfEffectiveTeeth != null) {
-                    mMillingTableFeed = mMillingFeedTooth.multiply(mMillingSpindleSpeed).multiply(mMillingNumberOfEffectiveTeeth);
+                    try {
+                        mMillingTableFeed = mMillingFeedTooth.multiply(mMillingSpindleSpeed).multiply(mMillingNumberOfEffectiveTeeth);
+                    } catch (ArithmeticException ex){
+                        mMillingTableFeed = null;
+                    }
                 } else if ((mMillingFeedTooth != null && mMillingSpindleSpeed == null && mMillingNumberOfEffectiveTeeth == null) || (mMillingFeedTooth == null && mMillingSpindleSpeed != null && mMillingNumberOfEffectiveTeeth == null) || (mMillingFeedTooth == null && mMillingSpindleSpeed == null && mMillingNumberOfEffectiveTeeth != null)){
                     mMillingTableFeed = mMillingTableFeed == null ? null : mMillingTableFeed;
                 }
                 break;
             case 4:
                 if (mMillingDepthOfCut != null && mMillingWorkingEngagement != null && mMillingTableFeed != null) {
-                    mMillingMetalRemovalRate = (mMillingDepthOfCut.multiply(mMillingWorkingEngagement).multiply(mMillingTableFeed)).divide(new BigDecimal(1000));
+                    try {
+                        mMillingMetalRemovalRate = (mMillingDepthOfCut.multiply(mMillingWorkingEngagement).multiply(mMillingTableFeed)).divide(new BigDecimal(1000));
+                    } catch (ArithmeticException ex){
+                        mMillingMetalRemovalRate = null;
+                    }
                 }
                 break;
             case 5:
                 if (mMillingDepthOfCut != null && mMillingWorkingEngagement != null && mMillingTableFeed != null && mMillingSpecificCuttingForce != null) {
-                    mMillingNetPowerRequirement = (mMillingDepthOfCut.multiply(mMillingWorkingEngagement).multiply(mMillingTableFeed).multiply(mMillingSpecificCuttingForce)).divide(new BigDecimal(60 * 1_000_000), 10, RoundingMode.HALF_UP);
+                    try {
+                        mMillingNetPowerRequirement = (mMillingDepthOfCut.multiply(mMillingWorkingEngagement).multiply(mMillingTableFeed).multiply(mMillingSpecificCuttingForce)).divide(new BigDecimal(60 * 1_000_000), 10, RoundingMode.HALF_UP);
+                    } catch (ArithmeticException ex){
+                        mMillingNetPowerRequirement = null;
+                    }
                 }
                 break;
             case 6:
                 if (mMillingNetPowerRequirement != null && mMillingSpindleSpeed != null) {
-                    mMillingTorque = (mMillingNetPowerRequirement.multiply(new BigDecimal(30 * 1000))).divide((new BigDecimal(Math.PI)).multiply(mMillingSpindleSpeed), 10, RoundingMode.HALF_UP);
+                    try {
+                        mMillingTorque = (mMillingNetPowerRequirement.multiply(new BigDecimal(30 * 1000))).divide((new BigDecimal(Math.PI)).multiply(mMillingSpindleSpeed), 10, RoundingMode.HALF_UP);
+                    } catch (ArithmeticException ex){
+                        mMillingTorque = null;
+                    }
                 }
                 break;
         }
@@ -170,6 +222,17 @@ public class CachedValuesLab {
         mMillingNumberOfEffectiveTeeth = null;
         mMillingDepthOfCut = null;
         mMillingWorkingEngagement = null;
+    }
+
+    public void removeDrillingValues(){
+        mDrillingCuttingSpeed = null;
+        mDrillingSpindleSpeed = null;
+        mDrillingFeedPerRevolution = null;
+        mDrillingPenetrationRate = null;
+        mDrillingMetalRemovalRate = null;
+        mDrillingMachiningTime = null;
+        mDrillingNetPowerRequirement = null;
+        mDrillingTorque = null;
     }
 
     public BigDecimal getTurningCuttingSpeed() {
@@ -372,12 +435,12 @@ public class CachedValuesLab {
         mDrillingCuttingSpeed = drillingCuttingSpeed;
     }
 
-    public BigDecimal getDrillingTableFeed() {
-        return mDrillingTableFeed;
+    public BigDecimal getDrillingPenetrationRate() {
+        return mDrillingPenetrationRate;
     }
 
-    public void setDrillingTableFeed(BigDecimal drillingTableFeed) {
-        mDrillingTableFeed = drillingTableFeed;
+    public void setDrillingPenetrationRate(BigDecimal drillingPenetrationRate) {
+        mDrillingPenetrationRate = drillingPenetrationRate;
     }
 
     public BigDecimal getDrillingFeedPerRevolution() {
@@ -410,5 +473,29 @@ public class CachedValuesLab {
 
     public void setDrillingNetPowerRequirement(BigDecimal drillingNetPowerRequirement) {
         mDrillingNetPowerRequirement = drillingNetPowerRequirement;
+    }
+
+    public BigDecimal getDrillingMetalRemovalRate() {
+        return mDrillingMetalRemovalRate;
+    }
+
+    public void setDrillingMetalRemovalRate(BigDecimal drillingMetalRemovalRate) {
+        mDrillingMetalRemovalRate = drillingMetalRemovalRate;
+    }
+
+    public BigDecimal getDrillingMachiningTime() {
+        return mDrillingMachiningTime;
+    }
+
+    public void setDrillingMachiningTime(BigDecimal drillingMachiningTime) {
+        mDrillingMachiningTime = drillingMachiningTime;
+    }
+
+    public BigDecimal getDrillingTorque() {
+        return mDrillingTorque;
+    }
+
+    public void setDrillingTorque(BigDecimal drillingTorque) {
+        mDrillingTorque = drillingTorque;
     }
 }
