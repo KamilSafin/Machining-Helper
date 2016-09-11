@@ -72,4 +72,10 @@ public class CalculatorFragment extends Fragment {
 
         return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mRecyclerView.setAdapter(new CalculatorParametersAdapter(getContext(), mCalculatorParameters, mIndex));
+    }
 }

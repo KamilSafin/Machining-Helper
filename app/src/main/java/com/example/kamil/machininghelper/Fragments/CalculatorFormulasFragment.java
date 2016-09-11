@@ -13,7 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.kamil.machininghelper.Model.CachedValuesLab;
 import com.example.kamil.machininghelper.R;
-import java.text.DecimalFormat;
+import com.example.kamil.machininghelper.Utils.Utils;
+
+import java.math.BigDecimal;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -177,8 +180,6 @@ public class CalculatorFormulasFragment extends Fragment {
     private int mItemPos;
     private int mIndex;
 
-    private DecimalFormat mPrecision = new DecimalFormat("0.000");
-
     public static Fragment initFragment(int itemPos, int index){
         Fragment fragment = new CalculatorFormulasFragment();
         Bundle bundle = new Bundle();
@@ -205,382 +206,88 @@ public class CalculatorFormulasFragment extends Fragment {
 
         ButterKnife.bind(this, view);
 
-        mMachinedDiameterEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        initView();
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try {
-                    mCachedValuesLab.setTurningMachinedDiameter(Double.parseDouble(charSequence.toString()));
-                    initResult();
-                } catch (NumberFormatException ex){
-                    mCachedValuesLab.setTurningMachinedDiameter(null);
-                    initResult();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        mSpindleSpeedEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try {
-                    mCachedValuesLab.setTurningSpindleSpeed(Double.parseDouble(charSequence.toString()));
-                    initResult();
-                } catch (NumberFormatException ex){
-                    mCachedValuesLab.setTurningSpindleSpeed(null);
-                    initResult();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        mCuttingSpeedEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try {
-                    mCachedValuesLab.setTurningCuttingSpeed(Double.parseDouble(charSequence.toString()));
-                    initResult();
-                } catch (NumberFormatException ex){
-                    mCachedValuesLab.setTurningCuttingSpeed(null);
-                    initResult();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        mCuttingDepthEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try {
-                    mCachedValuesLab.setTurningCuttingDepth(Double.parseDouble(charSequence.toString()));
-                    initResult();
-                } catch (NumberFormatException ex){
-                    mCachedValuesLab.setTurningCuttingDepth(null);
-                    initResult();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        mFeedPerRevolutionEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try {
-                    mCachedValuesLab.setTurningFeedPerRevolution(Double.parseDouble(charSequence.toString()));
-                    initResult();
-                } catch (NumberFormatException ex){
-                    mCachedValuesLab.setTurningFeedPerRevolution(null);
-                    initResult();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        mSpecificCuttingForceEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try {
-                    mCachedValuesLab.setTurningSpecificCuttingForce(Double.parseDouble(charSequence.toString()));
-                    initResult();
-                } catch (NumberFormatException ex){
-                    mCachedValuesLab.setTurningSpecificCuttingForce(null);
-                    initResult();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        mMachinedLengthEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try {
-                    mCachedValuesLab.setTurningMachinedLength(Double.parseDouble(charSequence.toString()));
-                    initResult();
-                } catch (NumberFormatException ex){
-                    mCachedValuesLab.setTurningMachinedLength(null);
-                    initResult();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        mCuttingDiameterAtDepthEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try {
-                    mCachedValuesLab.setMillingCuttingDiameterAtDepth(Double.parseDouble(charSequence.toString()));
-                    initResult();
-                } catch (NumberFormatException ex){
-                    mCachedValuesLab.setMillingCuttingDiameterAtDepth(null);
-                    initResult();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        mTableFeedEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try {
-                    mCachedValuesLab.setMillingTableFeed(Double.parseDouble(charSequence.toString()));
-                    initResult();
-                } catch (NumberFormatException ex){
-                    mCachedValuesLab.setMillingTableFeed(null);
-                    initResult();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        mNumberOfEffectiveTeethEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try {
-                    mCachedValuesLab.setMillingNumberOfEffectiveTeeth(Double.parseDouble(charSequence.toString()));
-                    initResult();
-                } catch (NumberFormatException ex){
-                    mCachedValuesLab.setMillingNumberOfEffectiveTeeth(null);
-                    initResult();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        mFeedToothEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try {
-                    mCachedValuesLab.setMillingFeedTooth(Double.parseDouble(charSequence.toString()));
-                    initResult();
-                } catch (NumberFormatException ex){
-                    mCachedValuesLab.setMillingFeedTooth(null);
-                    initResult();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        mDepthOfCutEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try {
-                    mCachedValuesLab.setMillingDepthOfCut(Double.parseDouble(charSequence.toString()));
-                    initResult();
-                } catch (NumberFormatException ex){
-                    mCachedValuesLab.setMillingDepthOfCut(null);
-                    initResult();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        mWorkingEngagementEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try {
-                    mCachedValuesLab.setMillingWorkingEngagement(Double.parseDouble(charSequence.toString()));
-                    initResult();
-                } catch (NumberFormatException ex){
-                    mCachedValuesLab.setMillingWorkingEngagement(null);
-                    initResult();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        mNetPowerRequirementEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try {
-                    mCachedValuesLab.setMillingNetPowerRequirement(Double.parseDouble(charSequence.toString()));
-                    initResult();
-                } catch (NumberFormatException ex){
-                    mCachedValuesLab.setMillingNetPowerRequirement(null);
-                    initResult();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        mDrillDiameterEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try {
-                    mCachedValuesLab.setDrillingDrillDiameter(Double.parseDouble(charSequence.toString()));
-                    initResult();
-                } catch (NumberFormatException ex){
-                    mCachedValuesLab.setDrillingDrillDiameter(null);
-                    initResult();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        mMachiningDrillingLengthEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try {
-                    mCachedValuesLab.setDrillingMachiningDrillingLength(Double.parseDouble(charSequence.toString()));
-                    initResult();
-                } catch (NumberFormatException ex){
-                    mCachedValuesLab.setDrillingMachiningDrillingLength(null);
-                    initResult();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        initView(mIndex, mItemPos);
+        addListeners();
 
         initResult();
 
         return view;
     }
 
-    private void initView(int index, int itemPos){
+    private void addListeners(){
+        mCuttingSpeedEditText.addTextChangedListener(mCuttingSpeedEditTextWatcher);
+
+        mCuttingDepthEditText.addTextChangedListener(mCuttingDepthEditTextWatcher);
+
+        mMachinedDiameterEditText.addTextChangedListener(mMachinedDiameterEditTextWatcher);
+
+        mSpindleSpeedEditText.addTextChangedListener(mSpindleSpeedEditTextWatcher);
+
+        mFeedPerRevolutionEditText.addTextChangedListener(mFeedPerRevolutionEditTextWatcher);
+
+        mSpecificCuttingForceEditText.addTextChangedListener(mSpecificCuttingForceEditTextWatcher);
+
+        mMachinedLengthEditText.addTextChangedListener(mMachinedLengthEditTextWatcher);
+
+        mCuttingDiameterAtDepthEditText.addTextChangedListener(mCuttingDiameterAtDepthEditTextWatcher);
+
+        mTableFeedEditText.addTextChangedListener(mTableFeedEditTextWatcher);
+
+        mNumberOfEffectiveTeethEditText.addTextChangedListener(mNumberOfEffectiveTeethEditTextWatcher);
+
+        mFeedToothEditText.addTextChangedListener(mFeedToothEditTextWatcher);
+
+        mDepthOfCutEditText.addTextChangedListener(mDepthOfCutEditTextWatcher);
+
+        mWorkingEngagementEditText.addTextChangedListener(mWorkingEngagementEditTextWatcher);
+
+        mNetPowerRequirementEditText.addTextChangedListener(mNetPowerRequirementEditTextWatcher);
+
+        mDrillDiameterEditText.addTextChangedListener(mDrillDiameterEditTextWatcher);
+
+        mMachiningDrillingLengthEditText.addTextChangedListener(mMachiningDrillingLengthEditTextWatcher);
+    }
+
+    private void initEditTexts(){
+        switch (mIndex){
+            case 0:
+                mMachinedDiameterEditText.setText(mCachedValuesLab.getTurningMachinedDiameter() == null ? null : Utils.fmt4(mCachedValuesLab.getTurningMachinedDiameter()));
+                mSpindleSpeedEditText.setText(mCachedValuesLab.getTurningSpindleSpeed() == null ? null : Utils.fmt4(mCachedValuesLab.getTurningSpindleSpeed()));
+                mCuttingSpeedEditText.setText(mCachedValuesLab.getTurningCuttingSpeed() == null ? null : Utils.fmt4(mCachedValuesLab.getTurningCuttingSpeed()));
+                mCuttingDepthEditText.setText(mCachedValuesLab.getTurningCuttingDepth() == null ? null : Utils.fmt4(mCachedValuesLab.getTurningCuttingDepth()));
+                mFeedPerRevolutionEditText.setText(mCachedValuesLab.getTurningFeedPerRevolution() == null ? null : Utils.fmt4(mCachedValuesLab.getTurningFeedPerRevolution()));
+                mSpecificCuttingForceEditText.setText(mCachedValuesLab.getTurningSpecificCuttingForce() == null ? null : Utils.fmt4(mCachedValuesLab.getTurningSpecificCuttingForce()));
+                mMachinedLengthEditText.setText(mCachedValuesLab.getTurningMachinedLength() == null ? null : Utils.fmt4(mCachedValuesLab.getTurningMachinedLength()));
+
+
+                break;
+            case 1:
+                mCuttingDiameterAtDepthEditText.setText(mCachedValuesLab.getMillingCuttingDiameterAtDepth() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingCuttingDiameterAtDepth()));
+                mSpindleSpeedEditText.setText(mCachedValuesLab.getMillingSpindleSpeed() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingSpindleSpeed()));
+                mCuttingSpeedEditText.setText(mCachedValuesLab.getMillingCuttingSpeed() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingCuttingSpeed()));
+                mTableFeedEditText.setText(mCachedValuesLab.getMillingTableFeed() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingTableFeed()));
+                mNumberOfEffectiveTeethEditText.setText(mCachedValuesLab.getMillingNumberOfEffectiveTeeth() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingNumberOfEffectiveTeeth()));
+                mFeedToothEditText.setText(mCachedValuesLab.getMillingFeedTooth() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingFeedTooth()));
+                mDepthOfCutEditText.setText(mCachedValuesLab.getMillingDepthOfCut() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingDepthOfCut()));
+                mWorkingEngagementEditText.setText(mCachedValuesLab.getMillingWorkingEngagement() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingWorkingEngagement()));
+                mSpecificCuttingForceEditText.setText(mCachedValuesLab.getMillingSpecificCuttingForce() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingSpecificCuttingForce()));
+                mNetPowerRequirementEditText.setText(mCachedValuesLab.getMillingNetPowerRequirement() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingNetPowerRequirement()));
+                break;
+            case 2:
+                mDrillDiameterEditText.setText(mCachedValuesLab.getDrillingDrillDiameter() == null ? null : Utils.fmt4(mCachedValuesLab.getDrillingDrillDiameter()));
+                mSpindleSpeedEditText.setText(mCachedValuesLab.getDrillingSpindleSpeed() == null ? null : Utils.fmt4(mCachedValuesLab.getDrillingSpindleSpeed()));
+                mCuttingSpeedEditText.setText(mCachedValuesLab.getDrillingCuttingSpeed() == null ? null : Utils.fmt4(mCachedValuesLab.getDrillingCuttingSpeed()));
+                mTableFeedEditText.setText(mCachedValuesLab.getDrillingTableFeed() == null ? null : Utils.fmt4(mCachedValuesLab.getDrillingTableFeed()));
+                mFeedPerRevolutionEditText.setText(mCachedValuesLab.getDrillingFeedPerRevolution() == null ? null : Utils.fmt4(mCachedValuesLab.getDrillingFeedPerRevolution()));
+                mMachiningDrillingLengthEditText.setText(mCachedValuesLab.getDrillingMachiningDrillingLength() == null ? null : Utils.fmt4(mCachedValuesLab.getDrillingMachiningDrillingLength()));
+                mSpecificCuttingForceEditText.setText(mCachedValuesLab.getDrillingSpecificCuttingForce() == null ? null : Utils.fmt4(mCachedValuesLab.getDrillingSpecificCuttingForce()));
+                mNetPowerRequirementEditText.setText(mCachedValuesLab.getDrillingNetPowerRequirement() == null ? null : Utils.fmt4(mCachedValuesLab.getDrillingNetPowerRequirement()));
+                break;
+        }
+    }
+
+    public void initView(){
         String[] parametersNames = getResources().getStringArray(R.array.machining_formulas);
         mMachinedDiameterText.setText(parametersNames[0]);
         mSpindleSpeedText.setText(parametersNames[1]);
@@ -599,22 +306,7 @@ public class CalculatorFormulasFragment extends Fragment {
         mDrillDiameterText.setText(parametersNames[14]);
         mMachiningDrillingLengthText.setText(parametersNames[15]);
 
-        mMachinedDiameterEditText.setText(mCachedValuesLab.getTurningMachinedDiameter() == null ? null : mPrecision.format(mCachedValuesLab.getTurningMachinedDiameter()).replace(",", "."));
-        mSpindleSpeedEditText.setText(mCachedValuesLab.getTurningSpindleSpeed() == null ? null : mPrecision.format(mCachedValuesLab.getTurningSpindleSpeed()).replace(",", "."));
-        mCuttingSpeedEditText.setText(mCachedValuesLab.getTurningCuttingSpeed() == null ? null : mPrecision.format(mCachedValuesLab.getTurningCuttingSpeed()).replace(",", "."));
-        mCuttingDepthEditText.setText(mCachedValuesLab.getTurningCuttingDepth() == null ? null : mPrecision.format(mCachedValuesLab.getTurningCuttingDepth()).replace(",", "."));
-        mFeedPerRevolutionEditText.setText(mCachedValuesLab.getTurningFeedPerRevolution() == null ? null : mPrecision.format(mCachedValuesLab.getTurningFeedPerRevolution()).replace(",", "."));
-        mSpecificCuttingForceEditText.setText(mCachedValuesLab.getTurningSpecificCuttingForce() == null ? null : mPrecision.format(mCachedValuesLab.getTurningSpecificCuttingForce()).replace(",", "."));
-        mMachinedLengthEditText.setText(mCachedValuesLab.getTurningMachinedLength() == null ? null : mPrecision.format(mCachedValuesLab.getTurningMachinedLength()).replace(",", "."));
-        mCuttingDiameterAtDepthEditText.setText(mCachedValuesLab.getMillingCuttingDiameterAtDepth() == null ? null : mPrecision.format(mCachedValuesLab.getMillingCuttingDiameterAtDepth()).replace(",", "."));
-        mTableFeedEditText.setText(mCachedValuesLab.getMillingTableFeed() == null ? null : mPrecision.format(mCachedValuesLab.getMillingTableFeed()).replace(",", "."));
-        mNumberOfEffectiveTeethEditText.setText(mCachedValuesLab.getMillingNumberOfEffectiveTeeth() == null ? null : mPrecision.format(mCachedValuesLab.getMillingNumberOfEffectiveTeeth()).replace(",", "."));
-        mFeedToothEditText.setText(mCachedValuesLab.getMillingFeedTooth() == null ? null : mPrecision.format(mCachedValuesLab.getMillingFeedTooth()).replace(",", "."));
-        mDepthOfCutEditText.setText(mCachedValuesLab.getMillingDepthOfCut() == null ? null : mPrecision.format(mCachedValuesLab.getMillingDepthOfCut()).replace(",", "."));
-        mWorkingEngagementEditText.setText(mCachedValuesLab.getMillingWorkingEngagement() == null ? null : mPrecision.format(mCachedValuesLab.getMillingWorkingEngagement()).replace(",", "."));
-        mNetPowerRequirementEditText.setText(mCachedValuesLab.getMillingNetPowerRequirement() == null ? null : mPrecision.format(mCachedValuesLab.getMillingNetPowerRequirement()).replace(",", "."));
-        mDrillDiameterEditText.setText(mCachedValuesLab.getDrillingDrillDiameter() == null ? null : mPrecision.format(mCachedValuesLab.getDrillingDrillDiameter()).replace(",", "."));
-        mMachiningDrillingLengthEditText.setText(mCachedValuesLab.getDrillingMachiningDrillingLength() == null ? null : mPrecision.format(mCachedValuesLab.getDrillingMachiningDrillingLength()).replace(",", "."));
+        initEditTexts();
 
         mMachinedDiameter.setVisibility(View.GONE);
         mSpindleSpeed.setVisibility(View.GONE);
@@ -633,9 +325,9 @@ public class CalculatorFormulasFragment extends Fragment {
         mDrillDiameter.setVisibility(View.GONE);
         mMachiningDrillingLength.setVisibility(View.GONE);
 
-        switch (index){
+        switch (mIndex){
             case 0:
-                switch (itemPos){
+                switch (mItemPos){
                     case 0:
                         mMachinedDiameter.setVisibility(View.VISIBLE);
                         mSpindleSpeed.setVisibility(View.VISIBLE);
@@ -663,7 +355,7 @@ public class CalculatorFormulasFragment extends Fragment {
                 }
                 break;
             case 1:
-                switch (itemPos){
+                switch (mItemPos){
                     case 0:
                         mCuttingDiameterAtDepth.setVisibility(View.VISIBLE);
                         mSpindleSpeed.setVisibility(View.VISIBLE);
@@ -700,7 +392,7 @@ public class CalculatorFormulasFragment extends Fragment {
                 }
                 break;
             case 2:
-                switch (itemPos){
+                switch (mItemPos){
                     case 0:
                         mDrillDiameter.setVisibility(View.VISIBLE);
                         mSpindleSpeed.setVisibility(View.VISIBLE);
@@ -747,36 +439,41 @@ public class CalculatorFormulasFragment extends Fragment {
             case 0:
                 switch (mItemPos){
                     case 0:
+                        mCachedValuesLab.updateTurningValues(0);
                         if (mCachedValuesLab.getTurningCuttingSpeed() != null){
-                            mResult.setText(mPrecision.format(mCachedValuesLab.getTurningCuttingSpeed()).replace(",", "."));
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getTurningCuttingSpeed()));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 1:
+                        mCachedValuesLab.updateTurningValues(1);
                         if (mCachedValuesLab.getTurningSpindleSpeed() != null){
-                            mResult.setText(mPrecision.format(mCachedValuesLab.getTurningSpindleSpeed()).replace(",", "."));
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getTurningSpindleSpeed()));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 2:
+                        mCachedValuesLab.updateTurningValues(2);
                         if (mCachedValuesLab.getTurningMetalRemovalRate() != null){
-                            mResult.setText(mPrecision.format(mCachedValuesLab.getTurningMetalRemovalRate()).replace(",", "."));
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getTurningMetalRemovalRate()));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 3:
-                        if (mCachedValuesLab.getTurningNetPower() != null){
-                            mResult.setText(mPrecision.format(mCachedValuesLab.getTurningNetPower()).replace(",", "."));
+                        mCachedValuesLab.updateTurningValues(3);
+                        if (mCachedValuesLab.getTurningNetPowerRequirement() != null){
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getTurningNetPowerRequirement()));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 4:
+                        mCachedValuesLab.updateTurningValues(4);
                         if (mCachedValuesLab.getTurningMachiningTime() != null){
-                            mResult.setText(mPrecision.format(mCachedValuesLab.getTurningMachiningTime()).replace(",", "."));
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getTurningMachiningTime()));
                         } else {
                             mResult.setText(null);
                         }
@@ -786,37 +483,60 @@ public class CalculatorFormulasFragment extends Fragment {
             case 1:
                 switch (mItemPos){
                     case 0:
-                        mCuttingDiameterAtDepth.setVisibility(View.VISIBLE);
-                        mSpindleSpeed.setVisibility(View.VISIBLE);
+                        mCachedValuesLab.updateMillingValues(0);
+                        if (mCachedValuesLab.getMillingCuttingSpeed() != null){
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getMillingCuttingSpeed()));
+                        } else {
+                            mResult.setText(null);
+                        }
                         break;
                     case 1:
-                        mCuttingDiameterAtDepth.setVisibility(View.VISIBLE);
-                        mCuttingSpeed.setVisibility(View.VISIBLE);
+                        mCachedValuesLab.updateMillingValues(1);
+                        if (mCachedValuesLab.getMillingSpindleSpeed() != null){
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getMillingSpindleSpeed()));
+                        } else {
+                            mResult.setText(null);
+                        }
                         break;
                     case 2:
-                        mTableFeed.setVisibility(View.VISIBLE);
-                        mSpindleSpeed.setVisibility(View.VISIBLE);
-                        mNumberOfEffectiveTeeth.setVisibility(View.VISIBLE);
+                        mCachedValuesLab.updateMillingValues(2);
+                        if (mCachedValuesLab.getMillingFeedTooth() != null){
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getMillingFeedTooth()));
+                        } else {
+                            mResult.setText(null);
+                        }
                         break;
                     case 3:
-                        mFeedTooth.setVisibility(View.VISIBLE);
-                        mSpindleSpeed.setVisibility(View.VISIBLE);
-                        mNumberOfEffectiveTeeth.setVisibility(View.VISIBLE);
+                        mCachedValuesLab.updateMillingValues(3);
+                        if (mCachedValuesLab.getMillingTableFeed() != null){
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getMillingTableFeed()));
+                        } else {
+                            mResult.setText(null);
+                        }
                         break;
                     case 4:
-                        mDepthOfCut.setVisibility(View.VISIBLE);
-                        mWorkingEngagement.setVisibility(View.VISIBLE);
-                        mTableFeed.setVisibility(View.VISIBLE);
+                        mCachedValuesLab.updateMillingValues(4);
+                        if (mCachedValuesLab.getMillingMetalRemovalRate() != null){
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getMillingMetalRemovalRate()));
+                        } else {
+                            mResult.setText(null);
+                        }
                         break;
                     case 5:
-                        mDepthOfCut.setVisibility(View.VISIBLE);
-                        mWorkingEngagement.setVisibility(View.VISIBLE);
-                        mTableFeed.setVisibility(View.VISIBLE);
-                        mSpecificCuttingForce.setVisibility(View.VISIBLE);
+                        mCachedValuesLab.updateMillingValues(5);
+                        if (mCachedValuesLab.getMillingNetPowerRequirement() != null){
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getMillingNetPowerRequirement()));
+                        } else {
+                            mResult.setText(null);
+                        }
                         break;
                     case 6:
-                        mNetPowerRequirement.setVisibility(View.VISIBLE);
-                        mSpindleSpeed.setVisibility(View.VISIBLE);
+                        mCachedValuesLab.updateMillingValues(6);
+                        if (mCachedValuesLab.getMillingTorque() != null){
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getMillingTorque()));
+                        } else {
+                            mResult.setText(null);
+                        }
                         break;
                 }
                 break;
@@ -861,4 +581,475 @@ public class CalculatorFormulasFragment extends Fragment {
                 break;
         }
     }
+
+    private TextWatcher mMachinedDiameterEditTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                mCachedValuesLab.setTurningMachinedDiameter(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                initResult();
+            } catch (NumberFormatException ex){
+                mCachedValuesLab.setTurningMachinedDiameter(null);
+                initResult();
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
+    private TextWatcher mSpindleSpeedEditTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                switch (mIndex){
+                    case 0:
+                        mCachedValuesLab.setTurningSpindleSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                        break;
+                    case 1:
+                        mCachedValuesLab.setMillingSpindleSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                        break;
+                    case 2:
+                        mCachedValuesLab.setDrillingSpindleSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                        break;
+                }
+                initResult();
+            } catch (NumberFormatException ex){
+                switch (mIndex){
+                    case 0:
+                        mCachedValuesLab.setTurningSpindleSpeed(null);
+                        break;
+                    case 1:
+                        mCachedValuesLab.setMillingSpindleSpeed(null);
+                        break;
+                    case 2:
+                        mCachedValuesLab.setDrillingSpindleSpeed(null);
+                        break;
+                }
+                initResult();
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
+    private TextWatcher mCuttingSpeedEditTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                switch (mIndex){
+                    case 0:
+                        mCachedValuesLab.setTurningCuttingSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                        break;
+                    case 1:
+                        mCachedValuesLab.setMillingCuttingSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                        break;
+                    case 2:
+                        mCachedValuesLab.setDrillingCuttingSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                        break;
+                }
+                initResult();
+            } catch (NumberFormatException ex){
+                switch (mIndex){
+                    case 0:
+                        mCachedValuesLab.setTurningCuttingSpeed(null);
+                        break;
+                    case 1:
+                        mCachedValuesLab.setMillingCuttingSpeed(null);
+                        break;
+                    case 2:
+                        mCachedValuesLab.setDrillingCuttingSpeed(null);
+                        break;
+                }
+                initResult();
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
+    private TextWatcher mCuttingDepthEditTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                mCachedValuesLab.setTurningCuttingDepth(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                initResult();
+            } catch (NumberFormatException ex){
+                mCachedValuesLab.setTurningCuttingDepth(null);
+                initResult();
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
+    private TextWatcher mFeedPerRevolutionEditTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                switch (mIndex){
+                    case 0:
+                        mCachedValuesLab.setTurningFeedPerRevolution(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                        break;
+                    case 2:
+                        mCachedValuesLab.setDrillingFeedPerRevolution(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                        break;
+                }
+                initResult();
+            } catch (NumberFormatException ex){
+                switch (mIndex){
+                    case 0:
+                        mCachedValuesLab.setTurningFeedPerRevolution(null);
+                        break;
+                    case 2:
+                        mCachedValuesLab.setDrillingFeedPerRevolution(null);
+                        break;
+                }
+                initResult();
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
+    private TextWatcher mSpecificCuttingForceEditTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                switch (mIndex){
+                    case 0:
+                        mCachedValuesLab.setTurningSpecificCuttingForce(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                        break;
+                    case 1:
+                        mCachedValuesLab.setMillingSpecificCuttingForce(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                        break;
+                    case 2:
+                        mCachedValuesLab.setDrillingSpecificCuttingForce(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                        break;
+                }
+                initResult();
+            } catch (NumberFormatException ex){
+                switch (mIndex){
+                    case 0:
+                        mCachedValuesLab.setTurningSpecificCuttingForce(null);
+                        break;
+                    case 1:
+                        mCachedValuesLab.setMillingSpecificCuttingForce(null);
+                        break;
+                    case 2:
+                        mCachedValuesLab.setDrillingSpecificCuttingForce(null);
+                        break;
+                }
+                initResult();
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
+    private TextWatcher mMachinedLengthEditTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                mCachedValuesLab.setTurningMachinedLength(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                initResult();
+            } catch (NumberFormatException ex){
+                mCachedValuesLab.setTurningMachinedLength(null);
+                initResult();
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
+    private TextWatcher mCuttingDiameterAtDepthEditTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                mCachedValuesLab.setMillingCuttingDiameterAtDepth(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                initResult();
+            } catch (NumberFormatException ex){
+                mCachedValuesLab.setMillingCuttingDiameterAtDepth(null);
+                initResult();
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
+    private TextWatcher mTableFeedEditTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                switch (mIndex){
+                    case 1:
+                        mCachedValuesLab.setMillingTableFeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                        break;
+                    case 2:
+                        mCachedValuesLab.setDrillingTableFeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                        break;
+                }
+                initResult();
+            } catch (NumberFormatException ex){
+                switch (mIndex){
+                    case 1:
+                        mCachedValuesLab.setMillingTableFeed(null);
+                        break;
+                    case 2:
+                        mCachedValuesLab.setDrillingTableFeed(null);
+                        break;
+                }
+                initResult();
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
+    private TextWatcher mNumberOfEffectiveTeethEditTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                mCachedValuesLab.setMillingNumberOfEffectiveTeeth(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                initResult();
+            } catch (NumberFormatException ex){
+                mCachedValuesLab.setMillingNumberOfEffectiveTeeth(null);
+                initResult();
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
+    private TextWatcher mFeedToothEditTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                mCachedValuesLab.setMillingFeedTooth(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                initResult();
+            } catch (NumberFormatException ex){
+                mCachedValuesLab.setMillingFeedTooth(null);
+                initResult();
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
+    private TextWatcher mDepthOfCutEditTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                mCachedValuesLab.setMillingDepthOfCut(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                initResult();
+            } catch (NumberFormatException ex){
+                mCachedValuesLab.setMillingDepthOfCut(null);
+                initResult();
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
+    private TextWatcher mWorkingEngagementEditTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                mCachedValuesLab.setMillingWorkingEngagement(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                initResult();
+            } catch (NumberFormatException ex){
+                mCachedValuesLab.setMillingWorkingEngagement(null);
+                initResult();
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
+    private TextWatcher mNetPowerRequirementEditTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                switch (mIndex){
+                    case 1:
+                        mCachedValuesLab.setMillingNetPowerRequirement(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                        break;
+                    case 2:
+                        mCachedValuesLab.setDrillingNetPowerRequirement(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                        break;
+                }
+                initResult();
+            } catch (NumberFormatException ex){
+                switch (mIndex){
+                    case 1:
+                        mCachedValuesLab.setMillingNetPowerRequirement(null);
+                        break;
+                    case 2:
+                        mCachedValuesLab.setDrillingNetPowerRequirement(null);
+                        break;
+                }
+                initResult();
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
+    private TextWatcher mDrillDiameterEditTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                mCachedValuesLab.setDrillingDrillDiameter(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                initResult();
+            } catch (NumberFormatException ex){
+                mCachedValuesLab.setDrillingDrillDiameter(null);
+                initResult();
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
+    private TextWatcher mMachiningDrillingLengthEditTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                mCachedValuesLab.setDrillingMachiningDrillingLength(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                initResult();
+            } catch (NumberFormatException ex){
+                mCachedValuesLab.setDrillingMachiningDrillingLength(null);
+                initResult();
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
 }

@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.kamil.machininghelper.Fragments.CalculatorFormulasFragment;
+import com.example.kamil.machininghelper.Model.CachedValuesLab;
 import com.example.kamil.machininghelper.R;
 
 public class CalculatorFormulasActivity extends SingleFragmentActivity {
@@ -48,6 +51,32 @@ public class CalculatorFormulasActivity extends SingleFragmentActivity {
                 getSupportActionBar().setTitle(titles[mItemPos]);
                 break;
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.trash:
+                switch (mIndex){
+                    case 0:
+                        CachedValuesLab.getCachedValuesLab(this).removeTurningValues();
+                        break;
+                    case 1:
+                        CachedValuesLab.getCachedValuesLab(this).removeMillingValues();
+                        break;
+                    case 2:
+                        break;
+                }
+                ((CalculatorFormulasFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container)).initView();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

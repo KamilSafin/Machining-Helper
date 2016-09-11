@@ -31,6 +31,7 @@
     <string name="milling_parameters">Milling advices</string>
     <string name="drilling_parameters">Drilling advices</string>
     <string name="machning_problems_solution">Problem solution</string>
+    <string name="clear_values">Clear values</string>
     <string name="mm">mm</string>
     <string name="rpm">rpm</string>
     <string name="m_min">m/min</string>
@@ -116,13 +117,13 @@
     </array>
 
     <array name="milling_calculator_parameters">
-        <item>Prędkość skrawania Vc</item>
-        <item>Prędkość obrotowa wrzeciona n</item>
-        <item>Posuw na ostrze</item>
-        <item>Prędkość posuwu vf</item>
-        <item>Objętościowa wydajność skrawania Q</item>
-        <item>Moc skrawania netto Pc</item>
-        <item>Moment obrotowy Mc</item>
+        <item>Cutting speed Vc</item>
+        <item>Spindle speed n</item>
+        <item>Feed per tooth fz</item>
+        <item>Table feed vf</item>
+        <item>Metal removal rate Q</item>
+        <item>Net power requirement Pc</item>
+        <item>Torque Mc</item>
     </array>
 
     <array name="drilling_calculator_parameters">

@@ -31,6 +31,7 @@
     <string name="milling_parameters">Kalkulator parametrów frezowanie</string>
     <string name="drilling_parameters">Kalkulator parametrów wiercenie</string>
     <string name="machning_problems_solution">Środki zaradcze</string>
+    <string name="clear_values">Usuń wartości</string>
     <string name="mm">mm</string>
     <string name="rpm">obr./min.</string>
     <string name="m_min">m/min.</string>
