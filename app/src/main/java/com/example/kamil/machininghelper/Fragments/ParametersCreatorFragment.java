@@ -13,6 +13,7 @@ import com.example.kamil.machininghelper.Activities.DetailCreatorActivity;
 import com.example.kamil.machininghelper.R;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Kamil Safin on 8/20/2016.
@@ -38,6 +39,8 @@ public class ParametersCreatorFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_parameters_creator, container, false);
+
+        ButterKnife.bind(this, view);
 
         mTurningCreator.setOnClickListener(l -> {
             Intent intent = DetailCreatorActivity.newIntent(getContext(), 0);
