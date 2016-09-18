@@ -6,17 +6,17 @@
               android:padding="@dimen/button_space">
 
     <TextView
-        style="?android:listSeparatorTextViewStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hole_diameter"/>
-
-    <TextView
         android:id="@+id/thread_hole_text"
-        style="@style/GCodeDetailStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"/>
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/calculator_result_background"
+        android:gravity="center"
+        android:text="@string/hole_diameter"
+        android:textSize="16sp"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:textStyle="bold"/>
 
     <TextView
         style="?android:listSeparatorTextViewStyle"

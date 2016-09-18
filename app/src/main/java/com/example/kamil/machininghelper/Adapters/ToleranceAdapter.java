@@ -82,7 +82,7 @@ public class ToleranceAdapter extends RecyclerView.Adapter<ToleranceAdapter.Tole
         }
 
         public void setChecked(){
-            itemView.setBackgroundColor(Color.GRAY);
+            itemView.setBackgroundColor(mContext.getResources().getColor(R.color.yellow));
         }
 
         public void setUnchecked(){

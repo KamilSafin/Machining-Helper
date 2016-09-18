@@ -31,6 +31,8 @@
         </activity>
         <activity android:name=".Activities.CalculatorFormulasActivity">
         </activity>
+        <activity android:name=".Activities.DetailCreatorActivity">
+        </activity>
     </application>
 
 </manifest>
