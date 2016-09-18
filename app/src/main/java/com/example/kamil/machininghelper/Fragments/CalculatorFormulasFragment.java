@@ -558,39 +558,68 @@ public class CalculatorFormulasFragment extends Fragment {
             case 2:
                 switch (mItemPos){
                     case 0:
-                        mDrillDiameter.setVisibility(View.VISIBLE);
-                        mSpindleSpeed.setVisibility(View.VISIBLE);
+                        mCachedValuesLab.updateDrillingValues(0);
+                        if (mCachedValuesLab.getDrillingCuttingSpeed() != null){
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getDrillingCuttingSpeed()) + " " + getResources().getString(R.string.m_min));
+                        } else {
+                            mResult.setText(null);
+                        }
                         break;
                     case 1:
-                        mDrillDiameter.setVisibility(View.VISIBLE);
-                        mCuttingSpeed.setVisibility(View.VISIBLE);
+                        mCachedValuesLab.updateDrillingValues(1);
+                        if (mCachedValuesLab.getDrillingSpindleSpeed() != null){
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getDrillingSpindleSpeed()) + " " + getResources().getString(R.string.rpm));
+                        } else {
+                            mResult.setText(null);
+                        }
                         break;
                     case 2:
-                        mTableFeed.setVisibility(View.VISIBLE);
-                        mSpindleSpeed.setVisibility(View.VISIBLE);
+                        mCachedValuesLab.updateDrillingValues(2);
+                        if (mCachedValuesLab.getDrillingFeedPerRevolution() != null){
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getDrillingFeedPerRevolution()) + " " + getResources().getString(R.string.mm_r));
+                        } else {
+                            mResult.setText(null);
+                        }
                         break;
                     case 3:
-                        mFeedPerRevolution.setVisibility(View.VISIBLE);
-                        mSpindleSpeed.setVisibility(View.VISIBLE);
+                        mCachedValuesLab.updateDrillingValues(3);
+                        if (mCachedValuesLab.getDrillingPenetrationRate() != null){
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getDrillingPenetrationRate()) + " " + getResources().getString(R.string.mm_min));
+                        } else {
+                            mResult.setText(null);
+                        }
                         break;
                     case 4:
-                        mDrillDiameter.setVisibility(View.VISIBLE);
-                        mFeedPerRevolution.setVisibility(View.VISIBLE);
-                        mCuttingSpeed.setVisibility(View.VISIBLE);
+                        mCachedValuesLab.updateDrillingValues(4);
+                        if (mCachedValuesLab.getDrillingMetalRemovalRate() != null){
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getDrillingMetalRemovalRate()) + " " + getResources().getString(R.string.cm3_min));
+                        } else {
+                            mResult.setText(null);
+                        }
                         break;
                     case 5:
-                        mMachiningDrillingLength.setVisibility(View.VISIBLE);
-                        mTableFeed.setVisibility(View.VISIBLE);
+                        mCachedValuesLab.updateDrillingValues(5);
+                        if (mCachedValuesLab.getDrillingMachiningTime() != null){
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getDrillingMachiningTime()) + " " + getResources().getString(R.string.min));
+                        } else {
+                            mResult.setText(null);
+                        }
                         break;
                     case 6:
-                        mDrillDiameter.setVisibility(View.VISIBLE);
-                        mFeedPerRevolution.setVisibility(View.VISIBLE);
-                        mSpecificCuttingForce.setVisibility(View.VISIBLE);
-                        mCuttingSpeed.setVisibility(View.VISIBLE);
+                        mCachedValuesLab.updateDrillingValues(6);
+                        if (mCachedValuesLab.getDrillingNetPowerRequirement() != null){
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getDrillingNetPowerRequirement()) + " " + getResources().getString(R.string.kW));
+                        } else {
+                            mResult.setText(null);
+                        }
                         break;
                     case 7:
-                        mNetPowerRequirement.setVisibility(View.VISIBLE);
-                        mSpindleSpeed.setVisibility(View.VISIBLE);
+                        mCachedValuesLab.updateDrillingValues(7);
+                        if (mCachedValuesLab.getDrillingTorque() != null){
+                            mResult.setText(Utils.fmt4(mCachedValuesLab.getDrillingTorque()) + " " + getResources().getString(R.string.Nm));
+                        } else {
+                            mResult.setText(null);
+                        }
                         break;
                 }
                 break;

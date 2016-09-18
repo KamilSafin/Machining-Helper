@@ -161,6 +161,64 @@ public class CalculatorParametersAdapter extends RecyclerView.Adapter<Calculator
                     }
                     break;
                 case 2:
+                    switch (getLayoutPosition()) {
+                        case 0:
+                            CachedValuesLab.getCachedValuesLab(mContext).updateDrillingValues(0);
+                            if (CachedValuesLab.getCachedValuesLab(mContext).getDrillingCuttingSpeed() != null) {
+                                mCalculatorResultText.setVisibility(View.VISIBLE);
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getDrillingCuttingSpeed()) + " " + mContext.getResources().getString(R.string.m_min));
+                            }
+                            break;
+                        case 1:
+                            CachedValuesLab.getCachedValuesLab(mContext).updateDrillingValues(1);
+                            if (CachedValuesLab.getCachedValuesLab(mContext).getDrillingSpindleSpeed() != null) {
+                                mCalculatorResultText.setVisibility(View.VISIBLE);
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getDrillingSpindleSpeed()) + " " + mContext.getResources().getString(R.string.rpm));
+                            }
+                            break;
+                        case 2:
+                            CachedValuesLab.getCachedValuesLab(mContext).updateDrillingValues(2);
+                            if (CachedValuesLab.getCachedValuesLab(mContext).getDrillingFeedPerRevolution() != null) {
+                                mCalculatorResultText.setVisibility(View.VISIBLE);
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getDrillingFeedPerRevolution()) + " " + mContext.getResources().getString(R.string.rpm));
+                            }
+                            break;
+                        case 3:
+                            CachedValuesLab.getCachedValuesLab(mContext).updateDrillingValues(3);
+                            if (CachedValuesLab.getCachedValuesLab(mContext).getDrillingPenetrationRate() != null) {
+                                mCalculatorResultText.setVisibility(View.VISIBLE);
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getDrillingPenetrationRate()) + " " + mContext.getResources().getString(R.string.mm_min));
+                            }
+                            break;
+                        case 4:
+                            CachedValuesLab.getCachedValuesLab(mContext).updateDrillingValues(4);
+                            if (CachedValuesLab.getCachedValuesLab(mContext).getDrillingMetalRemovalRate() != null) {
+                                mCalculatorResultText.setVisibility(View.VISIBLE);
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getDrillingMetalRemovalRate()) + " " + mContext.getResources().getString(R.string.cm3_min));
+                            }
+                            break;
+                        case 5:
+                            CachedValuesLab.getCachedValuesLab(mContext).updateDrillingValues(5);
+                            if (CachedValuesLab.getCachedValuesLab(mContext).getDrillingMachiningTime() != null) {
+                                mCalculatorResultText.setVisibility(View.VISIBLE);
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getDrillingMachiningTime()) + " " + mContext.getResources().getString(R.string.min));
+                            }
+                            break;
+                        case 6:
+                            CachedValuesLab.getCachedValuesLab(mContext).updateDrillingValues(6);
+                            if (CachedValuesLab.getCachedValuesLab(mContext).getDrillingNetPowerRequirement() != null) {
+                                mCalculatorResultText.setVisibility(View.VISIBLE);
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getDrillingNetPowerRequirement()) + " " + mContext.getResources().getString(R.string.kW));
+                            }
+                            break;
+                        case 7:
+                            CachedValuesLab.getCachedValuesLab(mContext).updateDrillingValues(7);
+                            if (CachedValuesLab.getCachedValuesLab(mContext).getDrillingTorque() != null) {
+                                mCalculatorResultText.setVisibility(View.VISIBLE);
+                                mCalculatorResultText.setText(Utils.fmt3(CachedValuesLab.getCachedValuesLab(mContext).getDrillingTorque()) + " " + mContext.getResources().getString(R.string.Nm));
+                            }
+                            break;
+                    }
                     break;
             }
         }

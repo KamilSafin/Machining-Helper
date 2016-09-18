@@ -1,7 +1,6 @@
 package com.example.kamil.machininghelper.Model;
 
 import android.content.Context;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -197,6 +196,91 @@ public class CachedValuesLab {
         }
     }
 
+    public void updateDrillingValues(int itemPos) {
+        switch (itemPos) {
+            case 0:
+                if (mDrillingDrillDiameter != null && mDrillingSpindleSpeed != null) {
+                    try {
+                        mDrillingCuttingSpeed = (mDrillingDrillDiameter.multiply(new BigDecimal(Math.PI)).multiply(mDrillingSpindleSpeed)).divide(new BigDecimal(1000), 10, RoundingMode.HALF_UP);
+                    } catch (ArithmeticException ex){
+                        mDrillingCuttingSpeed = null;
+                    }
+                } else if ((mDrillingDrillDiameter == null && mDrillingSpindleSpeed != null) || (mDrillingDrillDiameter != null && mDrillingSpindleSpeed == null)){
+                    mDrillingCuttingSpeed = mDrillingCuttingSpeed == null ? null : mDrillingCuttingSpeed;
+                }
+                break;
+            case 1:
+                if (mDrillingDrillDiameter != null && mDrillingCuttingSpeed != null) {
+                    try {
+                        mDrillingSpindleSpeed = (mDrillingCuttingSpeed.multiply(new BigDecimal(1000))).divide((new BigDecimal(Math.PI)).multiply(mDrillingDrillDiameter), 10, RoundingMode.HALF_UP);
+                    } catch (ArithmeticException ex){
+                        mDrillingSpindleSpeed = null;
+                    }
+                } else if ((mDrillingDrillDiameter == null && mDrillingCuttingSpeed != null) || (mDrillingDrillDiameter != null && mDrillingCuttingSpeed == null)){
+                    mDrillingSpindleSpeed = mDrillingSpindleSpeed == null ? null : mDrillingSpindleSpeed;
+                }
+                break;
+            case 2:
+                if(mDrillingSpindleSpeed != null && mDrillingPenetrationRate != null) {
+                    try {
+                        mDrillingFeedPerRevolution = mDrillingPenetrationRate.divide(mDrillingSpindleSpeed, 10, RoundingMode.HALF_UP);
+                    } catch (ArithmeticException ex){
+                        mDrillingFeedPerRevolution = null;
+                    }
+                } else if((mDrillingSpindleSpeed == null && mDrillingPenetrationRate != null) || (mDrillingSpindleSpeed != null && mDrillingPenetrationRate == null)){
+                    mDrillingFeedPerRevolution = mDrillingFeedPerRevolution == null ? null : mDrillingFeedPerRevolution;
+                }
+                break;
+            case 3:
+                if(mDrillingFeedPerRevolution != null && mDrillingSpindleSpeed != null) {
+                    try {
+                        mDrillingPenetrationRate = mDrillingFeedPerRevolution.multiply(mDrillingSpindleSpeed);
+                    } catch (ArithmeticException ex){
+                        mDrillingPenetrationRate = null;
+                    }
+                } else if((mDrillingFeedPerRevolution == null && mDrillingSpindleSpeed != null) || (mDrillingFeedPerRevolution != null && mDrillingSpindleSpeed == null)){
+                    mDrillingPenetrationRate = mDrillingPenetrationRate == null ? null : mDrillingPenetrationRate;
+                }
+                break;
+            case 4:
+                if (mDrillingDrillDiameter != null && mDrillingFeedPerRevolution != null && mDrillingCuttingSpeed != null) {
+                    try {
+                        mDrillingMetalRemovalRate = (mDrillingDrillDiameter.multiply(mDrillingFeedPerRevolution).multiply(mDrillingCuttingSpeed)).divide(new BigDecimal(4), 10, RoundingMode.HALF_UP);
+                    } catch (ArithmeticException ex){
+                        mDrillingMetalRemovalRate = null;
+                    }
+                }
+                break;
+            case 5:
+                if (mDrillingMachiningDrillingLength != null && mDrillingPenetrationRate != null) {
+                    try {
+                        mDrillingMachiningTime = mDrillingMachiningDrillingLength.divide(mDrillingPenetrationRate, 10, RoundingMode.HALF_UP);
+                    } catch (ArithmeticException ex){
+                        mDrillingMachiningTime = null;
+                    }
+                }
+                break;
+            case 6:
+                if (mDrillingFeedPerRevolution != null && mDrillingCuttingSpeed != null && mDrillingDrillDiameter != null && mDrillingSpecificCuttingForce != null) {
+                    try {
+                        mDrillingNetPowerRequirement = (mDrillingFeedPerRevolution.multiply(mDrillingCuttingSpeed).multiply(mDrillingDrillDiameter).multiply(mDrillingSpecificCuttingForce)).divide(new BigDecimal(240 * 1_000), 10, RoundingMode.HALF_UP);
+                    } catch (ArithmeticException ex){
+                        mDrillingNetPowerRequirement = null;
+                    }
+                }
+                break;
+            case 7:
+                if (mDrillingNetPowerRequirement != null && mDrillingSpindleSpeed != null) {
+                    try {
+                        mDrillingTorque = (mDrillingNetPowerRequirement.multiply(new BigDecimal(30 * 1000))).divide((new BigDecimal(Math.PI)).multiply(mDrillingSpindleSpeed), 10, RoundingMode.HALF_UP);
+                    } catch (ArithmeticException ex){
+                        mDrillingTorque = null;
+                    }
+                }
+                break;
+        }
+    }
+
     public void removeTurningValues(){
         mTurningCuttingSpeed = null;
         mTurningSpindleSpeed = null;
@@ -233,6 +317,9 @@ public class CachedValuesLab {
         mDrillingMachiningTime = null;
         mDrillingNetPowerRequirement = null;
         mDrillingTorque = null;
+        mDrillingDrillDiameter = null;
+        mDrillingMachiningDrillingLength = null;
+        mDrillingSpecificCuttingForce = null;
     }
 
     public BigDecimal getTurningCuttingSpeed() {
