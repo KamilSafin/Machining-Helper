@@ -3,15 +3,15 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/background"
-              android:orientation="vertical">
+              android:orientation="horizontal">
 
     <RelativeLayout
         android:id="@+id/turning_creator"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_margin="5dp"
-        android:background="@drawable/turning_tool">
+        android:background="@drawable/turning_tool_land">
 
         <TextView
             android:layout_width="match_parent"
@@ -19,18 +19,18 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="@string/turning"
-            android:textSize="36sp"
+            android:textSize="32sp"
             android:textColor="@color/white"/>
 
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/milling_creator"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_margin="5dp"
-        android:background="@drawable/milling_tool">
+        android:background="@drawable/milling_tool_land">
 
         <TextView
             android:layout_width="match_parent"
@@ -38,18 +38,18 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="@string/milling"
-            android:textSize="36sp"
+            android:textSize="32sp"
             android:textColor="@color/white"/>
 
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/drilling_creator"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_margin="5dp"
-        android:background="@drawable/drilling_tool">
+        android:background="@drawable/drilling_tool_land">
 
         <TextView
             android:layout_width="match_parent"
@@ -57,7 +57,7 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="@string/drilling"
-            android:textSize="36sp"
+            android:textSize="32sp"
             android:textColor="@color/white"/>
 
     </RelativeLayout>

@@ -6,6 +6,7 @@
     <string name="calculator_menu">Kalkulator parametrów</string>
     <string name="g_code_menu">Baza kodów G</string>
     <string name="tolerance_menu">Wymiary i tolerancje</string>
+    <string name="problems_menu">Problemy przy obróbce</string>
 
     <string name="g_code_base">Baza kodów G</string>
     <string name="dimensions_and_tolerance">Tolerancje i wymiary</string>

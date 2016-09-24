@@ -29,7 +29,7 @@ public class GCodeLab {
             mGCodes.add(new GCode("G3", functions[3], "X,Y,Z,F,R,I,J,K", "G2"));
             mGCodes.add(new GCode("G12", functions[4], "I,K,Q,F,Z,L,D", "G13"));
             mGCodes.add(new GCode("G13", functions[5], "I,K,Q,F,Z,L,D", "G12"));
-            mGCodes.add(new GCode("G17,18,19", functions[6], "brak", "brak"));
+            mGCodes.add(new GCode("G17..19", functions[6], "brak", "brak"));
             mGCodes.add(new GCode("G20", functions[7], "brak", "G21"));
             mGCodes.add(new GCode("G21", functions[8], "brak", "G20"));
             mGCodes.add(new GCode("G40", functions[9], "brak", "G41,G42"));

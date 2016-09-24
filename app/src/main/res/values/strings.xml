@@ -6,6 +6,7 @@
     <string name="calculator_menu">Parameter calculator</string>
     <string name="g_code_menu">G code base</string>
     <string name="tolerance_menu">Dimensions and tolerance</string>
+    <string name="problems_menu">Machining problems</string>
 
     <string name="g_code_base">G code base</string>
     <string name="dimensions_and_tolerance">Dimensions and tolerance</string>

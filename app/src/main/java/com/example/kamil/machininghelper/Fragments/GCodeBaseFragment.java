@@ -1,8 +1,10 @@
 package com.example.kamil.machininghelper.Fragments;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -35,7 +37,12 @@ public class GCodeBaseFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_g_code_base, container, false);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.g_code_recyler_view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+            mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        else
+            mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
+
         mGCodeLab = GCodeLab.getGCodeLab(getContext());
 
         mGCodeBaseAdapter = new GCodeBaseAdapter(getContext(), mGCodeLab.getGCodes());
