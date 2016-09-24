@@ -18,6 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
+        app:tabTextColor="@color/colorAccent"
         app:layout_scrollFlags="scroll|enterAlways"/>
 
     <android.support.v4.view.ViewPager

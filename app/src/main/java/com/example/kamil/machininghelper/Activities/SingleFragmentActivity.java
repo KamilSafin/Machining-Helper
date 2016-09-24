@@ -13,12 +13,15 @@ import com.example.kamil.machininghelper.R;
  */
 public abstract class SingleFragmentActivity extends AppCompatActivity {
 
+    public int initLayout(){
+        return R.layout.activity_single_fragment;
+    }
     protected abstract Fragment createFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single_fragment);
+        setContentView(initLayout());
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);

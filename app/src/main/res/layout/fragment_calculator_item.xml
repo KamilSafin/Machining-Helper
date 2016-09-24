@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginTop="@dimen/button_space"
-                android:src="@drawable/calculator"/>
+                android:src="@drawable/calculator_ic"/>
 
             <TextView
                 android:layout_width="wrap_content"

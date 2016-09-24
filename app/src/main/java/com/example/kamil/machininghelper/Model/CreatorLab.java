@@ -10,11 +10,14 @@ import java.util.List;
  */
 public class CreatorLab {
 
+    private Context mContext;
     private static CreatorLab sCreatorLab;
     private List<Material> mSteelMillingMaterials;
     private List<Material> mCarbideMillingMaterials;
 
     private CreatorLab(Context context) {
+        mContext = context;
+
         mCarbideMillingMaterials = new ArrayList<>();
         mCarbideMillingMaterials.add(new Material("Low carbon unalloyed steel", 137, 198, 0.076, 0.152));
         mCarbideMillingMaterials.add(new Material("Medium carbon unalloyed steel", 122, 191, 0.076, 0.152));
@@ -63,7 +66,7 @@ public class CreatorLab {
 
     public CreatorLab getCreatorLab(Context context){
         if (sCreatorLab == null)
-            sCreatorLab = new CreatorLab(context);
+            sCreatorLab = new CreatorLab(context.getApplicationContext());
 
         return sCreatorLab;
     }
