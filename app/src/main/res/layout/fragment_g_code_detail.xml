@@ -3,21 +3,25 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+    android:background="@drawable/menu_bg">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/g_code_text"
-        style="?android:listSeparatorTextViewStyle"/>
+    <RelativeLayout
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/g_code_circle">
 
-    <TextView
-        android:id="@+id/g_code_detail_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/GCodeDetailStyle"
-        tools:text="G0"/>
-
+        <TextView
+            android:id="@+id/g_code_detail_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/light_gray"
+            android:textSize="20sp"
+            tools:text="G0"/>
+    </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -50,11 +54,11 @@
         android:text="@string/g_code_similar"
         style="?android:listSeparatorTextViewStyle"/>
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/g_code_detail_similar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/GCodeDetailStyle"/>
+        android:padding="5dp"/>
 
     <TextView
         android:id="@+id/g_code_detail_no_similar"

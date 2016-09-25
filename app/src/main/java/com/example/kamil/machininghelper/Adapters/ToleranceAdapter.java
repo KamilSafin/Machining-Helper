@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.kamil.machininghelper.Fragments.ToleranceFragment;
@@ -60,11 +61,13 @@ public class ToleranceAdapter extends RecyclerView.Adapter<ToleranceAdapter.Tole
 
         private Tolerance mTolerance;
         private TextView mToleranceText;
+        private RelativeLayout mBackground;
 
         public ToleranceHolder(View itemView) {
             super(itemView);
 
             mToleranceText = (TextView) itemView.findViewById(R.id.row_tolerance_text);
+            mBackground = (RelativeLayout) itemView.findViewById(R.id.tolerance_bg);
 
             itemView.setOnClickListener(l -> {
                 for (ToleranceHolder toleranceHolder : mToleranceHolders){
@@ -82,11 +85,11 @@ public class ToleranceAdapter extends RecyclerView.Adapter<ToleranceAdapter.Tole
         }
 
         public void setChecked(){
-            itemView.setBackgroundColor(mContext.getResources().getColor(R.color.yellow));
+            mBackground.setBackground(mContext.getResources().getDrawable(R.drawable.tolerance_rect_active));
         }
 
         public void setUnchecked(){
-            itemView.setBackgroundColor(Color.WHITE);
+            mBackground.setBackground(mContext.getResources().getDrawable(R.drawable.tolerance_rect_normal));
         }
     }
 }

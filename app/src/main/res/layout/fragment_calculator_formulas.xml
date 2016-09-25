@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/primary_light">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   xmlns:tools="http://schemas.android.com/tools"
@@ -14,8 +15,9 @@
             android:layout_height="70dp"
             android:layout_gravity="center"
             android:layout_margin="@dimen/button_space"
-            android:orientation="vertical"
-            android:background="@drawable/calculator_result_background">
+            android:background="@drawable/calculator_result_background"
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/result_name"
                 android:layout_width="match_parent"
@@ -24,7 +26,9 @@
                 android:padding="5dp"
                 android:text="Testowy tekst"
                 android:textSize="16sp"
+                android:textColor="@color/light_gray"
                 tools:text="Result"/>
+
             <TextView
                 android:id="@+id/result"
                 android:layout_width="match_parent"
@@ -33,6 +37,7 @@
                 android:padding="5dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:textColor="@color/light_gray"
                 tools:text="Result"/>
         </LinearLayout>
 
@@ -52,6 +57,7 @@
                 android:gravity="right"
                 android:padding="@dimen/button_space"
                 android:textSize="15sp"
+                android:textColor="@color/light_gray"
                 tools:text="Machined diameter"/>
 
             <EditText
@@ -60,6 +66,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="@string/mm"
+                android:textColor="@color/light_gray"
+                android:textColorHint="@color/light_gray"
                 android:inputType="numberDecimal"/>
 
         </LinearLayout>
@@ -80,6 +88,7 @@
                 android:gravity="right"
                 android:padding="@dimen/button_space"
                 android:textSize="15sp"
+                android:textColor="@color/light_gray"
                 tools:text="Spindle speed"/>
 
             <EditText
@@ -88,6 +97,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="@string/rpm"
+                android:textColor="@color/light_gray"
+                android:textColorHint="@color/light_gray"
                 android:inputType="numberDecimal"/>
 
         </LinearLayout>
@@ -107,6 +118,7 @@
                 android:gravity="right"
                 android:padding="@dimen/button_space"
                 android:textSize="15sp"
+                android:textColor="@color/light_gray"
                 tools:text="Cutting speed"/>
 
             <EditText
@@ -115,6 +127,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="@string/m_min"
+                android:textColor="@color/light_gray"
+                android:textColorHint="@color/light_gray"
                 android:inputType="numberDecimal"/>
 
         </LinearLayout>
@@ -135,6 +149,7 @@
                 android:gravity="right"
                 android:padding="@dimen/button_space"
                 android:textSize="15sp"
+                android:textColor="@color/light_gray"
                 tools:text="Cutting depth"/>
 
             <EditText
@@ -143,6 +158,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="@string/mm"
+                android:textColor="@color/light_gray"
+                android:textColorHint="@color/light_gray"
                 android:inputType="numberDecimal"/>
 
         </LinearLayout>
@@ -163,6 +180,7 @@
                 android:gravity="right"
                 android:padding="@dimen/button_space"
                 android:textSize="15sp"
+                android:textColor="@color/light_gray"
                 tools:text="Feed per revolution"/>
 
             <EditText
@@ -171,6 +189,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="@string/mm_r"
+                android:textColor="@color/light_gray"
+                android:textColorHint="@color/light_gray"
                 android:inputType="numberDecimal"/>
 
         </LinearLayout>
@@ -191,6 +211,7 @@
                 android:gravity="right"
                 android:padding="@dimen/button_space"
                 android:textSize="15sp"
+                android:textColor="@color/light_gray"
                 tools:text="Specific cutting force"/>
 
             <EditText
@@ -199,6 +220,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="@string/N_mm2"
+                android:textColor="@color/light_gray"
+                android:textColorHint="@color/light_gray"
                 android:inputType="numberDecimal"/>
 
         </LinearLayout>
@@ -219,6 +242,7 @@
                 android:gravity="right"
                 android:padding="@dimen/button_space"
                 android:textSize="15sp"
+                android:textColor="@color/light_gray"
                 tools:text="Machined lenght"/>
 
             <EditText
@@ -227,6 +251,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="@string/mm"
+                android:textColor="@color/light_gray"
+                android:textColorHint="@color/light_gray"
                 android:inputType="numberDecimal"/>
 
         </LinearLayout>
@@ -247,6 +273,7 @@
                 android:gravity="right"
                 android:padding="@dimen/button_space"
                 android:textSize="15sp"
+                android:textColor="@color/light_gray"
                 tools:text="Cutting parameter at actual depth of cut"/>
 
             <EditText
@@ -255,6 +282,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="@string/mm"
+                android:textColor="@color/light_gray"
+                android:textColorHint="@color/light_gray"
                 android:inputType="numberDecimal"/>
 
         </LinearLayout>
@@ -274,6 +303,7 @@
                 android:gravity="right"
                 android:padding="@dimen/button_space"
                 android:textSize="15sp"
+                android:textColor="@color/light_gray"
                 tools:text="Table feed"/>
 
             <EditText
@@ -282,6 +312,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="@string/mm_min"
+                android:textColor="@color/light_gray"
+                android:textColorHint="@color/light_gray"
                 android:inputType="numberDecimal"/>
 
         </LinearLayout>
@@ -301,6 +333,7 @@
                 android:gravity="right"
                 android:padding="@dimen/button_space"
                 android:textSize="15sp"
+                android:textColor="@color/light_gray"
                 tools:text="Number of effective teeth"/>
 
             <EditText
@@ -309,6 +342,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="@string/pcs"
+                android:textColor="@color/light_gray"
+                android:textColorHint="@color/light_gray"
                 android:inputType="numberDecimal"/>
 
         </LinearLayout>
@@ -328,6 +363,7 @@
                 android:gravity="right"
                 android:padding="@dimen/button_space"
                 android:textSize="15sp"
+                android:textColor="@color/light_gray"
                 tools:text="Feed/tooth"/>
 
             <EditText
@@ -336,6 +372,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="@string/mm"
+                android:textColor="@color/light_gray"
+                android:textColorHint="@color/light_gray"
                 android:inputType="numberDecimal"/>
 
         </LinearLayout>
@@ -355,6 +393,7 @@
                 android:gravity="right"
                 android:padding="@dimen/button_space"
                 android:textSize="15sp"
+                android:textColor="@color/light_gray"
                 tools:text="Detph of cut"/>
 
             <EditText
@@ -363,6 +402,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="@string/mm"
+                android:textColor="@color/light_gray"
+                android:textColorHint="@color/light_gray"
                 android:inputType="numberDecimal"/>
 
         </LinearLayout>
@@ -383,6 +424,7 @@
                 android:gravity="right"
                 android:padding="@dimen/button_space"
                 android:textSize="15sp"
+                android:textColor="@color/light_gray"
                 tools:text="Working engagement"/>
 
             <EditText
@@ -391,6 +433,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="@string/mm"
+                android:textColor="@color/light_gray"
+                android:textColorHint="@color/light_gray"
                 android:inputType="numberDecimal"/>
 
         </LinearLayout>
@@ -411,6 +455,7 @@
                 android:gravity="right"
                 android:padding="@dimen/button_space"
                 android:textSize="15sp"
+                android:textColor="@color/light_gray"
                 tools:text="Net power requirement"/>
 
             <EditText
@@ -419,6 +464,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="@string/kW"
+                android:textColor="@color/light_gray"
+                android:textColorHint="@color/light_gray"
                 android:inputType="numberDecimal"/>
 
         </LinearLayout>
@@ -438,6 +485,7 @@
                 android:gravity="right"
                 android:padding="@dimen/button_space"
                 android:textSize="15sp"
+                android:textColor="@color/light_gray"
                 tools:text="Drill diameter"/>
 
             <EditText
@@ -446,6 +494,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="@string/mm"
+                android:textColor="@color/light_gray"
+                android:textColorHint="@color/light_gray"
                 android:inputType="numberDecimal"/>
 
         </LinearLayout>
@@ -465,6 +515,7 @@
                 android:gravity="right"
                 android:padding="@dimen/button_space"
                 android:textSize="15sp"
+                android:textColor="@color/light_gray"
                 tools:text="Machining drilling length"/>
 
             <EditText
@@ -473,6 +524,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="@string/mm"
+                android:textColor="@color/light_gray"
+                android:textColorHint="@color/light_gray"
                 android:inputType="numberDecimal"/>
 
         </LinearLayout>

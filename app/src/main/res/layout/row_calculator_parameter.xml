@@ -19,6 +19,7 @@
             android:layout_weight="1"
             android:padding="5dp"
             android:textSize="18sp"
+            android:textColor="@color/light_gray"
             tools:text="Parameter 1"/>
 
         <TextView
@@ -30,6 +31,7 @@
             android:background="@drawable/calculator_result_background"
             android:gravity="center"
             android:textSize="14sp"
+            android:textColor="@color/light_gray"
             android:textStyle="bold"
             android:visibility="gone"
             tools:text="1"
@@ -43,6 +45,6 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/light_gray"/>
 
 </LinearLayout>

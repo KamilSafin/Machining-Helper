@@ -1,16 +1,16 @@
 package com.example.kamil.machininghelper.Fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.kamil.machininghelper.Adapters.SimilarAdapter;
 import com.example.kamil.machininghelper.Model.GCode;
 import com.example.kamil.machininghelper.Model.GCodeLab;
 import com.example.kamil.machininghelper.R;
@@ -36,15 +36,15 @@ public class GCodeDetailFragment extends Fragment {
     @BindView(R.id.g_code_detail_parameters)
     TextView mGCodeParameters;
 
-    @BindView(R.id.g_code_detail_similar)
-    ListView mGCodeSimilar;
-
     @BindView(R.id.g_code_detail_no_similar)
     TextView mGCodeNoSimilar;
 
-    private GCodeFragmentCallback mFragmentCallback;
+    @BindView(R.id.g_code_detail_similar)
+    RecyclerView mSimilarRecyclerView;
+
     private List<GCode> mGCodes;
     private GCode mGCode;
+    private int mIndex;
 
     public static Fragment initFragment(int gCodeIndex){
         Bundle bundle = new Bundle();
@@ -55,27 +55,13 @@ public class GCodeDetailFragment extends Fragment {
         return fragment;
     }
 
-    public interface GCodeFragmentCallback{
-        void onSimilarCodeClicked(int index);
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        try {
-            mFragmentCallback = (GCodeFragmentCallback) context;
-        } catch (RuntimeException ex){
-            throw new RuntimeException(getActivity().getLocalClassName() + " must implement " + GCodeFragmentCallback.class.getSimpleName());
-        }
-    }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        int index = getArguments().getInt(ARGS_G_CODE_INDEX);
+        mIndex = getArguments().getInt(ARGS_G_CODE_INDEX);
         mGCodes = GCodeLab.getGCodeLab(getContext()).getGCodes();
-        mGCode = mGCodes.get(index);
+        mGCode = mGCodes.get(mIndex);
     }
 
     @Nullable
@@ -89,29 +75,20 @@ public class GCodeDetailFragment extends Fragment {
         mGCodeFunction.setText(mGCode.getFunction());
         mGCodeParameters.setText(mGCode.getParameters());
         if (!mGCode.getSimilar()[0].equals("brak")) {
-            ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.row_g_code_similar, mGCode.getSimilar());
-            mGCodeSimilar.setAdapter(arrayAdapter);
-            mGCodeSimilar.setOnItemClickListener((adapterView, view1, i, l) -> {
-                int index = 0;
-                for (int j = 0; j < mGCodes.size(); j++) {
-                    if (mGCodes.get(j).getG().equals(mGCode.getSimilar()[i])) {
-                        index = j;
-                    }
-                }
-                mFragmentCallback.onSimilarCodeClicked(index);
-            });
+            if (mGCode.getSimilar().length == 1) {
+                mSimilarRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
+            } else {
+                mSimilarRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+            }
+
+            mSimilarRecyclerView.setAdapter(new SimilarAdapter(getContext(), mIndex));
+
         } else {
-            mGCodeSimilar.setVisibility(View.GONE);
+            mSimilarRecyclerView.setVisibility(View.GONE);
             mGCodeNoSimilar.setVisibility(View.VISIBLE);
             mGCodeNoSimilar.setText(mGCode.getSimilar()[0]);
         }
 
         return view;
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mFragmentCallback = null;
     }
 }

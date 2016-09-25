@@ -1,8 +1,10 @@
 package com.example.kamil.machininghelper.Fragments;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -74,8 +76,15 @@ public class ToleranceFragment extends Fragment {
 
         sToleranceText = (TextView) view.findViewById(R.id.tolerance_text);
 
-        mDimensionRecylerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mAccuracyGradeRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+            mDimensionRecylerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        else
+            mDimensionRecylerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+            mAccuracyGradeRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        else
+            mAccuracyGradeRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
 
         if (savedInstanceState != null){
             sDimensionIndex = savedInstanceState.getInt(ARGS_DIMENSION_ITEM, -1);

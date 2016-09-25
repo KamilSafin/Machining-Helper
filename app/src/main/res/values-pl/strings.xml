@@ -22,7 +22,7 @@
     <string name="chooose_accuracy_text">Wybierz klasę dokadności</string>
     <string name="threads">Gwinty</string>
     <string name="thread_size">Wybierz średnicę gwintu</string>
-    <string name="holes_for_drill">Otwory pod gwint metryczny</string>
+    <string name="holes_for_drill">Otwory pod gwint</string>
     <string name="micrometer">μm</string>
     <string name="tolerance">Tolerancja</string>
     <string name="turning">Toczenie</string>
@@ -34,9 +34,9 @@
     <string name="turning_problems_solution">Porady toczenie</string>
     <string name="milling_problems_solution">Porady frezowanie</string>
     <string name="drilling_problems_solution">Porady wiercenie</string>
-    <string name="turning_parameters">Kalkulator parametrów toczenie</string>
-    <string name="milling_parameters">Kalkulator parametrów frezowanie</string>
-    <string name="drilling_parameters">Kalkulator parametrów wiercenie</string>
+    <string name="turning_parameters">Kalkulator toczenie</string>
+    <string name="milling_parameters">Kalkulator frezowanie</string>
+    <string name="drilling_parameters">Kalkulator wiercenie</string>
     <string name="machning_problems_solution">Środki zaradcze</string>
     <string name="clear_values">Usuń wartości</string>
     <string name="mm">mm</string>

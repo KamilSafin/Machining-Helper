@@ -12,7 +12,7 @@ import android.support.v7.widget.Toolbar;
 import com.example.kamil.machininghelper.Fragments.GCodeDetailFragment;
 import com.example.kamil.machininghelper.R;
 
-public class GCodeDetailActivity extends SingleFragmentActivity implements GCodeDetailFragment.GCodeFragmentCallback{
+public class GCodeDetailActivity extends SingleFragmentActivity{
 
     private static final String EXTRA_G_CODE_INDEX = GCodeDetailActivity.class.getName() + "g_code_index";
 
@@ -40,11 +40,11 @@ public class GCodeDetailActivity extends SingleFragmentActivity implements GCode
         getSupportActionBar().setTitle(getResources().getString(R.string.g_code_base));
     }
 
-    @Override
-    public void onSimilarCodeClicked(int index) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction().replace(R.id.fragment_container, GCodeDetailFragment.initFragment(index));
-        transaction.addToBackStack("fragment");
-        transaction.commit();
-    }
+//    @Override
+//    public void onSimilarCodeClicked(int index) {
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction transaction = fragmentManager.beginTransaction().replace(R.id.fragment_container, GCodeDetailFragment.initFragment(index));
+//        transaction.addToBackStack("fragment");
+//        transaction.commit();
+//    }
 }

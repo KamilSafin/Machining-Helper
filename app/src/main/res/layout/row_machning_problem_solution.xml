@@ -11,13 +11,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/font_size_menu"
         android:textSize="18sp"
+        android:textColor="@color/light_gray"
         tools:text="Problem 1"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:background="@color/colorPrimary"/>
 
 </LinearLayout>
