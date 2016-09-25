@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 
 import com.example.kamil.machininghelper.Fragments.GCodeDetailFragment;
@@ -39,12 +37,4 @@ public class GCodeDetailActivity extends SingleFragmentActivity{
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.g_code_base));
     }
-
-//    @Override
-//    public void onSimilarCodeClicked(int index) {
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        FragmentTransaction transaction = fragmentManager.beginTransaction().replace(R.id.fragment_container, GCodeDetailFragment.initFragment(index));
-//        transaction.addToBackStack("fragment");
-//        transaction.commit();
-//    }
 }

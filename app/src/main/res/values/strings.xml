@@ -21,6 +21,8 @@
     <string name="chooose_dimension_text">Choose dimension</string>
     <string name="chooose_accuracy_text">Choose accuracy grade</string>
     <string name="threads">Threads</string>
+    <string name="metric_threads">Metric threads</string>
+    <string name="fine_threads">Fine threads</string>
     <string name="thread_size">Choose thread size</string>
     <string name="holes_for_drill">Otwory pod gwint metryczny</string>
     <string name="micrometer">μm</string>
@@ -39,6 +41,7 @@
     <string name="drilling_parameters">Drilling advices</string>
     <string name="machning_problems_solution">Problem solution</string>
     <string name="clear_values">Clear values</string>
+    <string name="change_thread_type">Change type</string>
     <string name="mm">mm</string>
     <string name="rpm">rpm</string>
     <string name="m_min">m/min</string>

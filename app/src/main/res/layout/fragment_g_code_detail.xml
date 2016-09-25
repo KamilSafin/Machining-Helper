@@ -4,6 +4,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:padding="10dp"
     android:background="@drawable/menu_bg">
 
     <RelativeLayout
@@ -27,32 +28,62 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/g_code_function"
-        style="?android:listSeparatorTextViewStyle"/>
+        android:textColor="@color/light_gray"
+        android:textAllCaps="true"
+        android:textStyle="bold"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/light_gray"/>
 
     <TextView
         android:id="@+id/g_code_detail_function"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/light_gray"
+        android:textSize="20sp"
         style="@style/GCodeDetailStyle"/>
-
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/g_code_parameters"
-        style="?android:listSeparatorTextViewStyle"/>
+        android:textColor="@color/light_gray"
+        android:textAllCaps="true"
+        android:textStyle="bold"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/light_gray"/>
 
     <TextView
         android:id="@+id/g_code_detail_parameters"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/light_gray"
+        android:textSize="20sp"
         style="@style/GCodeDetailStyle"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/g_code_similar"
-        style="?android:listSeparatorTextViewStyle"/>
+        android:textColor="@color/light_gray"
+        android:textAllCaps="true"
+        android:textStyle="bold"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/light_gray"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/g_code_detail_similar"
@@ -65,6 +96,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        android:textColor="@color/light_gray"
+        android:textSize="20sp"
         style="@style/GCodeDetailStyle"/>
 
 </LinearLayout>

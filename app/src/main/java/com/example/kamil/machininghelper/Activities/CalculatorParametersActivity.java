@@ -49,7 +49,7 @@ public class CalculatorParametersActivity extends SingleFragmentActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar, menu);
+        getMenuInflater().inflate(R.menu.trash, menu);
         return true;
     }
 

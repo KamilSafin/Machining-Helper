@@ -21,6 +21,8 @@
     <string name="chooose_dimension_text">Wybierz wymiar</string>
     <string name="chooose_accuracy_text">Wybierz klasę dokadności</string>
     <string name="threads">Gwinty</string>
+    <string name="metric_threads">Gwinty metryczne</string>
+    <string name="fine_threads">Gwinty drobnozwojne</string>
     <string name="thread_size">Wybierz średnicę gwintu</string>
     <string name="holes_for_drill">Otwory pod gwint</string>
     <string name="micrometer">μm</string>
@@ -39,6 +41,7 @@
     <string name="drilling_parameters">Kalkulator wiercenie</string>
     <string name="machning_problems_solution">Środki zaradcze</string>
     <string name="clear_values">Usuń wartości</string>
+    <string name="change_thread_type">Zmień typ</string>
     <string name="mm">mm</string>
     <string name="rpm">obr./min.</string>
     <string name="m_min">m/min.</string>
@@ -166,8 +169,8 @@
     </array>
 
     <array name="g_codes">
-        <item>ruch szybki(ustawczy)</item>
-        <item>ruch roboczy(liniowy)</item>
+        <item>ruch szybki (ustawczy)</item>
+        <item>ruch roboczy (liniowy)</item>
         <item>ruch kołowy (CW)</item>
         <item>ruch kołowy (CCW)</item>
         <item>koliste frezowanie gniazda (CW)</item>

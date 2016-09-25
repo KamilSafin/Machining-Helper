@@ -21,7 +21,8 @@
         <activity android:name=".Activities.GCodeBaseActivity"/>
         <activity android:name=".Activities.ParametersCreatorActivity">
         </activity>
-        <activity android:name=".Activities.GCodeDetailActivity">
+        <activity android:name=".Activities.GCodeDetailActivity"
+            android:parentActivityName=".Activities.GCodeBaseActivity">
         </activity>
         <activity android:name=".Activities.MachiningProblemsActivity">
         </activity>

@@ -21,9 +21,11 @@
         android:textStyle="bold"/>
 
     <TextView
+        android:id="@+id/thread_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/threads"
+        android:layout_marginTop="10dp"
+        android:text="@string/metric_threads"
         android:textColor="@color/light_gray"
         android:textAllCaps="true"
         android:textStyle="bold"/>
