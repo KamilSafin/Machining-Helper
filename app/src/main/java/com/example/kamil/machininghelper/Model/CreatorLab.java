@@ -64,7 +64,7 @@ public class CreatorLab {
         mSteelMillingMaterials.add(new Material("Brass - bronze alloy", 76, 91, 0.102, 0.203));
     }
 
-    public CreatorLab getCreatorLab(Context context){
+    public static CreatorLab getCreatorLab(Context context){
         if (sCreatorLab == null)
             sCreatorLab = new CreatorLab(context.getApplicationContext());
 

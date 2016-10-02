@@ -42,6 +42,11 @@
     <string name="machning_problems_solution">Problem solution</string>
     <string name="clear_values">Clear values</string>
     <string name="change_thread_type">Change type</string>
+    <string name="choose_material">Choose material</string>
+    <string name="recommended_values">recommended values</string>
+    <string name="choose_tool_type">Choose tool type</string>
+
+    <!-- units -->
     <string name="mm">mm</string>
     <string name="rpm">rpm</string>
     <string name="m_min">m/min</string>

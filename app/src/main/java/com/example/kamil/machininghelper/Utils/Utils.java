@@ -9,10 +9,10 @@ import java.text.DecimalFormat;
 public class Utils {
 
     public static String fmt3(BigDecimal decimal){
-        return new DecimalFormat("#.###").format(decimal).replace(",",".");
+        return new DecimalFormat("#.###").format(decimal).replace(",", ".");
     }
 
     public static String fmt4(BigDecimal decimal){
-        return new DecimalFormat("#.####").format(decimal).replace(",",".");
+        return new DecimalFormat("#.####").format(decimal).replace(",", ".");
     }
 }

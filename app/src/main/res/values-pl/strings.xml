@@ -42,6 +42,11 @@
     <string name="machning_problems_solution">Środki zaradcze</string>
     <string name="clear_values">Usuń wartości</string>
     <string name="change_thread_type">Zmień typ</string>
+    <string name="choose_material">Wybierz materiał</string>
+    <string name="recommended_values">rekomendowane wartości</string>
+    <string name="choose_tool_type">Wybierz rodzaj narzędzia</string>
+
+    <!-- units -->
     <string name="mm">mm</string>
     <string name="rpm">obr./min.</string>
     <string name="m_min">m/min.</string>
