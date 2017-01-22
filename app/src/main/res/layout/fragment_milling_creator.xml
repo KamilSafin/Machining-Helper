@@ -9,10 +9,10 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="5dp"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:padding="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,8 +25,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="@string/choose_tool_type"
-                android:textColor="@color/light_gray"
                 android:textAllCaps="true"
+                android:textColor="@color/light_gray"
                 android:textStyle="bold"/>
 
             <LinearLayout
@@ -100,11 +100,11 @@
                 android:id="@+id/cutting_diameter_at_depth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_rect"
                 android:orientation="vertical"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/creator_item_rect"
                 android:visibility="gone"
                 tools:visibility="visible">
 
@@ -134,11 +134,11 @@
                 android:id="@+id/number_of_effective_teeth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_rect"
                 android:orientation="vertical"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/creator_item_rect"
                 android:visibility="gone"
                 tools:visibility="visible">
 
@@ -168,11 +168,11 @@
                 android:id="@+id/cutting_speed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_rect"
                 android:orientation="vertical"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/creator_item_rect"
                 android:visibility="gone"
                 tools:visibility="visible">
 
@@ -196,15 +196,39 @@
                     android:textSize="15sp"
                     tools:text="Cutting speed"/>
 
-                <EditText
-                    android:id="@+id/cutting_speed_edit_text"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/cutting_speed_warning_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_warning"
+                        android:visibility="gone"/>
+
+                    <EditText
+                        android:id="@+id/cutting_speed_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:hint="@string/m_min"
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/light_gray"
+                        android:textColorHint="@color/light_gray"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/cutting_speed_warning_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:hint="@string/m_min"
-                    android:inputType="numberDecimal"
-                    android:textColor="@color/light_gray"
-                    android:textColorHint="@color/light_gray"/>
+                    android:padding="@dimen/button_space"
+                    android:text="@string/recommended_value_exceeded"
+                    android:textColor="@color/warning_text"
+                    android:textSize="12sp"
+                    android:visibility="gone"/>
 
             </LinearLayout>
 
@@ -212,11 +236,11 @@
                 android:id="@+id/feed_tooth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_rect"
                 android:orientation="vertical"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/creator_item_rect"
                 android:visibility="gone"
                 tools:visibility="visible">
 
@@ -226,8 +250,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:padding="@dimen/button_space"
-                    android:textSize="15sp"
                     android:textColor="@color/light_gray"
+                    android:textSize="15sp"
                     tools:text="Feed/tooth"/>
 
                 <TextView
@@ -240,15 +264,210 @@
                     android:textSize="15sp"
                     tools:text="Feed/tooth"/>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/feed_tooth_warning_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_warning"
+                        android:visibility="gone"/>
+
+                    <EditText
+                        android:id="@+id/feed_tooth_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:hint="@string/mm"
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/light_gray"
+                        android:textColorHint="@color/light_gray"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/feed_tooth_warning_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:text="@string/recommended_value_exceeded"
+                    android:textColor="@color/warning_text"
+                    android:textSize="12sp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/spindle_speed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_main_rect"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/spindle_speed_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15sp"
+                    tools:text="Number of effective teeth"/>
+
+                <TextView
+                    android:id="@+id/spindle_speed_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="@string/rpm"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/light_gray"
+                    android:textColorHint="@color/light_gray"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/table_feed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_main_rect"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/table_feed_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15sp"
+                    tools:text="Number of effective teeth"/>
+
+                <TextView
+                    android:id="@+id/table_feed_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="@string/mm_min"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/light_gray"
+                    android:textColorHint="@color/light_gray"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/depth_of_cut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_rect"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/depth_of_cut_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15sp"
+                    tools:text="Number of effective teeth"/>
+
                 <EditText
-                    android:id="@+id/feed_tooth_edit_text"
+                    android:id="@+id/depth_of_cut_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:hint="@string/mm"
+                    android:inputType="numberDecimal"
                     android:textColor="@color/light_gray"
-                    android:textColorHint="@color/light_gray"
-                    android:inputType="numberDecimal"/>
+                    android:textColorHint="@color/light_gray"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/working_engagement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_rect"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/working_engagement_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15sp"
+                    tools:text="Number of effective teeth"/>
+
+                <EditText
+                    android:id="@+id/working_engagement_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="@string/mm"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/light_gray"
+                    android:textColorHint="@color/light_gray"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/metal_removal_rate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_main_rect"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/metal_removal_rate_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15sp"
+                    tools:text="Number of effective teeth"/>
+
+                <TextView
+                    android:id="@+id/metal_removal_rate_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="@string/mm"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/light_gray"
+                    android:textColorHint="@color/light_gray"/>
 
             </LinearLayout>
 

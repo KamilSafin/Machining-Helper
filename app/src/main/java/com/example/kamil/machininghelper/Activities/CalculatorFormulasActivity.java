@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.kamil.machininghelper.Fragments.CalculatorFormulasFragment;
-import com.example.kamil.machininghelper.Model.CachedValuesLab;
+import com.example.kamil.machininghelper.Model.CalculatorCachedValuesLab;
 import com.example.kamil.machininghelper.R;
 
 public class CalculatorFormulasActivity extends SingleFragmentActivity {
@@ -67,13 +67,13 @@ public class CalculatorFormulasActivity extends SingleFragmentActivity {
             case R.id.trash:
                 switch (mIndex){
                     case 0:
-                        CachedValuesLab.getCachedValuesLab(this).removeTurningValues();
+                        CalculatorCachedValuesLab.getCachedValuesLab(this).removeTurningValues();
                         break;
                     case 1:
-                        CachedValuesLab.getCachedValuesLab(this).removeMillingValues();
+                        CalculatorCachedValuesLab.getCachedValuesLab(this).removeMillingValues();
                         break;
                     case 2:
-                        CachedValuesLab.getCachedValuesLab(this).removeDrillingValues();
+                        CalculatorCachedValuesLab.getCachedValuesLab(this).removeDrillingValues();
                         break;
                 }
                 ((CalculatorFormulasFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container)).initView();

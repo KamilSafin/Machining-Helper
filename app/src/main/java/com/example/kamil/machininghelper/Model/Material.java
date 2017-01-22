@@ -1,9 +1,9 @@
 package com.example.kamil.machininghelper.Model;
 
-/**
- * Created by Kamil Safin on 9/18/2016.
- */
-public class Material {
+
+import java.io.Serializable;
+
+public class Material implements Serializable {
 
     private String mName;
     private double mMinCuttingSpeed;

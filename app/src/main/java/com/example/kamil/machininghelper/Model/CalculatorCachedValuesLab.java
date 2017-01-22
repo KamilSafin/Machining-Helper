@@ -7,10 +7,10 @@ import java.math.RoundingMode;
 /**
  * Created by Kamil Safin on 9/8/2016.
  */
-public class CachedValuesLab {
+public class CalculatorCachedValuesLab {
 
     private Context mContext;
-    private static CachedValuesLab sCachedValuesLab;
+    private static CalculatorCachedValuesLab sCalculatorCachedValuesLab;
 
     //turning
     private BigDecimal mTurningCuttingSpeed;
@@ -54,15 +54,15 @@ public class CachedValuesLab {
     private BigDecimal mDrillingMachiningDrillingLength;
     private BigDecimal mDrillingSpecificCuttingForce;
 
-    private CachedValuesLab(Context context){
+    private CalculatorCachedValuesLab(Context context){
         mContext = context;
     }
 
-    public static CachedValuesLab getCachedValuesLab(Context context) {
-        if (sCachedValuesLab == null)
-            sCachedValuesLab = new CachedValuesLab(context.getApplicationContext());
+    public static CalculatorCachedValuesLab getCachedValuesLab(Context context) {
+        if (sCalculatorCachedValuesLab == null)
+            sCalculatorCachedValuesLab = new CalculatorCachedValuesLab(context.getApplicationContext());
 
-        return sCachedValuesLab;
+        return sCalculatorCachedValuesLab;
     }
 
     public void updateTurningValues(int itemPos){

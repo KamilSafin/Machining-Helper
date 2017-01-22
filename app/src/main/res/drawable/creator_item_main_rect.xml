@@ -3,6 +3,6 @@
        android:shape="rectangle">
     <size android:height="56dp"
           android:width="56dp"/>
-    <solid android:color="@color/colorAccent"/>
+    <solid android:color="@color/crator_item_main_bg"/>
     <corners android:radius="5dp"/>
 </shape>

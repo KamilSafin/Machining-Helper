@@ -5,9 +5,6 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Kamil Safin on 9/18/2016.
- */
 public class CreatorLab {
 
     private Context mContext;

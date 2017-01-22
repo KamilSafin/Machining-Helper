@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.example.kamil.machininghelper.Model.CachedValuesLab;
+import com.example.kamil.machininghelper.Model.CalculatorCachedValuesLab;
 import com.example.kamil.machininghelper.R;
 import com.example.kamil.machininghelper.Utils.Utils;
 import java.math.BigDecimal;
@@ -177,9 +177,9 @@ public class CalculatorFormulasFragment extends Fragment {
     @BindView(R.id.result_name)
     TextView mResultName;
 
-    private CachedValuesLab mCachedValuesLab;
+    private CalculatorCachedValuesLab mCalculatorCachedValuesLab;
     private int mItemPos;
-    private int mIndex;
+    private MachiningType mMachiningType;
     private String[] titles;
 
     public static Fragment initFragment(int itemPos, int index){
@@ -196,9 +196,20 @@ public class CalculatorFormulasFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mCachedValuesLab = CachedValuesLab.getCachedValuesLab(getContext());
+        mCalculatorCachedValuesLab = CalculatorCachedValuesLab.getCachedValuesLab(getContext());
         mItemPos = getArguments().getInt(ARGS_FRAGMENT_ITEM_POS);
-        mIndex = getArguments().getInt(ARGS_FRAGMENT_INDEX);
+        int machiningType = getArguments().getInt(ARGS_FRAGMENT_INDEX);
+        switch (machiningType) {
+            case 0:
+                mMachiningType = MachiningType.TURNING;
+                break;
+            case 1:
+                mMachiningType = MachiningType.MILLING;
+                break;
+            case 2:
+                mMachiningType = MachiningType.DRILLING;
+                break;
+        }
     }
 
     @Nullable
@@ -208,16 +219,16 @@ public class CalculatorFormulasFragment extends Fragment {
 
         ButterKnife.bind(this, view);
 
-        switch (mIndex){
-            case 0:
+        switch (mMachiningType){
+            case TURNING:
                 titles = getResources().getStringArray(R.array.turning_calculator_parameters);
                 mResultName.setText(titles[mItemPos]);
                 break;
-            case 1:
+            case MILLING:
                 titles = getResources().getStringArray(R.array.milling_calculator_parameters);
                 mResultName.setText(titles[mItemPos]);
                 break;
-            case 2:
+            case DRILLING:
                 titles = getResources().getStringArray(R.array.drilling_calculator_parameters);
                 mResultName.setText(titles[mItemPos]);
                 break;
@@ -234,70 +245,55 @@ public class CalculatorFormulasFragment extends Fragment {
 
     private void addListeners(){
         mCuttingSpeedEditText.addTextChangedListener(mCuttingSpeedEditTextWatcher);
-
         mCuttingDepthEditText.addTextChangedListener(mCuttingDepthEditTextWatcher);
-
         mMachinedDiameterEditText.addTextChangedListener(mMachinedDiameterEditTextWatcher);
-
         mSpindleSpeedEditText.addTextChangedListener(mSpindleSpeedEditTextWatcher);
-
         mFeedPerRevolutionEditText.addTextChangedListener(mFeedPerRevolutionEditTextWatcher);
-
         mSpecificCuttingForceEditText.addTextChangedListener(mSpecificCuttingForceEditTextWatcher);
-
         mMachinedLengthEditText.addTextChangedListener(mMachinedLengthEditTextWatcher);
-
         mCuttingDiameterAtDepthEditText.addTextChangedListener(mCuttingDiameterAtDepthEditTextWatcher);
-
         mTableFeedEditText.addTextChangedListener(mTableFeedEditTextWatcher);
-
         mNumberOfEffectiveTeethEditText.addTextChangedListener(mNumberOfEffectiveTeethEditTextWatcher);
-
         mFeedToothEditText.addTextChangedListener(mFeedToothEditTextWatcher);
-
         mDepthOfCutEditText.addTextChangedListener(mDepthOfCutEditTextWatcher);
-
         mWorkingEngagementEditText.addTextChangedListener(mWorkingEngagementEditTextWatcher);
-
         mNetPowerRequirementEditText.addTextChangedListener(mNetPowerRequirementEditTextWatcher);
-
         mDrillDiameterEditText.addTextChangedListener(mDrillDiameterEditTextWatcher);
-
         mMachiningDrillingLengthEditText.addTextChangedListener(mMachiningDrillingLengthEditTextWatcher);
     }
 
     private void initEditTexts(){
-        switch (mIndex){
-            case 0:
-                mMachinedDiameterEditText.setText(mCachedValuesLab.getTurningMachinedDiameter() == null ? null : Utils.fmt4(mCachedValuesLab.getTurningMachinedDiameter()));
-                mSpindleSpeedEditText.setText(mCachedValuesLab.getTurningSpindleSpeed() == null ? null : Utils.fmt4(mCachedValuesLab.getTurningSpindleSpeed()));
-                mCuttingSpeedEditText.setText(mCachedValuesLab.getTurningCuttingSpeed() == null ? null : Utils.fmt4(mCachedValuesLab.getTurningCuttingSpeed()));
-                mCuttingDepthEditText.setText(mCachedValuesLab.getTurningCuttingDepth() == null ? null : Utils.fmt4(mCachedValuesLab.getTurningCuttingDepth()));
-                mFeedPerRevolutionEditText.setText(mCachedValuesLab.getTurningFeedPerRevolution() == null ? null : Utils.fmt4(mCachedValuesLab.getTurningFeedPerRevolution()));
-                mSpecificCuttingForceEditText.setText(mCachedValuesLab.getTurningSpecificCuttingForce() == null ? null : Utils.fmt4(mCachedValuesLab.getTurningSpecificCuttingForce()));
-                mMachinedLengthEditText.setText(mCachedValuesLab.getTurningMachinedLength() == null ? null : Utils.fmt4(mCachedValuesLab.getTurningMachinedLength()));
+        switch (mMachiningType){
+            case TURNING:
+                mMachinedDiameterEditText.setText(mCalculatorCachedValuesLab.getTurningMachinedDiameter() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getTurningMachinedDiameter()));
+                mSpindleSpeedEditText.setText(mCalculatorCachedValuesLab.getTurningSpindleSpeed() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getTurningSpindleSpeed()));
+                mCuttingSpeedEditText.setText(mCalculatorCachedValuesLab.getTurningCuttingSpeed() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getTurningCuttingSpeed()));
+                mCuttingDepthEditText.setText(mCalculatorCachedValuesLab.getTurningCuttingDepth() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getTurningCuttingDepth()));
+                mFeedPerRevolutionEditText.setText(mCalculatorCachedValuesLab.getTurningFeedPerRevolution() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getTurningFeedPerRevolution()));
+                mSpecificCuttingForceEditText.setText(mCalculatorCachedValuesLab.getTurningSpecificCuttingForce() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getTurningSpecificCuttingForce()));
+                mMachinedLengthEditText.setText(mCalculatorCachedValuesLab.getTurningMachinedLength() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getTurningMachinedLength()));
                 break;
-            case 1:
-                mCuttingDiameterAtDepthEditText.setText(mCachedValuesLab.getMillingCuttingDiameterAtDepth() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingCuttingDiameterAtDepth()));
-                mSpindleSpeedEditText.setText(mCachedValuesLab.getMillingSpindleSpeed() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingSpindleSpeed()));
-                mCuttingSpeedEditText.setText(mCachedValuesLab.getMillingCuttingSpeed() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingCuttingSpeed()));
-                mTableFeedEditText.setText(mCachedValuesLab.getMillingTableFeed() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingTableFeed()));
-                mNumberOfEffectiveTeethEditText.setText(mCachedValuesLab.getMillingNumberOfEffectiveTeeth() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingNumberOfEffectiveTeeth()));
-                mFeedToothEditText.setText(mCachedValuesLab.getMillingFeedTooth() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingFeedTooth()));
-                mDepthOfCutEditText.setText(mCachedValuesLab.getMillingDepthOfCut() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingDepthOfCut()));
-                mWorkingEngagementEditText.setText(mCachedValuesLab.getMillingWorkingEngagement() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingWorkingEngagement()));
-                mSpecificCuttingForceEditText.setText(mCachedValuesLab.getMillingSpecificCuttingForce() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingSpecificCuttingForce()));
-                mNetPowerRequirementEditText.setText(mCachedValuesLab.getMillingNetPowerRequirement() == null ? null : Utils.fmt4(mCachedValuesLab.getMillingNetPowerRequirement()));
+            case MILLING:
+                mCuttingDiameterAtDepthEditText.setText(mCalculatorCachedValuesLab.getMillingCuttingDiameterAtDepth() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getMillingCuttingDiameterAtDepth()));
+                mSpindleSpeedEditText.setText(mCalculatorCachedValuesLab.getMillingSpindleSpeed() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getMillingSpindleSpeed()));
+                mCuttingSpeedEditText.setText(mCalculatorCachedValuesLab.getMillingCuttingSpeed() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getMillingCuttingSpeed()));
+                mTableFeedEditText.setText(mCalculatorCachedValuesLab.getMillingTableFeed() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getMillingTableFeed()));
+                mNumberOfEffectiveTeethEditText.setText(mCalculatorCachedValuesLab.getMillingNumberOfEffectiveTeeth() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getMillingNumberOfEffectiveTeeth()));
+                mFeedToothEditText.setText(mCalculatorCachedValuesLab.getMillingFeedTooth() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getMillingFeedTooth()));
+                mDepthOfCutEditText.setText(mCalculatorCachedValuesLab.getMillingDepthOfCut() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getMillingDepthOfCut()));
+                mWorkingEngagementEditText.setText(mCalculatorCachedValuesLab.getMillingWorkingEngagement() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getMillingWorkingEngagement()));
+                mSpecificCuttingForceEditText.setText(mCalculatorCachedValuesLab.getMillingSpecificCuttingForce() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getMillingSpecificCuttingForce()));
+                mNetPowerRequirementEditText.setText(mCalculatorCachedValuesLab.getMillingNetPowerRequirement() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getMillingNetPowerRequirement()));
                 break;
-            case 2:
-                mDrillDiameterEditText.setText(mCachedValuesLab.getDrillingDrillDiameter() == null ? null : Utils.fmt4(mCachedValuesLab.getDrillingDrillDiameter()));
-                mSpindleSpeedEditText.setText(mCachedValuesLab.getDrillingSpindleSpeed() == null ? null : Utils.fmt4(mCachedValuesLab.getDrillingSpindleSpeed()));
-                mCuttingSpeedEditText.setText(mCachedValuesLab.getDrillingCuttingSpeed() == null ? null : Utils.fmt4(mCachedValuesLab.getDrillingCuttingSpeed()));
-                mTableFeedEditText.setText(mCachedValuesLab.getDrillingPenetrationRate() == null ? null : Utils.fmt4(mCachedValuesLab.getDrillingPenetrationRate()));
-                mFeedPerRevolutionEditText.setText(mCachedValuesLab.getDrillingFeedPerRevolution() == null ? null : Utils.fmt4(mCachedValuesLab.getDrillingFeedPerRevolution()));
-                mMachiningDrillingLengthEditText.setText(mCachedValuesLab.getDrillingMachiningDrillingLength() == null ? null : Utils.fmt4(mCachedValuesLab.getDrillingMachiningDrillingLength()));
-                mSpecificCuttingForceEditText.setText(mCachedValuesLab.getDrillingSpecificCuttingForce() == null ? null : Utils.fmt4(mCachedValuesLab.getDrillingSpecificCuttingForce()));
-                mNetPowerRequirementEditText.setText(mCachedValuesLab.getDrillingNetPowerRequirement() == null ? null : Utils.fmt4(mCachedValuesLab.getDrillingNetPowerRequirement()));
+            case DRILLING:
+                mDrillDiameterEditText.setText(mCalculatorCachedValuesLab.getDrillingDrillDiameter() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getDrillingDrillDiameter()));
+                mSpindleSpeedEditText.setText(mCalculatorCachedValuesLab.getDrillingSpindleSpeed() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getDrillingSpindleSpeed()));
+                mCuttingSpeedEditText.setText(mCalculatorCachedValuesLab.getDrillingCuttingSpeed() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getDrillingCuttingSpeed()));
+                mTableFeedEditText.setText(mCalculatorCachedValuesLab.getDrillingPenetrationRate() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getDrillingPenetrationRate()));
+                mFeedPerRevolutionEditText.setText(mCalculatorCachedValuesLab.getDrillingFeedPerRevolution() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getDrillingFeedPerRevolution()));
+                mMachiningDrillingLengthEditText.setText(mCalculatorCachedValuesLab.getDrillingMachiningDrillingLength() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getDrillingMachiningDrillingLength()));
+                mSpecificCuttingForceEditText.setText(mCalculatorCachedValuesLab.getDrillingSpecificCuttingForce() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getDrillingSpecificCuttingForce()));
+                mNetPowerRequirementEditText.setText(mCalculatorCachedValuesLab.getDrillingNetPowerRequirement() == null ? null : Utils.fmt4(mCalculatorCachedValuesLab.getDrillingNetPowerRequirement()));
                 break;
         }
     }
@@ -340,8 +336,8 @@ public class CalculatorFormulasFragment extends Fragment {
         mDrillDiameter.setVisibility(View.GONE);
         mMachiningDrillingLength.setVisibility(View.GONE);
 
-        switch (mIndex){
-            case 0:
+        switch (mMachiningType){
+            case TURNING:
                 switch (mItemPos){
                     case 0:
                         mMachinedDiameter.setVisibility(View.VISIBLE);
@@ -369,7 +365,7 @@ public class CalculatorFormulasFragment extends Fragment {
                         break;
                 }
                 break;
-            case 1:
+            case MILLING:
                 switch (mItemPos){
                     case 0:
                         mCuttingDiameterAtDepth.setVisibility(View.VISIBLE);
@@ -406,7 +402,7 @@ public class CalculatorFormulasFragment extends Fragment {
                         break;
                 }
                 break;
-            case 2:
+            case DRILLING:
                 switch (mItemPos){
                     case 0:
                         mDrillDiameter.setVisibility(View.VISIBLE);
@@ -450,173 +446,173 @@ public class CalculatorFormulasFragment extends Fragment {
 
     private void initResult(){
 
-        switch (mIndex){
-            case 0:
+        switch (mMachiningType){
+            case TURNING:
                 switch (mItemPos){
                     case 0:
-                        mCachedValuesLab.updateTurningValues(0);
-                        if (mCachedValuesLab.getTurningCuttingSpeed() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getTurningCuttingSpeed()) + " " + getResources().getString(R.string.m_min));
+                        mCalculatorCachedValuesLab.updateTurningValues(0);
+                        if (mCalculatorCachedValuesLab.getTurningCuttingSpeed() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getTurningCuttingSpeed()) + " " + getResources().getString(R.string.m_min));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 1:
-                        mCachedValuesLab.updateTurningValues(1);
-                        if (mCachedValuesLab.getTurningSpindleSpeed() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getTurningSpindleSpeed()) + " " + getResources().getString(R.string.rpm));
+                        mCalculatorCachedValuesLab.updateTurningValues(1);
+                        if (mCalculatorCachedValuesLab.getTurningSpindleSpeed() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getTurningSpindleSpeed()) + " " + getResources().getString(R.string.rpm));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 2:
-                        mCachedValuesLab.updateTurningValues(2);
-                        if (mCachedValuesLab.getTurningMetalRemovalRate() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getTurningMetalRemovalRate()) + " " + getResources().getString(R.string.cm3_min));
+                        mCalculatorCachedValuesLab.updateTurningValues(2);
+                        if (mCalculatorCachedValuesLab.getTurningMetalRemovalRate() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getTurningMetalRemovalRate()) + " " + getResources().getString(R.string.cm3_min));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 3:
-                        mCachedValuesLab.updateTurningValues(3);
-                        if (mCachedValuesLab.getTurningNetPowerRequirement() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getTurningNetPowerRequirement()) + " " + getResources().getString(R.string.kW));
+                        mCalculatorCachedValuesLab.updateTurningValues(3);
+                        if (mCalculatorCachedValuesLab.getTurningNetPowerRequirement() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getTurningNetPowerRequirement()) + " " + getResources().getString(R.string.kW));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 4:
-                        mCachedValuesLab.updateTurningValues(4);
-                        if (mCachedValuesLab.getTurningMachiningTime() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getTurningMachiningTime()) + " " + getResources().getString(R.string.min));
+                        mCalculatorCachedValuesLab.updateTurningValues(4);
+                        if (mCalculatorCachedValuesLab.getTurningMachiningTime() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getTurningMachiningTime()) + " " + getResources().getString(R.string.min));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                 }
                 break;
-            case 1:
+            case MILLING:
                 switch (mItemPos){
                     case 0:
-                        mCachedValuesLab.updateMillingValues(0);
-                        if (mCachedValuesLab.getMillingCuttingSpeed() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getMillingCuttingSpeed()) + " " + getResources().getString(R.string.m_min));
+                        mCalculatorCachedValuesLab.updateMillingValues(0);
+                        if (mCalculatorCachedValuesLab.getMillingCuttingSpeed() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getMillingCuttingSpeed()) + " " + getResources().getString(R.string.m_min));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 1:
-                        mCachedValuesLab.updateMillingValues(1);
-                        if (mCachedValuesLab.getMillingSpindleSpeed() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getMillingSpindleSpeed()) + " " + getResources().getString(R.string.rpm));
+                        mCalculatorCachedValuesLab.updateMillingValues(1);
+                        if (mCalculatorCachedValuesLab.getMillingSpindleSpeed() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getMillingSpindleSpeed()) + " " + getResources().getString(R.string.rpm));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 2:
-                        mCachedValuesLab.updateMillingValues(2);
-                        if (mCachedValuesLab.getMillingFeedTooth() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getMillingFeedTooth()) + " " + getResources().getString(R.string.mm));
+                        mCalculatorCachedValuesLab.updateMillingValues(2);
+                        if (mCalculatorCachedValuesLab.getMillingFeedTooth() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getMillingFeedTooth()) + " " + getResources().getString(R.string.mm));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 3:
-                        mCachedValuesLab.updateMillingValues(3);
-                        if (mCachedValuesLab.getMillingTableFeed() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getMillingTableFeed()) + " " + getResources().getString(R.string.mm_min));
+                        mCalculatorCachedValuesLab.updateMillingValues(3);
+                        if (mCalculatorCachedValuesLab.getMillingTableFeed() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getMillingTableFeed()) + " " + getResources().getString(R.string.mm_min));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 4:
-                        mCachedValuesLab.updateMillingValues(4);
-                        if (mCachedValuesLab.getMillingMetalRemovalRate() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getMillingMetalRemovalRate()) + " " + getResources().getString(R.string.cm3_min));
+                        mCalculatorCachedValuesLab.updateMillingValues(4);
+                        if (mCalculatorCachedValuesLab.getMillingMetalRemovalRate() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getMillingMetalRemovalRate()) + " " + getResources().getString(R.string.cm3_min));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 5:
-                        mCachedValuesLab.updateMillingValues(5);
-                        if (mCachedValuesLab.getMillingNetPowerRequirement() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getMillingNetPowerRequirement()) + " " + getResources().getString(R.string.kW));
+                        mCalculatorCachedValuesLab.updateMillingValues(5);
+                        if (mCalculatorCachedValuesLab.getMillingNetPowerRequirement() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getMillingNetPowerRequirement()) + " " + getResources().getString(R.string.kW));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 6:
-                        mCachedValuesLab.updateMillingValues(6);
-                        if (mCachedValuesLab.getMillingTorque() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getMillingTorque()) + " " + getResources().getString(R.string.Nm));
+                        mCalculatorCachedValuesLab.updateMillingValues(6);
+                        if (mCalculatorCachedValuesLab.getMillingTorque() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getMillingTorque()) + " " + getResources().getString(R.string.Nm));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                 }
                 break;
-            case 2:
+            case DRILLING:
                 switch (mItemPos){
                     case 0:
-                        mCachedValuesLab.updateDrillingValues(0);
-                        if (mCachedValuesLab.getDrillingCuttingSpeed() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getDrillingCuttingSpeed()) + " " + getResources().getString(R.string.m_min));
+                        mCalculatorCachedValuesLab.updateDrillingValues(0);
+                        if (mCalculatorCachedValuesLab.getDrillingCuttingSpeed() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getDrillingCuttingSpeed()) + " " + getResources().getString(R.string.m_min));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 1:
-                        mCachedValuesLab.updateDrillingValues(1);
-                        if (mCachedValuesLab.getDrillingSpindleSpeed() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getDrillingSpindleSpeed()) + " " + getResources().getString(R.string.rpm));
+                        mCalculatorCachedValuesLab.updateDrillingValues(1);
+                        if (mCalculatorCachedValuesLab.getDrillingSpindleSpeed() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getDrillingSpindleSpeed()) + " " + getResources().getString(R.string.rpm));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 2:
-                        mCachedValuesLab.updateDrillingValues(2);
-                        if (mCachedValuesLab.getDrillingFeedPerRevolution() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getDrillingFeedPerRevolution()) + " " + getResources().getString(R.string.mm_r));
+                        mCalculatorCachedValuesLab.updateDrillingValues(2);
+                        if (mCalculatorCachedValuesLab.getDrillingFeedPerRevolution() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getDrillingFeedPerRevolution()) + " " + getResources().getString(R.string.mm_r));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 3:
-                        mCachedValuesLab.updateDrillingValues(3);
-                        if (mCachedValuesLab.getDrillingPenetrationRate() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getDrillingPenetrationRate()) + " " + getResources().getString(R.string.mm_min));
+                        mCalculatorCachedValuesLab.updateDrillingValues(3);
+                        if (mCalculatorCachedValuesLab.getDrillingPenetrationRate() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getDrillingPenetrationRate()) + " " + getResources().getString(R.string.mm_min));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 4:
-                        mCachedValuesLab.updateDrillingValues(4);
-                        if (mCachedValuesLab.getDrillingMetalRemovalRate() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getDrillingMetalRemovalRate()) + " " + getResources().getString(R.string.cm3_min));
+                        mCalculatorCachedValuesLab.updateDrillingValues(4);
+                        if (mCalculatorCachedValuesLab.getDrillingMetalRemovalRate() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getDrillingMetalRemovalRate()) + " " + getResources().getString(R.string.cm3_min));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 5:
-                        mCachedValuesLab.updateDrillingValues(5);
-                        if (mCachedValuesLab.getDrillingMachiningTime() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getDrillingMachiningTime()) + " " + getResources().getString(R.string.min));
+                        mCalculatorCachedValuesLab.updateDrillingValues(5);
+                        if (mCalculatorCachedValuesLab.getDrillingMachiningTime() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getDrillingMachiningTime()) + " " + getResources().getString(R.string.min));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 6:
-                        mCachedValuesLab.updateDrillingValues(6);
-                        if (mCachedValuesLab.getDrillingNetPowerRequirement() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getDrillingNetPowerRequirement()) + " " + getResources().getString(R.string.kW));
+                        mCalculatorCachedValuesLab.updateDrillingValues(6);
+                        if (mCalculatorCachedValuesLab.getDrillingNetPowerRequirement() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getDrillingNetPowerRequirement()) + " " + getResources().getString(R.string.kW));
                         } else {
                             mResult.setText(null);
                         }
                         break;
                     case 7:
-                        mCachedValuesLab.updateDrillingValues(7);
-                        if (mCachedValuesLab.getDrillingTorque() != null){
-                            mResult.setText(Utils.fmt4(mCachedValuesLab.getDrillingTorque()) + " " + getResources().getString(R.string.Nm));
+                        mCalculatorCachedValuesLab.updateDrillingValues(7);
+                        if (mCalculatorCachedValuesLab.getDrillingTorque() != null){
+                            mResult.setText(Utils.fmt4(mCalculatorCachedValuesLab.getDrillingTorque()) + " " + getResources().getString(R.string.Nm));
                         } else {
                             mResult.setText(null);
                         }
@@ -635,10 +631,10 @@ public class CalculatorFormulasFragment extends Fragment {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             try {
-                mCachedValuesLab.setTurningMachinedDiameter(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                mCalculatorCachedValuesLab.setTurningMachinedDiameter(new BigDecimal(Double.parseDouble(charSequence.toString())));
                 initResult();
             } catch (NumberFormatException ex){
-                mCachedValuesLab.setTurningMachinedDiameter(null);
+                mCalculatorCachedValuesLab.setTurningMachinedDiameter(null);
                 initResult();
             }
         }
@@ -658,28 +654,28 @@ public class CalculatorFormulasFragment extends Fragment {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             try {
-                switch (mIndex){
-                    case 0:
-                        mCachedValuesLab.setTurningSpindleSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                switch (mMachiningType){
+                    case TURNING:
+                        mCalculatorCachedValuesLab.setTurningSpindleSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
                         break;
-                    case 1:
-                        mCachedValuesLab.setMillingSpindleSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                    case MILLING:
+                        mCalculatorCachedValuesLab.setMillingSpindleSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
                         break;
-                    case 2:
-                        mCachedValuesLab.setDrillingSpindleSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                    case DRILLING:
+                        mCalculatorCachedValuesLab.setDrillingSpindleSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
                         break;
                 }
                 initResult();
             } catch (NumberFormatException ex){
-                switch (mIndex){
-                    case 0:
-                        mCachedValuesLab.setTurningSpindleSpeed(null);
+                switch (mMachiningType){
+                    case TURNING:
+                        mCalculatorCachedValuesLab.setTurningSpindleSpeed(null);
                         break;
-                    case 1:
-                        mCachedValuesLab.setMillingSpindleSpeed(null);
+                    case MILLING:
+                        mCalculatorCachedValuesLab.setMillingSpindleSpeed(null);
                         break;
-                    case 2:
-                        mCachedValuesLab.setDrillingSpindleSpeed(null);
+                    case DRILLING:
+                        mCalculatorCachedValuesLab.setDrillingSpindleSpeed(null);
                         break;
                 }
                 initResult();
@@ -701,28 +697,28 @@ public class CalculatorFormulasFragment extends Fragment {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             try {
-                switch (mIndex){
-                    case 0:
-                        mCachedValuesLab.setTurningCuttingSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                switch (mMachiningType){
+                    case TURNING:
+                        mCalculatorCachedValuesLab.setTurningCuttingSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
                         break;
-                    case 1:
-                        mCachedValuesLab.setMillingCuttingSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                    case MILLING:
+                        mCalculatorCachedValuesLab.setMillingCuttingSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
                         break;
-                    case 2:
-                        mCachedValuesLab.setDrillingCuttingSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                    case DRILLING:
+                        mCalculatorCachedValuesLab.setDrillingCuttingSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
                         break;
                 }
                 initResult();
             } catch (NumberFormatException ex){
-                switch (mIndex){
-                    case 0:
-                        mCachedValuesLab.setTurningCuttingSpeed(null);
+                switch (mMachiningType){
+                    case TURNING:
+                        mCalculatorCachedValuesLab.setTurningCuttingSpeed(null);
                         break;
-                    case 1:
-                        mCachedValuesLab.setMillingCuttingSpeed(null);
+                    case MILLING:
+                        mCalculatorCachedValuesLab.setMillingCuttingSpeed(null);
                         break;
-                    case 2:
-                        mCachedValuesLab.setDrillingCuttingSpeed(null);
+                    case DRILLING:
+                        mCalculatorCachedValuesLab.setDrillingCuttingSpeed(null);
                         break;
                 }
                 initResult();
@@ -744,10 +740,10 @@ public class CalculatorFormulasFragment extends Fragment {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             try {
-                mCachedValuesLab.setTurningCuttingDepth(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                mCalculatorCachedValuesLab.setTurningCuttingDepth(new BigDecimal(Double.parseDouble(charSequence.toString())));
                 initResult();
             } catch (NumberFormatException ex){
-                mCachedValuesLab.setTurningCuttingDepth(null);
+                mCalculatorCachedValuesLab.setTurningCuttingDepth(null);
                 initResult();
             }
         }
@@ -767,22 +763,22 @@ public class CalculatorFormulasFragment extends Fragment {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             try {
-                switch (mIndex){
-                    case 0:
-                        mCachedValuesLab.setTurningFeedPerRevolution(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                switch (mMachiningType){
+                    case TURNING:
+                        mCalculatorCachedValuesLab.setTurningFeedPerRevolution(new BigDecimal(Double.parseDouble(charSequence.toString())));
                         break;
-                    case 2:
-                        mCachedValuesLab.setDrillingFeedPerRevolution(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                    case DRILLING:
+                        mCalculatorCachedValuesLab.setDrillingFeedPerRevolution(new BigDecimal(Double.parseDouble(charSequence.toString())));
                         break;
                 }
                 initResult();
             } catch (NumberFormatException ex){
-                switch (mIndex){
-                    case 0:
-                        mCachedValuesLab.setTurningFeedPerRevolution(null);
+                switch (mMachiningType){
+                    case TURNING:
+                        mCalculatorCachedValuesLab.setTurningFeedPerRevolution(null);
                         break;
-                    case 2:
-                        mCachedValuesLab.setDrillingFeedPerRevolution(null);
+                    case DRILLING:
+                        mCalculatorCachedValuesLab.setDrillingFeedPerRevolution(null);
                         break;
                 }
                 initResult();
@@ -804,28 +800,28 @@ public class CalculatorFormulasFragment extends Fragment {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             try {
-                switch (mIndex){
-                    case 0:
-                        mCachedValuesLab.setTurningSpecificCuttingForce(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                switch (mMachiningType){
+                    case TURNING:
+                        mCalculatorCachedValuesLab.setTurningSpecificCuttingForce(new BigDecimal(Double.parseDouble(charSequence.toString())));
                         break;
-                    case 1:
-                        mCachedValuesLab.setMillingSpecificCuttingForce(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                    case MILLING:
+                        mCalculatorCachedValuesLab.setMillingSpecificCuttingForce(new BigDecimal(Double.parseDouble(charSequence.toString())));
                         break;
-                    case 2:
-                        mCachedValuesLab.setDrillingSpecificCuttingForce(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                    case DRILLING:
+                        mCalculatorCachedValuesLab.setDrillingSpecificCuttingForce(new BigDecimal(Double.parseDouble(charSequence.toString())));
                         break;
                 }
                 initResult();
             } catch (NumberFormatException ex){
-                switch (mIndex){
-                    case 0:
-                        mCachedValuesLab.setTurningSpecificCuttingForce(null);
+                switch (mMachiningType){
+                    case TURNING:
+                        mCalculatorCachedValuesLab.setTurningSpecificCuttingForce(null);
                         break;
-                    case 1:
-                        mCachedValuesLab.setMillingSpecificCuttingForce(null);
+                    case MILLING:
+                        mCalculatorCachedValuesLab.setMillingSpecificCuttingForce(null);
                         break;
-                    case 2:
-                        mCachedValuesLab.setDrillingSpecificCuttingForce(null);
+                    case DRILLING:
+                        mCalculatorCachedValuesLab.setDrillingSpecificCuttingForce(null);
                         break;
                 }
                 initResult();
@@ -847,10 +843,10 @@ public class CalculatorFormulasFragment extends Fragment {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             try {
-                mCachedValuesLab.setTurningMachinedLength(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                mCalculatorCachedValuesLab.setTurningMachinedLength(new BigDecimal(Double.parseDouble(charSequence.toString())));
                 initResult();
             } catch (NumberFormatException ex){
-                mCachedValuesLab.setTurningMachinedLength(null);
+                mCalculatorCachedValuesLab.setTurningMachinedLength(null);
                 initResult();
             }
         }
@@ -870,10 +866,10 @@ public class CalculatorFormulasFragment extends Fragment {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             try {
-                mCachedValuesLab.setMillingCuttingDiameterAtDepth(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                mCalculatorCachedValuesLab.setMillingCuttingDiameterAtDepth(new BigDecimal(Double.parseDouble(charSequence.toString())));
                 initResult();
             } catch (NumberFormatException ex){
-                mCachedValuesLab.setMillingCuttingDiameterAtDepth(null);
+                mCalculatorCachedValuesLab.setMillingCuttingDiameterAtDepth(null);
                 initResult();
             }
         }
@@ -893,22 +889,22 @@ public class CalculatorFormulasFragment extends Fragment {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             try {
-                switch (mIndex){
-                    case 1:
-                        mCachedValuesLab.setMillingTableFeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                switch (mMachiningType){
+                    case MILLING:
+                        mCalculatorCachedValuesLab.setMillingTableFeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
                         break;
-                    case 2:
-                        mCachedValuesLab.setDrillingPenetrationRate(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                    case DRILLING:
+                        mCalculatorCachedValuesLab.setDrillingPenetrationRate(new BigDecimal(Double.parseDouble(charSequence.toString())));
                         break;
                 }
                 initResult();
             } catch (NumberFormatException ex){
-                switch (mIndex){
-                    case 1:
-                        mCachedValuesLab.setMillingTableFeed(null);
+                switch (mMachiningType){
+                    case MILLING:
+                        mCalculatorCachedValuesLab.setMillingTableFeed(null);
                         break;
-                    case 2:
-                        mCachedValuesLab.setDrillingPenetrationRate(null);
+                    case DRILLING:
+                        mCalculatorCachedValuesLab.setDrillingPenetrationRate(null);
                         break;
                 }
                 initResult();
@@ -930,10 +926,10 @@ public class CalculatorFormulasFragment extends Fragment {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             try {
-                mCachedValuesLab.setMillingNumberOfEffectiveTeeth(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                mCalculatorCachedValuesLab.setMillingNumberOfEffectiveTeeth(new BigDecimal(Double.parseDouble(charSequence.toString())));
                 initResult();
             } catch (NumberFormatException ex){
-                mCachedValuesLab.setMillingNumberOfEffectiveTeeth(null);
+                mCalculatorCachedValuesLab.setMillingNumberOfEffectiveTeeth(null);
                 initResult();
             }
         }
@@ -953,10 +949,10 @@ public class CalculatorFormulasFragment extends Fragment {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             try {
-                mCachedValuesLab.setMillingFeedTooth(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                mCalculatorCachedValuesLab.setMillingFeedTooth(new BigDecimal(Double.parseDouble(charSequence.toString())));
                 initResult();
             } catch (NumberFormatException ex){
-                mCachedValuesLab.setMillingFeedTooth(null);
+                mCalculatorCachedValuesLab.setMillingFeedTooth(null);
                 initResult();
             }
         }
@@ -976,10 +972,10 @@ public class CalculatorFormulasFragment extends Fragment {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             try {
-                mCachedValuesLab.setMillingDepthOfCut(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                mCalculatorCachedValuesLab.setMillingDepthOfCut(new BigDecimal(Double.parseDouble(charSequence.toString())));
                 initResult();
             } catch (NumberFormatException ex){
-                mCachedValuesLab.setMillingDepthOfCut(null);
+                mCalculatorCachedValuesLab.setMillingDepthOfCut(null);
                 initResult();
             }
         }
@@ -999,10 +995,10 @@ public class CalculatorFormulasFragment extends Fragment {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             try {
-                mCachedValuesLab.setMillingWorkingEngagement(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                mCalculatorCachedValuesLab.setMillingWorkingEngagement(new BigDecimal(Double.parseDouble(charSequence.toString())));
                 initResult();
             } catch (NumberFormatException ex){
-                mCachedValuesLab.setMillingWorkingEngagement(null);
+                mCalculatorCachedValuesLab.setMillingWorkingEngagement(null);
                 initResult();
             }
         }
@@ -1022,22 +1018,22 @@ public class CalculatorFormulasFragment extends Fragment {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             try {
-                switch (mIndex){
-                    case 1:
-                        mCachedValuesLab.setMillingNetPowerRequirement(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                switch (mMachiningType){
+                    case MILLING:
+                        mCalculatorCachedValuesLab.setMillingNetPowerRequirement(new BigDecimal(Double.parseDouble(charSequence.toString())));
                         break;
-                    case 2:
-                        mCachedValuesLab.setDrillingNetPowerRequirement(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                    case DRILLING:
+                        mCalculatorCachedValuesLab.setDrillingNetPowerRequirement(new BigDecimal(Double.parseDouble(charSequence.toString())));
                         break;
                 }
                 initResult();
             } catch (NumberFormatException ex){
-                switch (mIndex){
-                    case 1:
-                        mCachedValuesLab.setMillingNetPowerRequirement(null);
+                switch (mMachiningType){
+                    case MILLING:
+                        mCalculatorCachedValuesLab.setMillingNetPowerRequirement(null);
                         break;
-                    case 2:
-                        mCachedValuesLab.setDrillingNetPowerRequirement(null);
+                    case DRILLING:
+                        mCalculatorCachedValuesLab.setDrillingNetPowerRequirement(null);
                         break;
                 }
                 initResult();
@@ -1059,10 +1055,10 @@ public class CalculatorFormulasFragment extends Fragment {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             try {
-                mCachedValuesLab.setDrillingDrillDiameter(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                mCalculatorCachedValuesLab.setDrillingDrillDiameter(new BigDecimal(Double.parseDouble(charSequence.toString())));
                 initResult();
             } catch (NumberFormatException ex){
-                mCachedValuesLab.setDrillingDrillDiameter(null);
+                mCalculatorCachedValuesLab.setDrillingDrillDiameter(null);
                 initResult();
             }
         }
@@ -1082,10 +1078,10 @@ public class CalculatorFormulasFragment extends Fragment {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             try {
-                mCachedValuesLab.setDrillingMachiningDrillingLength(new BigDecimal(Double.parseDouble(charSequence.toString())));
+                mCalculatorCachedValuesLab.setDrillingMachiningDrillingLength(new BigDecimal(Double.parseDouble(charSequence.toString())));
                 initResult();
             } catch (NumberFormatException ex){
-                mCachedValuesLab.setDrillingMachiningDrillingLength(null);
+                mCalculatorCachedValuesLab.setDrillingMachiningDrillingLength(null);
                 initResult();
             }
         }
@@ -1096,4 +1092,9 @@ public class CalculatorFormulasFragment extends Fragment {
         }
     };
 
+    private enum MachiningType {
+        TURNING,
+        MILLING,
+        DRILLING
+    }
 }

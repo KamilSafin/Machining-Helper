@@ -42,9 +42,10 @@
     <string name="machning_problems_solution">Problem solution</string>
     <string name="clear_values">Clear values</string>
     <string name="change_thread_type">Change type</string>
-    <string name="choose_material">Choose material</string>
+    <string name="choose_material">Choose millingMaterial</string>
     <string name="recommended_values">recommended values</string>
     <string name="choose_tool_type">Choose tool type</string>
+    <string name="recommended_value_exceeded">Recommended value has been exceeded</string>
 
     <!-- units -->
     <string name="mm">mm</string>
@@ -93,37 +94,36 @@
     </array>
 
     <array name="turning_solution">
-        <item>zmniejszyć prędkość skrawania Vc</item>
-        <item>zwiększyć prędkość skrawania Vc</item>
-        <item>dobrać bardziej odporny na ścieranie gat. węglika spiekanego</item>
-        <item>stosować dodatnią geometrię ostrza</item>
-        <item>dobrać bardziej odporny na obciążenia dynamiczne gat. płytki</item>
-        <item>zmniejszyć posuw fz</item>
-        <item>zwiększyć posuw fz</item>
-        <item>zmniejszyć głębokość skrawania</item>
-        <item></item>
+        <item>- zmniejszyć prędkość skrawania Vc</item>
+        <item>- zwiększyć prędkość skrawania Vc</item>
+        <item>- dobrać bardziej odporny na ścieranie gat. węglika spiekanego</item>
+        <item>- stosować dodatnią geometrię ostrza</item>
+        <item>- dobrać bardziej odporny na obciążenia dynamiczne gat. płytki</item>
+        <item>- zmniejszyć posuw fz</item>
+        <item>- zwiększyć posuw fz</item>
+        <item>- zmniejszyć głębokość skrawania</item>
     </array>
 
     <array name="milling_solution">
-        <item>zmniejszyć prędkość skrawania Vc</item>
-        <item>zwiększyć prędkość skrawania Vc</item>
-        <item>dobrać bardziej odporny na ścieranie gat. węglika spiekanego</item>
-        <item>zmienić zamocowanie freza</item>
-        <item>dobrać bardziej odporny na obciążenia dynamiczne gat. płytki</item>
-        <item>zmniejszyć posuw fz</item>
-        <item>zwiększyć posuw fz</item>
-        <item>frezować na sucho</item>
-        <item>zastosować frez z większą podziałką</item>
+        <item>- zmniejszyć prędkość skrawania Vc</item>
+        <item>- zwiększyć prędkość skrawania Vc</item>
+        <item>- dobrać bardziej odporny na ścieranie gat. węglika spiekanego</item>
+        <item>- zmienić zamocowanie freza</item>
+        <item>- dobrać bardziej odporny na obciążenia dynamiczne gat. płytki</item>
+        <item>- zmniejszyć posuw fz</item>
+        <item>- zwiększyć posuw fz</item>
+        <item>- frezować na sucho</item>
+        <item>- zastosować frez z większą podziałką</item>
     </array>
 
     <array name="drilling_solution">
-        <item>sprawdzić geometrię części skrawającej</item>
-        <item>skrócić zamocowanie</item>
-        <item>sprawdzić warunki skrawania</item>
-        <item>sprawdzić dobór węglika spiekanego</item>
-        <item>zmniejszyć posuw</item>
-        <item>zwiększyć intensywność doprowadzania chłodziwa</item>
-        <item>zwiększyć prędkość skrawania</item>
+        <item>- sprawdzić geometrię części skrawającej</item>
+        <item>- skrócić zamocowanie</item>
+        <item>- sprawdzić warunki skrawania</item>
+        <item>- sprawdzić dobór węglika spiekanego</item>
+        <item>- zmniejszyć posuw</item>
+        <item>- zwiększyć intensywność doprowadzania chłodziwa</item>
+        <item>- zwiększyć prędkość skrawania</item>
     </array>
 
     <array name="turning_calculator_parameters">
@@ -172,6 +172,7 @@
         <item>Net power requirement (kW)</item>
         <item>Drill diameter (mm)</item>
         <item>Machining drilling length (mm)</item>
+        <item>Metal removal rate Q</item>
     </array>
 
     <array name="g_codes">

@@ -7,9 +7,10 @@
     <color name="primary_light">#444444</color>
     <color name="primary_light5">#555555</color>
     <color name="card">#bdbdbd</color>
-    <color name="yellow">#ff9800</color>
     <color name="gray">#BBBBBB</color>
     <color name="light_gray">#DDDDDD</color>
     <color name="white">#FFFFFF</color>
     <color name="crator_item_bg">#15DDDDDD</color>
+    <color name="crator_item_main_bg">#40DDDDDD</color>
+    <color name="warning_text">#f8e622</color>
 </resources>

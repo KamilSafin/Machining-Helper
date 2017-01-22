@@ -45,6 +45,7 @@
     <string name="choose_material">Wybierz materiał</string>
     <string name="recommended_values">rekomendowane wartości</string>
     <string name="choose_tool_type">Wybierz rodzaj narzędzia</string>
+    <string name="recommended_value_exceeded">Rekomendowana wartość została przekroczona</string>
 
     <!-- units -->
     <string name="mm">mm</string>
@@ -93,36 +94,36 @@
     </array>
 
     <array name="turning_solution">
-        <item>zmniejszyć prędkość skrawania Vc</item>
-        <item>zwiększyć prędkość skrawania Vc</item>
-        <item>dobrać bardziej odporny na ścieranie gat. węglika spiekanego</item>
-        <item>stosować dodatnią geometrię ostrza</item>
-        <item>dobrać bardziej odporny na obciążenia dynamiczne gat. płytki</item>
-        <item>zmniejszyć posuw fz</item>
-        <item>zwiększyć posuw fz</item>
-        <item>zmniejszyć głębokość skrawania</item>
+        <item>- zmniejszyć prędkość skrawania Vc</item>
+        <item>- zwiększyć prędkość skrawania Vc</item>
+        <item>- dobrać bardziej odporny na ścieranie gat. węglika spiekanego</item>
+        <item>- stosować dodatnią geometrię ostrza</item>
+        <item>- dobrać bardziej odporny na obciążenia dynamiczne gat. płytki</item>
+        <item>- zmniejszyć posuw fz</item>
+        <item>- zwiększyć posuw fz</item>
+        <item>- zmniejszyć głębokość skrawania</item>
     </array>
 
     <array name="milling_solution">
-        <item>zmniejszyć prędkość skrawania Vc</item>
-        <item>zwiększyć prędkość skrawania Vc</item>
-        <item>dobrać bardziej odporny na ścieranie gat. węglika spiekanego</item>
-        <item>zmienić zamocowanie freza</item>
-        <item>dobrać bardziej odporny na obciążenia dynamiczne gat. płytki</item>
-        <item>zmniejszyć posuw fz</item>
-        <item>zwiększyć posuw fz</item>
-        <item>frezować na sucho</item>
-        <item>zastosować frez z większą podziałką</item>
+        <item>- zmniejszyć prędkość skrawania Vc</item>
+        <item>- zwiększyć prędkość skrawania Vc</item>
+        <item>- dobrać bardziej odporny na ścieranie gat. węglika spiekanego</item>
+        <item>- zmienić zamocowanie freza</item>
+        <item>- dobrać bardziej odporny na obciążenia dynamiczne gat. płytki</item>
+        <item>- zmniejszyć posuw fz</item>
+        <item>- zwiększyć posuw fz</item>
+        <item>- frezować na sucho</item>
+        <item>- zastosować frez z większą podziałką</item>
     </array>
 
     <array name="drilling_solution">
-        <item>sprawdzić geometrię części skrawającej</item>
-        <item>skrócić zamocowanie</item>
-        <item>sprawdzić warunki skrawania</item>
-        <item>sprawdzić dobór węglika spiekanego</item>
-        <item>zmniejszyć posuw</item>
-        <item>zwiększyć intensywność doprowadzania chłodziwa</item>
-        <item>zwiększyć prędkość skrawania</item>
+        <item>- sprawdzić geometrię części skrawającej</item>
+        <item>- skrócić zamocowanie</item>
+        <item>- sprawdzić warunki skrawania</item>
+        <item>- sprawdzić dobór węglika spiekanego</item>
+        <item>- zmniejszyć posuw</item>
+        <item>- zwiększyć intensywność doprowadzania chłodziwa</item>
+        <item>- zwiększyć prędkość skrawania</item>
     </array>
 
     <array name="turning_calculator_parameters">
@@ -171,6 +172,7 @@
         <item>Moc skrawania netto (kW)</item>
         <item>Średnica wierta (mm)</item>
         <item>Dugość wiercenia (mm)</item>
+        <item>Objętościowa wydajność skrawania Q (cm3/min.)</item>
     </array>
 
     <array name="g_codes">
