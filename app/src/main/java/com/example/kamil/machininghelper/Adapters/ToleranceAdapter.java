@@ -69,13 +69,16 @@ public class ToleranceAdapter extends RecyclerView.Adapter<ToleranceAdapter.Tole
             mToleranceText = (TextView) itemView.findViewById(R.id.row_tolerance_text);
             mBackground = (RelativeLayout) itemView.findViewById(R.id.tolerance_bg);
 
-            itemView.setOnClickListener(l -> {
-                for (ToleranceHolder toleranceHolder : mToleranceHolders){
-                    toleranceHolder.setUnchecked();
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    for (ToleranceHolder toleranceHolder : mToleranceHolders){
+                        toleranceHolder.setUnchecked();
+                    }
+                    ToleranceHolder.this.setChecked();
+                    sCheckedItem = getLayoutPosition();
+                    ToleranceFragment.setDimension(sCheckedItem);
                 }
-                this.setChecked();
-                sCheckedItem = getLayoutPosition();
-                ToleranceFragment.setDimension(sCheckedItem);
             });
         }
 

@@ -57,9 +57,12 @@ public class MachiningProblemsAdapter extends RecyclerView.Adapter<MachiningProb
 
             mProblemNameTextView = (TextView) itemView.findViewById(R.id.row_machining_problem_name_text);
 
-            itemView.setOnClickListener(l -> {
-                Intent intent = MachiningProblemsSolutionActivity.newIntent(mContext, mIndex, getLayoutPosition());
-                mContext.startActivity(intent);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = MachiningProblemsSolutionActivity.newIntent(mContext, mIndex, getLayoutPosition());
+                    mContext.startActivity(intent);
+                }
             });
         }
 

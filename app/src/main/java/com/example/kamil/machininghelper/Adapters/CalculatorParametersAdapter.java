@@ -59,9 +59,12 @@ public class CalculatorParametersAdapter extends RecyclerView.Adapter<Calculator
             mCalculatorParameter = (TextView) itemView.findViewById(R.id.row_calculator_parameter_text);
             mCalculatorResultText = (TextView) itemView.findViewById(R.id.row_calculator_result_text);
 
-            itemView.setOnClickListener(l -> {
-                Intent intent = CalculatorFormulasActivity.newIntent(mContext, getLayoutPosition(), mIndex);
-                mContext.startActivity(intent);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = CalculatorFormulasActivity.newIntent(mContext, getLayoutPosition(), mIndex);
+                    mContext.startActivity(intent);
+                }
             });
         }
 

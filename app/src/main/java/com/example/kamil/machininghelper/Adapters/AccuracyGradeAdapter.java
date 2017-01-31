@@ -70,13 +70,16 @@ public class AccuracyGradeAdapter extends RecyclerView.Adapter<AccuracyGradeAdap
             mAccuracyText = (TextView) itemView.findViewById(R.id.row_tolerance_text);
             mBackground = (RelativeLayout) itemView.findViewById(R.id.tolerance_bg);
 
-            itemView.setOnClickListener(l -> {
-                for (AccuracyGradeHolder toleranceHolder : mToleranceHolders){
-                    toleranceHolder.setUnchecked();
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    for (AccuracyGradeHolder toleranceHolder : mToleranceHolders){
+                        toleranceHolder.setUnchecked();
+                    }
+                    AccuracyGradeHolder.this.setChecked();
+                    sCheckedItem = getLayoutPosition();
+                    ToleranceFragment.setAccuracy(sCheckedItem);
                 }
-                this.setChecked();
-                sCheckedItem = getLayoutPosition();
-                ToleranceFragment.setAccuracy(sCheckedItem);
             });
         }
 

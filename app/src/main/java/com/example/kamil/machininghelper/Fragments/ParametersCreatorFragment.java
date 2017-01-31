@@ -14,20 +14,12 @@ import com.example.kamil.machininghelper.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Kamil Safin on 8/20/2016.
  */
 public class ParametersCreatorFragment extends Fragment {
-
-    @BindView(R.id.turning_creator)
-    RelativeLayout mTurningCreator;
-
-    @BindView(R.id.milling_creator)
-    RelativeLayout mMillingCreator;
-
-    @BindView(R.id.drilling_creator)
-    RelativeLayout mDrillingCreator;
 
     public static Fragment initFragment(){
         Fragment fragment = new ParametersCreatorFragment();
@@ -42,21 +34,24 @@ public class ParametersCreatorFragment extends Fragment {
 
         ButterKnife.bind(this, view);
 
-        mTurningCreator.setOnClickListener(l -> {
-            Intent intent = DetailCreatorActivity.newIntent(getContext(), 0);
-            startActivity(intent);
-        });
-
-        mMillingCreator.setOnClickListener(l -> {
-            Intent intent = DetailCreatorActivity.newIntent(getContext(), 1);
-            startActivity(intent);
-        });
-
-        mDrillingCreator.setOnClickListener(l -> {
-            Intent intent = DetailCreatorActivity.newIntent(getContext(), 2);
-            startActivity(intent);
-        });
-
         return view;
+    }
+
+    @OnClick(R.id.turning_creator)
+    void onTurningCreatorClick() {
+        Intent intent = DetailCreatorActivity.newIntent(getContext(), 0);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.milling_creator)
+    void onMillingCreatorClick() {
+        Intent intent = DetailCreatorActivity.newIntent(getContext(), 1);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.drilling_creator)
+    void onDrillingCreatorClick() {
+        Intent intent = DetailCreatorActivity.newIntent(getContext(), 2);
+        startActivity(intent);
     }
 }

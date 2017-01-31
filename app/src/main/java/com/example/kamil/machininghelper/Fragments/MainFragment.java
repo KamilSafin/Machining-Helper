@@ -17,23 +17,12 @@ import com.example.kamil.machininghelper.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Kamil Safin on 8/20/2016.
  */
 public class MainFragment extends Fragment {
-
-    @BindView(R.id.calculator_button)
-    RelativeLayout mCalculatorButton;
-
-    @BindView(R.id.g_code_base_button)
-    RelativeLayout mGCodeBaseButton;
-
-    @BindView(R.id.parameters_creator_button)
-    RelativeLayout mParametersCreatorButton;
-
-    @BindView(R.id.dimensions_and_tolerance_button)
-    RelativeLayout mDimensionsAndToleranceButton;
 
     public static MainFragment initFragment(){
         MainFragment fragment = new MainFragment();
@@ -48,26 +37,30 @@ public class MainFragment extends Fragment {
 
         ButterKnife.bind(this, view);
 
-        mParametersCreatorButton.setOnClickListener(l -> {
-            Intent intent = ParametersCreatorActivity.newIntent(getContext());
-            startActivity(intent);
-        });
-
-        mCalculatorButton.setOnClickListener(l -> {
-            Intent intent = CalculatorActivity.newIntent(getContext());
-            startActivity(intent);
-        });
-
-        mGCodeBaseButton.setOnClickListener(l -> {
-            Intent intent = GCodeBaseActivity.newIntent(getContext());
-            startActivity(intent);
-        });
-
-        mDimensionsAndToleranceButton.setOnClickListener(l -> {
-            Intent intent = DimensionsAndToleranceActivity.newIntent(getContext());
-            startActivity(intent);
-        });
-
         return view;
+    }
+
+    @OnClick(R.id.parameters_creator_button)
+    void onParametersCreatorClick() {
+        Intent intent = ParametersCreatorActivity.newIntent(getContext());
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.calculator_button)
+    void onCalculatorClick() {
+        Intent intent = CalculatorActivity.newIntent(getContext());
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.g_code_base_button)
+    void onGCodeBaseClick() {
+        Intent intent = GCodeBaseActivity.newIntent(getContext());
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.dimensions_and_tolerance_button)
+    void onDimensionAndToleranceClick() {
+        Intent intent = DimensionsAndToleranceActivity.newIntent(getContext());
+        startActivity(intent);
     }
 }

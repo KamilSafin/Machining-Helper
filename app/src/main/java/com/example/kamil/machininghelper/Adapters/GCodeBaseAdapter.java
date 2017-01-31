@@ -55,9 +55,12 @@ public class GCodeBaseAdapter extends RecyclerView.Adapter<GCodeBaseAdapter.GCod
             super(itemView);
 
             mGCodeText = (TextView) itemView.findViewById(R.id.g_code_text);
-            itemView.setOnClickListener(l -> {
-                Intent intent = GCodeDetailActivity.newIntent(mContext, getLayoutPosition());
-                mContext.startActivity(intent);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = GCodeDetailActivity.newIntent(mContext, getLayoutPosition());
+                    mContext.startActivity(intent);
+                }
             });
         }
 

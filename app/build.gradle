@@ -1,27 +1,44 @@
 apply plugin: 'com.android.application'
 apply plugin: 'checkstyle'
+apply plugin: 'io.fabric'
+
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 
 android {
+
+    if (file('../../kamil_safin_config.gradle').exists()) {
+        apply from: '../../kamil_safin_config.gradle'
+    }
+
     compileSdkVersion 24
     buildToolsVersion "24.0.0"
-
     defaultConfig {
         applicationId "com.example.kamil.machininghelper"
         minSdkVersion 16
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
-
-        jackOptions{
-            enabled true
-        }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
+}
+
+repositories {
+    jcenter()
+    maven { url 'https://maven.fabric.io/public' }
 }
 
 dependencies {
@@ -34,5 +51,8 @@ dependencies {
     compile 'com.android.support:support-v4:24.2.0'
     compile 'com.android.support:design:24.2.0'
     compile 'com.android.support:cardview-v7:24.2.1'
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.6@aar') {
+        transitive = true;
+    }
 }
 

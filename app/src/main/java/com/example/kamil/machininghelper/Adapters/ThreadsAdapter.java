@@ -54,7 +54,12 @@ public class ThreadsAdapter extends RecyclerView.Adapter<ThreadsAdapter.ThreadsH
             super(itemView);
 
             mThreadText = (TextView) itemView.findViewById(R.id.thread_text);
-            itemView.setOnClickListener(l -> ThreadsFragment.setHoleDiameter(mThread));
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ThreadsFragment.setHoleDiameter(mThread);
+                }
+            });
         }
 
         public void bindView(Threads thread){

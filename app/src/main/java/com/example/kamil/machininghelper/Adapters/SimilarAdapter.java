@@ -61,15 +61,18 @@ public class SimilarAdapter extends RecyclerView.Adapter<SimilarAdapter.SimilarH
 
             mName = (TextView) itemView.findViewById(R.id.g_code_text);
 
-            itemView.setOnClickListener(l -> {
-                int index = 0;
-                for (int j = 0; j < mGCodes.size(); j++) {
-                    if (mGCodes.get(j).getG().equals(mGCodes.get(mIndex).getSimilar()[getLayoutPosition()])) {
-                        index = j;
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int index = 0;
+                    for (int j = 0; j < mGCodes.size(); j++) {
+                        if (mGCodes.get(j).getG().equals(mGCodes.get(mIndex).getSimilar()[getLayoutPosition()])) {
+                            index = j;
+                        }
                     }
+                    Intent intent = GCodeDetailActivity.newIntent(mContext, index);
+                    mContext.startActivity(intent);
                 }
-                Intent intent = GCodeDetailActivity.newIntent(mContext, index);
-                mContext.startActivity(intent);
             });
         }
 

@@ -13,17 +13,12 @@ import com.example.kamil.machininghelper.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Kamil Safin on 8/20/2016.
  */
 public class DimensionsAndToleranceFragment extends Fragment {
-
-    @BindView(R.id.tolerance_button)
-    RelativeLayout mToleranceButton;
-
-    @BindView(R.id.thread_button)
-    RelativeLayout mThreadButton;
 
     DimensionAndToleranceCallback mDimensionAndToleranceCallback;
 
@@ -54,10 +49,6 @@ public class DimensionsAndToleranceFragment extends Fragment {
 
         ButterKnife.bind(this, view);
 
-        mToleranceButton.setOnClickListener(l -> mDimensionAndToleranceCallback.startFragment(ToleranceFragment.initFragment(), getResources().getString(R.string.tolerance)));
-
-        mThreadButton.setOnClickListener(l -> mDimensionAndToleranceCallback.startFragment(ThreadsFragment.initFragment(), getResources().getString(R.string.holes_for_drill)));
-
         return view;
     }
 
@@ -65,5 +56,15 @@ public class DimensionsAndToleranceFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mDimensionAndToleranceCallback = null;
+    }
+
+    @OnClick(R.id.tolerance_button)
+    void onToleranceClick() {
+        mDimensionAndToleranceCallback.startFragment(ToleranceFragment.initFragment(), getResources().getString(R.string.tolerance));
+    }
+
+    @OnClick(R.id.thread_button)
+    void onThreadClick() {
+        mDimensionAndToleranceCallback.startFragment(ThreadsFragment.initFragment(), getResources().getString(R.string.holes_for_drill));
     }
 }

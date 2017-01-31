@@ -16,6 +16,7 @@ import com.example.kamil.machininghelper.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Kamil Safin on 8/30/2016.
@@ -26,12 +27,6 @@ public class CalculatorItemFragment extends Fragment {
 
     @BindView(R.id.calculator_item_image_view)
     ImageView mItemView;
-
-    @BindView(R.id.calculator_button)
-    RelativeLayout mCalculatorButton;
-
-    @BindView(R.id.problems_button)
-    RelativeLayout mProblemsButton;
 
     private int mIndex;
 
@@ -70,16 +65,18 @@ public class CalculatorItemFragment extends Fragment {
                 break;
         }
 
-        mCalculatorButton.setOnClickListener(l -> {
-            Intent intent = CalculatorParametersActivity.newIntent(getContext(), mIndex);
-            startActivity(intent);
-        });
-
-        mProblemsButton.setOnClickListener(l -> {
-            Intent intent = MachiningProblemsActivity.newIntent(getContext(), mIndex);
-            startActivity(intent);
-        });
-
         return view;
+    }
+
+    @OnClick(R.id.calculator_button)
+    void onCalculatorClick() {
+        Intent intent = CalculatorParametersActivity.newIntent(getContext(), mIndex);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.problems_button)
+    void onProblemsClick() {
+        Intent intent = MachiningProblemsActivity.newIntent(getContext(), mIndex);
+        startActivity(intent);
     }
 }

@@ -64,8 +64,11 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
 
             mMaterialText = (TextView) itemView.findViewById(R.id.material_name_text);
 
-            itemView.setOnClickListener(l -> {
-                mMaterialAdapterCallback.onItemClicked(getLayoutPosition());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mMaterialAdapterCallback.onItemClicked(getLayoutPosition());
+                }
             });
         }
 
