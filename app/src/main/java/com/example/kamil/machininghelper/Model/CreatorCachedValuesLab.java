@@ -44,6 +44,8 @@ public class CreatorCachedValuesLab {
     private BigDecimal mMillingSpecificCuttingForce;
 
     //drilling
+    private boolean mIsDrillingHssDrill;
+    private Material mDrillingMaterial;
     private BigDecimal mDrillingCuttingSpeed;
     private BigDecimal mDrillingSpindleSpeed;
     private BigDecimal mDrillingFeedPerRevolution;
@@ -599,11 +601,27 @@ public class CreatorCachedValuesLab {
         mIsMillingHssDrill = millingHssDrill;
     }
 
+    public boolean isDrillingHssDrill() {
+        return mIsDrillingHssDrill;
+    }
+
+    public void setDrillingHssDrill(boolean drillingHssDrill) {
+        mIsDrillingHssDrill = drillingHssDrill;
+    }
+
     public Material getMillingMaterial() {
         return mMillingMaterial;
     }
 
     public void setMillingMaterial(Material millingMaterial) {
         mMillingMaterial = millingMaterial;
+    }
+
+    public Material getDrillingMaterial() {
+        return mDrillingMaterial;
+    }
+
+    public void setDrillingMaterial(Material drillingMaterial) {
+        mDrillingMaterial = drillingMaterial;
     }
 }

@@ -170,9 +170,11 @@
         <item>Głębokość skrawania (mm)</item>
         <item>Szerokość frezowania (mm)</item>
         <item>Moc skrawania netto (kW)</item>
-        <item>Średnica wierta (mm)</item>
-        <item>Dugość wiercenia (mm)</item>
+        <item>Średnica wiertła (mm)</item>
+        <item>Długość wiercenia (mm)</item>
         <item>Objętościowa wydajność skrawania Q (cm3/min.)</item>
+        <item>Prędkość posuwu (mm/min)</item>
+        <item>Czas obróbki (min)</item>
     </array>
 
     <array name="g_codes">

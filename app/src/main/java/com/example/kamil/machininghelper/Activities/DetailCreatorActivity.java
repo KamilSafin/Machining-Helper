@@ -72,6 +72,7 @@ public class DetailCreatorActivity extends SingleFragmentActivity {
                         break;
                     case 2:
                         CreatorCachedValuesLab.getCachedValuesLab(this).removeDrillingValues();
+                        ((DrillingCreatorFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container)).resetView();
                         break;
                 }
                 break;

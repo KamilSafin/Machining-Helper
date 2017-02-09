@@ -169,8 +169,22 @@ public class MillingCreatorFragment extends Fragment implements ChooseMaterialDi
             mIsHSSDrill = mCreatorCachedValuesLab.isMillingHssDrill();
             if (mIsHSSDrill) {
                 mMillHSSBg.setBackground(getResources().getDrawable(R.drawable.circle_active));
+                List<Material> materials = mCreatorLab.getSteelMillingMaterials();
+                for (int i = 0; i < materials.size(); i++) {
+                    if (materials.get(i).getName().equals(mMaterial.getName())) {
+                        mIndex = i;
+                        break;
+                    }
+                }
             } else {
                 mMillCarbonedBg.setBackground(getResources().getDrawable(R.drawable.circle_active));
+                List<Material> materials = mCreatorLab.getCarbideMillingMaterials();
+                for (int i = 0; i < materials.size(); i++) {
+                    if (materials.get(i).getName().equals(mMaterial.getName())) {
+                        mIndex = i;
+                        break;
+                    }
+                }
             }
             mChooseMaterialText.setText(mMaterial.getName());
 
@@ -213,7 +227,6 @@ public class MillingCreatorFragment extends Fragment implements ChooseMaterialDi
 
             updateView();
         }
-
 
         addListeners();
 

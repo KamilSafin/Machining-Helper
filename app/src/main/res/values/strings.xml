@@ -42,7 +42,7 @@
     <string name="machning_problems_solution">Problem solution</string>
     <string name="clear_values">Clear values</string>
     <string name="change_thread_type">Change type</string>
-    <string name="choose_material">Choose millingMaterial</string>
+    <string name="choose_material">Choose Material</string>
     <string name="recommended_values">recommended values</string>
     <string name="choose_tool_type">Choose tool type</string>
     <string name="recommended_value_exceeded">Recommended value has been exceeded</string>
@@ -173,6 +173,8 @@
         <item>Drill diameter (mm)</item>
         <item>Machining drilling length (mm)</item>
         <item>Metal removal rate Q</item>
+        <item>Penetration rate (mm/min)</item>
+        <item>Machining time (min)</item>
     </array>
 
     <array name="g_codes">
