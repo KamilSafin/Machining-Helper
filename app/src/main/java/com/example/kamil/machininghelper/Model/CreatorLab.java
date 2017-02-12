@@ -62,16 +62,16 @@ public class CreatorLab {
         mSteelMillingMaterials.add(new Material("Brass - bronze alloy", 76, 91, 0.102, 0.203));
 
         mTurningMaterials = new ArrayList<>();
-        mTurningMaterials.add(new TurningMaterial("Mild Steel", CuttingType.LIGHT, 0d, 1d, 0d, null, 0.3d, 235d, 290d, 335d));
-        mTurningMaterials.add(new TurningMaterial("Mild Steel", CuttingType.MEDIUM, 1d, 6d, 0.2d, 0.4d, 0.6d, 260d, 350d, 440d));
-        mTurningMaterials.add(new TurningMaterial("Mild Steel", CuttingType.SEMI_HEAVY, 4d, 9d, 0.5d, 0.6d, 0.8d, 260d, 350d, 440d));
-        mTurningMaterials.add(new TurningMaterial("Carbon Steel", CuttingType.LIGHT, 0d, 1d, 0d, null, 0.3d, 210d, 280d, 355d));
-        mTurningMaterials.add(new TurningMaterial("Carbon Steel", CuttingType.MEDIUM, 1d, 6d, 0.2d, 0.4d, 0.6d, 190d, 260d, 325d));
-        mTurningMaterials.add(new TurningMaterial("Carbon Steel", CuttingType.SEMI_HEAVY, 4d, 9d, 0.5d, 0.6d, 0.8d, 180d, 250d, 310d));
-        mTurningMaterials.add(new TurningMaterial("Alloy Steel", CuttingType.LIGHT, 0d, 1d, 0d, null, 0.3d, 120d, 180d, 230d));
-        mTurningMaterials.add(new TurningMaterial("Alloy Steel", CuttingType.MEDIUM, 1d, 4d, 0.2d, 0.3d, 0.4d, 120d, 170d, 210d));
-        mTurningMaterials.add(new TurningMaterial("Austenic Stainless Steel", CuttingType.LIGHT, 0d, 1d, 0d, null, 0.2d, 95d, 140d, 185d));
-        mTurningMaterials.add(new TurningMaterial("Austenic Stainless Steel", CuttingType.MEDIUM, 1d, 4d, 0.2d, 0.3d, 0.4d, 85d, 120d, 155d));
+        mTurningMaterials.add(new TurningMaterial("Mild Steel", CuttingType.LIGHT, 0d, 1d, 0d, null, 0.3d, 235d, 290d, 335d, 1));
+        mTurningMaterials.add(new TurningMaterial("Mild Steel", CuttingType.MEDIUM, 1d, 6d, 0.2d, 0.4d, 0.6d, 260d, 350d, 440d, 1));
+        mTurningMaterials.add(new TurningMaterial("Mild Steel", CuttingType.SEMI_HEAVY, 4d, 9d, 0.5d, 0.6d, 0.8d, 260d, 350d, 440d, 1));
+        mTurningMaterials.add(new TurningMaterial("Carbon Steel", CuttingType.LIGHT, 0d, 1d, 0d, null, 0.3d, 210d, 280d, 355d, 2));
+        mTurningMaterials.add(new TurningMaterial("Carbon Steel", CuttingType.MEDIUM, 1d, 6d, 0.2d, 0.4d, 0.6d, 190d, 260d, 325d, 2));
+        mTurningMaterials.add(new TurningMaterial("Carbon Steel", CuttingType.SEMI_HEAVY, 4d, 9d, 0.5d, 0.6d, 0.8d, 180d, 250d, 310d, 2));
+        mTurningMaterials.add(new TurningMaterial("Alloy Steel", CuttingType.LIGHT, 0d, 1d, 0d, null, 0.3d, 120d, 180d, 230d, 3));
+        mTurningMaterials.add(new TurningMaterial("Alloy Steel", CuttingType.MEDIUM, 1d, 4d, 0.2d, 0.3d, 0.4d, 120d, 170d, 210d, 3));
+        mTurningMaterials.add(new TurningMaterial("Austenic Stainless Steel", CuttingType.LIGHT, 0d, 1d, 0d, null, 0.2d, 95d, 140d, 185d, 4));
+        mTurningMaterials.add(new TurningMaterial("Austenic Stainless Steel", CuttingType.MEDIUM, 1d, 4d, 0.2d, 0.3d, 0.4d, 85d, 120d, 155d, 4));
         mTurningMaterials.add(new TurningMaterial("High Manganese Steel", null, 1d, 4d, 0.1d, 0.2d, 0.4d, 120d, 170d, 210d));
         mTurningMaterials.add(new TurningMaterial("Pure Titamium", null, 0.5d, 1.5d, 0.1d, 0.15d, 0.2d, 80d, 100d, 120d));
         mTurningMaterials.add(new TurningMaterial("Titamium Alloy", null, 0.5d, 1.5d, 0.1d, 0.15d, 0.2d, 40d, 70d, 90d));
@@ -102,5 +102,9 @@ public class CreatorLab {
 
     public List<Material> getCarbideMillingMaterials() {
         return mCarbideMillingMaterials;
+    }
+
+    public List<TurningMaterial> getTurningMaterials() {
+        return mTurningMaterials;
     }
 }

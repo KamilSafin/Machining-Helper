@@ -5,15 +5,13 @@ import android.content.Context;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-/**
- * Created by Kamil Safin on 9/8/2016.
- */
 public class CreatorCachedValuesLab {
 
     private Context mContext;
     private static CreatorCachedValuesLab sCachedValuesLab;
 
     //turning
+    private TurningMaterial mTurningMaterial;
     private BigDecimal mTurningCuttingSpeed;
     private BigDecimal mTurningSpindleSpeed;
     private BigDecimal mTurningMetalRemovalRate;
@@ -623,5 +621,13 @@ public class CreatorCachedValuesLab {
 
     public void setDrillingMaterial(Material drillingMaterial) {
         mDrillingMaterial = drillingMaterial;
+    }
+
+    public TurningMaterial getTurningMaterial() {
+        return mTurningMaterial;
+    }
+
+    public void setTurningMaterial(TurningMaterial turningMaterial) {
+        mTurningMaterial = turningMaterial;
     }
 }

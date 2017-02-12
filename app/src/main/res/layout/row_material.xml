@@ -4,15 +4,33 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/material_name_text"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/font_size_menu"
-        android:textSize="18sp"
-        android:textColor="@color/light_gray"
-        tools:text="Material 1"/>
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/material_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/font_size_menu"
+            android:paddingBottom="@dimen/font_size_menu"
+            android:paddingLeft="16dp"
+            android:textSize="16sp"
+            android:textColor="@color/light_gray"
+            tools:text="Material 1"/>
+
+        <TextView
+            android:id="@+id/material_cutting_type_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/button_space"
+            android:layout_gravity="left|center"
+            android:maxLines="1"
+            android:textSize="12sp"
+            android:textColor="@color/light_gray"
+            tools:text="Material 1"/>
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"

@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/menu_bg"
+                android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/choose_material"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:background="@drawable/tolerance_rect">
+
+                <TextView
+                    android:id="@+id/choose_material_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:padding="10dp"
+                    android:maxLines="2"
+                    android:gravity="center"
+                    android:text="@string/choose_material"
+                    tools:text="test material \ntest cutting type"
+                    android:textColor="@color/light_gray"
+                    android:textSize="18sp"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/cutting_diameter_at_depth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_rect"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/cutting_diameter_at_depth_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15sp"
+                    tools:text="Cutting parameter at actual depth of cut"/>
+
+                <EditText
+                    android:id="@+id/cutting_diameter_at_depth_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="@string/mm"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/light_gray"
+                    android:textColorHint="@color/light_gray"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cutting_speed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_rect"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/cutting_speed_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15sp"
+                    tools:text="Cutting speed"/>
+
+                <TextView
+                    android:id="@+id/cutting_speed_recommended"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="13sp"
+                    tools:text="Cutting speed"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/cutting_speed_warning_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_warning"
+                        android:visibility="gone"/>
+
+                    <EditText
+                        android:id="@+id/cutting_speed_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:hint="@string/m_min"
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/light_gray"
+                        android:textColorHint="@color/light_gray"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/cutting_speed_warning_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:text="@string/recommended_value_exceeded"
+                    android:textColor="@color/warning_text"
+                    android:textSize="12sp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/spindle_speed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_main_rect"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/spindle_speed_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15sp"
+                    tools:text="Number of effective teeth"/>
+
+                <TextView
+                    android:id="@+id/spindle_speed_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="@string/rpm"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/light_gray"
+                    android:textColorHint="@color/light_gray"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/feed_per_revolution"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_rect"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/feed_per_revolution_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15sp"
+                    tools:text="Feed/revolution"/>
+
+                <TextView
+                    android:id="@+id/feed_per_revolution_recommended"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="13sp"
+                    tools:text="Feed/revolution"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/feed_per_revolution_warning_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_warning"
+                        android:visibility="gone"/>
+
+                    <EditText
+                        android:id="@+id/feed_per_revolution_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:hint="@string/mm_r"
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/light_gray"
+                        android:textColorHint="@color/light_gray"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/feed_per_revolution_warning_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:text="@string/recommended_value_exceeded"
+                    android:textColor="@color/warning_text"
+                    android:textSize="12sp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/depth_of_cut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_rect"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/depth_of_cut_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15sp"
+                    tools:text="Feed/revolution"/>
+
+                <TextView
+                    android:id="@+id/depth_of_cut_recommended"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="13sp"
+                    tools:text="Feed/revolution"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/depth_of_cut_warning_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_warning"
+                        android:visibility="gone"/>
+
+                    <EditText
+                        android:id="@+id/depth_of_cut_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:hint="@string/mm_r"
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/light_gray"
+                        android:textColorHint="@color/light_gray"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/depth_of_cut_warning_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:text="@string/recommended_value_exceeded"
+                    android:textColor="@color/warning_text"
+                    android:textSize="12sp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/machined_length"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_rect"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/machined_length_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15sp"
+                    tools:text="Cutting parameter at actual depth of cut"/>
+
+                <EditText
+                    android:id="@+id/machined_length_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="@string/mm"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/light_gray"
+                    android:textColorHint="@color/light_gray"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/specific_cutting_force"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_rect"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/specific_cutting_force_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15sp"
+                    tools:text="Cutting parameter at actual depth of cut"/>
+
+                <EditText
+                    android:id="@+id/specific_cutting_force_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="@string/mm"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/light_gray"
+                    android:textColorHint="@color/light_gray"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/metal_removal_rate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_main_rect"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/metal_removal_rate_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15sp"
+                    tools:text="Number of effective teeth"/>
+
+                <TextView
+                    android:id="@+id/metal_removal_rate_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="@string/mm"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/light_gray"
+                    android:textColorHint="@color/light_gray"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/machining_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_main_rect"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/machining_time_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15sp"
+                    tools:text="Number of effective teeth"/>
+
+                <TextView
+                    android:id="@+id/machining_time_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="@string/mm"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/light_gray"
+                    android:textColorHint="@color/light_gray"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/net_power_requirement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/creator_item_main_rect"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/net_power_requirement_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/button_space"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15sp"
+                    tools:text="Number of effective teeth"/>
+
+                <TextView
+                    android:id="@+id/net_power_requirement_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="@string/mm"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/light_gray"
+                    android:textColorHint="@color/light_gray"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -13,6 +13,7 @@ public class TurningMaterial {
     private double mMinCuttingSpeed;
     private Double mRecommendedCuttingSpeed;
     private double mMaxCuttingSpeed;
+    private Integer mGroupId;
 
     public TurningMaterial(String name, String cuttingType, double minDepthOfCut, double maxDepthOfCut, double minFeedPerRevolution, Double recommendedFeedPerRevolution, double maxFeedPerRevolution, double minCuttingSpeed, Double recommendedCuttingSpeed, double maxCuttingSpeed) {
         mName = name;
@@ -25,6 +26,20 @@ public class TurningMaterial {
         mMinCuttingSpeed = minCuttingSpeed;
         mRecommendedCuttingSpeed = recommendedCuttingSpeed;
         mMaxCuttingSpeed = maxCuttingSpeed;
+    }
+
+    public TurningMaterial(String name, String cuttingType, double minDepthOfCut, double maxDepthOfCut, double minFeedPerRevolution, Double recommendedFeedPerRevolution, double maxFeedPerRevolution, double minCuttingSpeed, Double recommendedCuttingSpeed, double maxCuttingSpeed, Integer groupId) {
+        mName = name;
+        mCuttingType = cuttingType;
+        mMinDepthOfCut = minDepthOfCut;
+        mMaxDepthOfCut = maxDepthOfCut;
+        mMinFeedPerRevolution = minFeedPerRevolution;
+        mRecommendedFeedPerRevolution = recommendedFeedPerRevolution;
+        mMaxFeedPerRevolution = maxFeedPerRevolution;
+        mMinCuttingSpeed = minCuttingSpeed;
+        mRecommendedCuttingSpeed = recommendedCuttingSpeed;
+        mMaxCuttingSpeed = maxCuttingSpeed;
+        mGroupId = groupId;
     }
 
     public String getName() {
@@ -65,5 +80,9 @@ public class TurningMaterial {
 
     public double getMaxCuttingSpeed() {
         return mMaxCuttingSpeed;
+    }
+
+    public Integer getGroupId() {
+        return mGroupId;
     }
 }

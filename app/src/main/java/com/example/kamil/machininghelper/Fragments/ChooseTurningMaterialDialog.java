@@ -1,5 +1,6 @@
 package com.example.kamil.machininghelper.Fragments;
 
+
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,37 +11,31 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.example.kamil.machininghelper.Adapters.MaterialAdapter;
 import com.example.kamil.machininghelper.Adapters.TurningMaterialAdapter;
 import com.example.kamil.machininghelper.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by Kamil Safin on 10/2/2016.
- */
-
-public class ChooseMaterialDialog extends DialogFragment implements MaterialAdapter.MaterialAdapterCallback {
+public class ChooseTurningMaterialDialog extends DialogFragment implements TurningMaterialAdapter.TurningMaterialAdapterCallback {
 
     @BindView(R.id.material_recycler_view)
     RecyclerView mMaterialRecyclerView;
 
-    private Boolean mIsHSSDrill = null;
-    private DialogMaterialCallback mDialogMaterialCallback;
+    private ChooseTurningMaterialDialog.DialogTurningMaterialCallback mDialogMaterialCallback;
 
-    public static ChooseMaterialDialog newInstance() {
+    public static ChooseTurningMaterialDialog newInstance() {
 
         Bundle args = new Bundle();
 
-        ChooseMaterialDialog fragment = new ChooseMaterialDialog();
+        ChooseTurningMaterialDialog fragment = new ChooseTurningMaterialDialog();
         fragment.setArguments(args);
         return fragment;
     }
 
 
-    public interface DialogMaterialCallback {
-        void onMaterialSelected(int index);
+    public interface DialogTurningMaterialCallback {
+        void onTurningMaterialSelected(int index);
     }
 
     @NonNull
@@ -52,7 +47,7 @@ public class ChooseMaterialDialog extends DialogFragment implements MaterialAdap
         ButterKnife.bind(this, view);
 
         mMaterialRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mMaterialRecyclerView.setAdapter(new MaterialAdapter(getContext(), this, mIsHSSDrill));
+        mMaterialRecyclerView.setAdapter(new TurningMaterialAdapter(getContext(), this));
 
         Dialog dialog = new Dialog(getContext());
         dialog.requestWindowFeature(STYLE_NO_TITLE);
@@ -61,15 +56,15 @@ public class ChooseMaterialDialog extends DialogFragment implements MaterialAdap
         return dialog;
     }
 
-    public void show(FragmentManager manager, String tag, DialogMaterialCallback dialogMaterialCallback, Boolean isHSSDrill) {
+    public void show(FragmentManager manager, String tag, ChooseTurningMaterialDialog.DialogTurningMaterialCallback dialogMaterialCallback) {
         super.show(manager, tag);
         mDialogMaterialCallback = dialogMaterialCallback;
-        mIsHSSDrill = isHSSDrill;
     }
+
 
     @Override
     public void onItemClicked(int index) {
-        mDialogMaterialCallback.onMaterialSelected(index);
+        mDialogMaterialCallback.onTurningMaterialSelected(index);
         dismiss();
     }
 }

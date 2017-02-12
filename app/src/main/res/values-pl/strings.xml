@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pomocnik Operatora</string>
+    <string name="app_name">Pomocnik CNC</string>
 
     <!-- menu -->
     <string name="creator_menu">Kreator parametrów</string>
@@ -175,6 +175,7 @@
         <item>Objętościowa wydajność skrawania Q (cm3/min.)</item>
         <item>Prędkość posuwu (mm/min)</item>
         <item>Czas obróbki (min)</item>
+        <item>Czas jednego przejścia (min)</item>
     </array>
 
     <array name="g_codes">

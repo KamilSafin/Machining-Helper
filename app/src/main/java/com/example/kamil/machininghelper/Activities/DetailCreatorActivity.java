@@ -65,6 +65,7 @@ public class DetailCreatorActivity extends SingleFragmentActivity {
                 switch (index){
                     case 0:
                         CreatorCachedValuesLab.getCachedValuesLab(this).removeTurningValues();
+                        ((TurningCreatorFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container)).resetView();
                         break;
                     case 1:
                         CreatorCachedValuesLab.getCachedValuesLab(this).removeMillingValues();

@@ -1,5 +1,6 @@
 package com.example.kamil.machininghelper.Adapters;
 
+
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,28 +9,24 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.kamil.machininghelper.Model.CreatorLab;
-import com.example.kamil.machininghelper.Model.Material;
+import com.example.kamil.machininghelper.Model.TurningMaterial;
 import com.example.kamil.machininghelper.R;
 
 import java.util.List;
 
-public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MaterialHolder> {
+public class TurningMaterialAdapter extends RecyclerView.Adapter<TurningMaterialAdapter.MaterialHolder> {
 
     private Context mContext;
-    private List<Material> mMaterials;
-    private MaterialAdapterCallback mMaterialAdapterCallback;
+    private List<TurningMaterial> mMaterials;
+    private TurningMaterialAdapterCallback mMaterialAdapterCallback;
 
-    public MaterialAdapter(Context context, MaterialAdapterCallback materialAdapterCallback, boolean isHSSDrill) {
+    public TurningMaterialAdapter(Context context, TurningMaterialAdapterCallback materialAdapterCallback) {
         mContext = context;
         mMaterialAdapterCallback = materialAdapterCallback;
-        if (isHSSDrill) {
-            mMaterials = CreatorLab.getCreatorLab(context).getSteelMillingMaterials();
-        } else {
-            mMaterials = CreatorLab.getCreatorLab(context).getCarbideMillingMaterials();
-        }
+        mMaterials = CreatorLab.getCreatorLab(context).getTurningMaterials();
     }
 
-    public interface MaterialAdapterCallback {
+    public interface TurningMaterialAdapterCallback {
         void onItemClicked(int index);
     }
 
@@ -42,7 +39,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
     }
 
     @Override
-    public void onBindViewHolder(MaterialHolder holder, int position) {
+    public void onBindViewHolder(TurningMaterialAdapter.MaterialHolder holder, int position) {
         holder.bindView(mMaterials.get(position));
     }
 
@@ -54,11 +51,13 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
     class MaterialHolder extends RecyclerView.ViewHolder {
 
         private TextView mMaterialText;
+        private TextView mMaterialCuttingTypeText;
 
         public MaterialHolder(View itemView) {
             super(itemView);
 
             mMaterialText = (TextView) itemView.findViewById(R.id.material_name_text);
+            mMaterialCuttingTypeText = (TextView) itemView.findViewById(R.id.material_cutting_type_text);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -68,8 +67,14 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
             });
         }
 
-        public void bindView(Material material) {
-            mMaterialText.setText(material.getName());
+        public void bindView(TurningMaterial material) {
+            if (material.getGroupId() != null) {
+                mMaterialText.setText(material.getName());
+                mMaterialCuttingTypeText.setText(" (" + material.getCuttingType() + ")");
+            } else {
+                mMaterialText.setText(material.getName());
+                mMaterialCuttingTypeText.setText(null);
+            }
         }
     }
 }

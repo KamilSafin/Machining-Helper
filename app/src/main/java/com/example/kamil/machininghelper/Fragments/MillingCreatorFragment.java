@@ -109,7 +109,7 @@ public class MillingCreatorFragment extends Fragment implements ChooseMaterialDi
     TextView mTableFeedText;
 
     @BindView(R.id.table_feed_result)
-    TextView mTableFeedEditText;
+    TextView mTableFeedResult;
 
     @BindView(R.id.depth_of_cut)
     LinearLayout mDepthOfCut;
@@ -136,7 +136,7 @@ public class MillingCreatorFragment extends Fragment implements ChooseMaterialDi
     TextView mMetalRemovalRateText;
 
     @BindView(R.id.metal_removal_rate_result)
-    TextView mMetalRemovalRateEditText;
+    TextView mMetalRemovalRateResult;
 
     private CreatorCachedValuesLab mCreatorCachedValuesLab;
     private Boolean mIsHSSDrill = null;
@@ -284,7 +284,7 @@ public class MillingCreatorFragment extends Fragment implements ChooseMaterialDi
         mMillCarbonedBg.setBackground(null);
         mMillHSSBg.setBackground(null);
         mSpindleSpeedEditText.setText("");
-        mTableFeedEditText.setText("");
+        mTableFeedResult.setText("");
         mSpindleSpeed.setVisibility(View.GONE);
         mTableFeed.setVisibility(View.GONE);
         mDepthOfCut.setVisibility(View.GONE);
@@ -294,7 +294,7 @@ public class MillingCreatorFragment extends Fragment implements ChooseMaterialDi
         mNumberOfEffectiveTeethEditText.setText(null);
         mCuttingSpeedEditText.setText(null);
         mFeedToothEditText.setText(null);
-        mMetalRemovalRateEditText.setText(null);
+        mMetalRemovalRateResult.setText(null);
         mMetalRemovalRate.setVisibility(View.GONE);
         mDepthOfCutEditText.setText(null);
         mWorkingEngagementEditText.setText(null);
@@ -330,7 +330,7 @@ public class MillingCreatorFragment extends Fragment implements ChooseMaterialDi
             if (mCreatorCachedValuesLab.getMillingTableFeed() != null) {
                 mTableFeed.setVisibility(View.VISIBLE);
                 mTableFeedText.setText(parametersNames[8]);
-                mTableFeedEditText.setText("" + (int) Math.round(mCreatorCachedValuesLab.getMillingTableFeed().doubleValue()) + " " + getString(R.string.mm_min));
+                mTableFeedResult.setText("" + (int) Math.round(mCreatorCachedValuesLab.getMillingTableFeed().doubleValue()) + " " + getString(R.string.mm_min));
 
                 mDepthOfCut.setVisibility(View.VISIBLE);
                 mDepthOfCutText.setText(parametersNames[11]);
@@ -339,7 +339,7 @@ public class MillingCreatorFragment extends Fragment implements ChooseMaterialDi
                 mWorkingEngagementText.setText(parametersNames[12]);
             } else {
                 mTableFeed.setVisibility(View.GONE);
-                mTableFeedEditText.setText("");
+                mTableFeedResult.setText("");
                 mDepthOfCut.setVisibility(View.GONE);
                 mWorkingEngagement.setVisibility(View.GONE);
                 mMetalRemovalRate.setVisibility(View.GONE);
@@ -349,10 +349,10 @@ public class MillingCreatorFragment extends Fragment implements ChooseMaterialDi
                 mMetalRemovalRate.setVisibility(View.VISIBLE);
                 mMetalRemovalRateText.setText(parametersNames[16]);
                 mCreatorCachedValuesLab.updateMillingValues(4);
-                mMetalRemovalRateEditText.setText("" + Math.round(mCreatorCachedValuesLab.getMillingMetalRemovalRate().doubleValue() * 100f) / 100f + " " + getString(R.string.cm3_min));
+                mMetalRemovalRateResult.setText("" + Math.round(mCreatorCachedValuesLab.getMillingMetalRemovalRate().doubleValue() * 100f) / 100f + " " + getString(R.string.cm3_min));
             } else {
                 mMetalRemovalRate.setVisibility(View.GONE);
-                mMetalRemovalRateEditText.setText("");
+                mMetalRemovalRateResult.setText("");
             }
         } else {
             mCuttingDiameterAtDepth.setVisibility(View.GONE);
