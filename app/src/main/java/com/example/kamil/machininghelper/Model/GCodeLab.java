@@ -26,7 +26,7 @@ public class GCodeLab {
             public void run() {
                 mGCodes = new ArrayList<>();
                 mGCodes.add(new GCode("G0", functions[0], "X, Y, Z", "G1"));
-                mGCodes.add(new GCode("G1", functions[1], "X, Y, Z, R, C", "G0"));
+                mGCodes.add(new GCode("G1", functions[1], "X, Y, Z, F, R, C", "G0"));
                 mGCodes.add(new GCode("G2", functions[2], "X, Y, Z, F, R, I, J, K", "G3"));
                 mGCodes.add(new GCode("G3", functions[3], "X, Y, Z, F, R, I, J, K", "G2"));
                 mGCodes.add(new GCode("G12", functions[4], "I, K, Q, F, Z, L, D", "G13"));

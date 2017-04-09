@@ -66,18 +66,18 @@ public class CalculatorCachedValuesLab {
     }
 
     public void updateTurningValues(int itemPos){
-        switch (itemPos){
-            case 0:
-                if (mTurningMachinedDiameter != null && mTurningSpindleSpeed != null) {
-                    try {
-                        mTurningCuttingSpeed = (mTurningMachinedDiameter.multiply(mTurningSpindleSpeed).multiply(new BigDecimal(Math.PI))).divide(new BigDecimal(1000), 10, RoundingMode.HALF_UP);
-                    } catch (ArithmeticException ex){
-                        mTurningCuttingSpeed = null;
+            switch (itemPos){
+                case 0:
+                    if (mTurningMachinedDiameter != null && mTurningSpindleSpeed != null) {
+                        try {
+                            mTurningCuttingSpeed = (mTurningMachinedDiameter.multiply(mTurningSpindleSpeed).multiply(new BigDecimal(Math.PI))).divide(new BigDecimal(1000), 10, RoundingMode.HALF_UP);
+                        } catch (ArithmeticException ex){
+                            mTurningCuttingSpeed = null;
+                        }
+                    } else if ((mTurningMachinedDiameter != null && mTurningSpindleSpeed == null) || (mTurningMachinedDiameter == null && mTurningSpindleSpeed != null)){
+                        mTurningCuttingSpeed = mTurningCuttingSpeed == null ? null : mTurningCuttingSpeed;
                     }
-                } else if ((mTurningMachinedDiameter != null && mTurningSpindleSpeed == null) || (mTurningMachinedDiameter == null && mTurningSpindleSpeed != null)){
-                    mTurningCuttingSpeed = mTurningCuttingSpeed == null ? null : mTurningCuttingSpeed;
-                }
-                break;
+                    break;
             case 1:
                 if (mTurningMachinedDiameter != null && mTurningCuttingSpeed != null) {
                     try {

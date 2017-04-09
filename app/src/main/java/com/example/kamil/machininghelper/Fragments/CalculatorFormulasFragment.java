@@ -632,9 +632,9 @@ public class CalculatorFormulasFragment extends Fragment {
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             try {
                 mCalculatorCachedValuesLab.setTurningMachinedDiameter(new BigDecimal(Double.parseDouble(charSequence.toString())));
-                initResult();
             } catch (NumberFormatException ex){
                 mCalculatorCachedValuesLab.setTurningMachinedDiameter(null);
+            } finally {
                 initResult();
             }
         }
@@ -665,7 +665,6 @@ public class CalculatorFormulasFragment extends Fragment {
                         mCalculatorCachedValuesLab.setDrillingSpindleSpeed(new BigDecimal(Double.parseDouble(charSequence.toString())));
                         break;
                 }
-                initResult();
             } catch (NumberFormatException ex){
                 switch (mMachiningType){
                     case TURNING:
@@ -678,6 +677,7 @@ public class CalculatorFormulasFragment extends Fragment {
                         mCalculatorCachedValuesLab.setDrillingSpindleSpeed(null);
                         break;
                 }
+            } finally {
                 initResult();
             }
         }
